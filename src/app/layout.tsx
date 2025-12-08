@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const urbanist = Urbanist({
@@ -19,12 +20,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="apple-mobile-web-app-title" content="Estatein" />
       </head>
-      <body className={`${urbanist.variable} antialiased font-urbanist`}>
-        {children}
+      <body
+        className={`${urbanist.variable} text-foreground dark:selection:bg-purple-60 bg-background font-urbanist selection:text-foreground selection:bg-purple-90 antialiased`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
