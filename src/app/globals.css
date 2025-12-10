@@ -30,6 +30,12 @@
   --color-grey-40: #666666;
   --color-grey-50: #808080;
   --color-grey-60: #999999;
+
+  --shadow-4: 0 0 0 4px var(--color-sub-background);
+  --shadow-6: 0 0 0 6px var(--color-sub-background);
+  --shadow-10: 0 0 0 10px var(--color-sub-background);
+
+  --drop-shadow-4: 4px rgb(112 59 247 / 0.1);
 }
 
 @theme inline {
@@ -40,6 +46,13 @@
   --color-background: var(--background);
   --color-sub-background: var(--sub-background);
   --color-foreground: var(--foreground);
+  --color-sub-foreground: var(--sub-foreground);
+
+  /* RESPONSIVE TYPOGRAPHY */
+  --text-title: var(--text-title);
+  --text-sub-title: var(--text-sub-title);
+  --text-stats: var(--text-stats);
+  --text-body: var(--text-body);
 
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -65,6 +78,13 @@
   --sub-background: var(--color-white-97);
   --foreground: var(--color-grey-08);
   --border: var(--color-white-90);
+  --sub-foreground: var(--color-grey-30);
+
+  /* Mobile Typography (default) */
+  --text-title: 1.75rem; /* 28px - h1 */
+  --text-subtitle: 1.5rem; /* 24px - h2 */
+  --text-stats: 1.5rem; /* 24px */
+  --text-body: 0.875rem; /* 14px - p, buttons, links */
 
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -88,6 +108,7 @@
   --sub-background: var(--color-grey-10);
   --foreground: var(--color-white-99);
   --border: var(--color-grey-15);
+  --sub-foreground: var(--color-grey-60);
 
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -106,6 +127,34 @@
   --ring: oklch(0.556 0 0);
 }
 
+/* Tablet (md) */
+@media (min-width: 768px) {
+  :root {
+    --text-title: 2.25rem; /* 36px - h1 */
+    --text-sub-title: 2.0625rem; /* 33px - h2 */
+    --text-body: 1rem; /* 16px - p, buttons, links*/
+  }
+}
+
+/* Large (lg) */
+@media (min-width: 1024px) {
+  :root {
+    --text-title: 2.875rem; /* 46px - h1 */
+    --text-sub-title: 2.375rem; /* 38px - h2 */
+    --text-stats: 1.875rem; /* 30px */
+  }
+}
+
+/* Extra Large (xl) */
+@media (min-width: 1280px) {
+  :root {
+    --text-title: 3.75rem; /* 60px - h1 */
+    --text-sub-title: 3rem; /* 48px - h2 */
+    --text-stats: 2.5rem; /* 40px */
+    --text-body: 1.125rem; /* 18px - p, buttons, links */
+  }
+}
+
 @layer base {
   *,
   *::before,
@@ -121,6 +170,7 @@
   button,
   a {
     cursor: pointer;
+    border-radius: var(--radius-lg);
   }
 
   button:focus-visible,
