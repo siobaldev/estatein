@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="mx-6 mt-10 mb-52 grid grid-cols-1 md:mx-11 lg:relative lg:mx-0 lg:mt-0 lg:grid-cols-2 lg:items-start xl:mx-auto">
+    <section className="mx-6 mt-10 grid grid-cols-1 md:mx-11 lg:relative lg:mx-0 lg:mt-0 lg:grid-cols-2 lg:items-start xl:mx-auto">
       {/* Main Content: Headlines, CTAs, and stats */}
       <div className="z-20 order-2 flex h-full flex-col justify-center gap-y-10 lg:order-1 lg:ml-14 lg:py-10 lg:pr-7.5">
         {/* Headline Section with CTA Badge */}
