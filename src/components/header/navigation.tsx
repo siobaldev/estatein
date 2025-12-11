@@ -5,8 +5,11 @@ import Link from "next/link";
 import { NavItems } from "@/lib/data";
 
 export default function Navigation() {
+  // Tracks the currently active navigation section
   const [activeSection, setActiveSection] = useState<string>("Home");
 
+  // Handles navigation link click events
+  // Update the active section state to highlight the clicked navigation item
   const handleLinkClick = (item: string) => {
     setActiveSection(item);
   };
@@ -17,12 +20,15 @@ export default function Navigation() {
         <li key={item.label} className="relative">
           <Link
             href={item.href}
+            // Remove from tab order when link is already active (prevents redundant tab stops)
             tabIndex={activeSection === item.label ? -1 : 0}
             onClick={() => handleLinkClick(item.label)}
-            className={`inline-block md:px-4 md:py-3 md:text-sm lg:px-5 xl:text-lg ${
+            className={`text-body inline-block md:px-4 md:py-3 lg:px-5 ${
               activeSection === item.label
-                ? "ring-purple-60 bg-background shadow-purple-60/40 rounded-lg shadow ring"
-                : "hover:text-purple-60"
+                ? // // Active state: highlighted with ring, background, and shadow
+                  "ring-purple-60 bg-background shadow-purple-60/40 shadow ring"
+                : // Inactive state: hover effect
+                  "hover:text-purple-60"
             }`}
           >
             {item.label}
