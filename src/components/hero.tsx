@@ -86,8 +86,9 @@ export default function Hero() {
             height={100}
             unoptimized={true}
           />
-
+          {/* Decorative abstract line pattern background */}
           <AbstractLines className="stroke-border absolute h-160 stroke-1 xl:h-full" />
+          {/* Gradient overlay for visual depth */}
           <span className="from-purple-75/20 absolute size-full bg-linear-to-bl to-50% dark:from-[#2A213F]" />
         </div>
       </div>
