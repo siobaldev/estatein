@@ -82,7 +82,7 @@
 
   /* Mobile Typography (default) */
   --text-title: 1.75rem; /* 28px - h1 */
-  --text-subtitle: 1.5rem; /* 24px - h2 */
+  --text-sub-title: 1.5rem; /* 24px - h2 */
   --text-stats: 1.5rem; /* 24px */
   --text-body: 0.875rem; /* 14px - p, buttons, links */
 

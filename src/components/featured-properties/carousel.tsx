@@ -1,0 +1,200 @@
+"use client";
+
+import { useState, useEffect, useEffectEvent } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import { Properties } from "@/lib/data";
+import { BedSingle, Bath, ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+
+export default function CarouselProperties() {
+  // Carousel API instance for controlling carousel behavior
+  const [api, setApi] = useState<CarouselApi>();
+
+  // Current active slide index (1-based)
+  const [current, setCurrent] = useState(0);
+
+  // Total number of slides in the carousel
+  const [count, setCount] = useState(0);
+
+  // Whether the carousel can scroll to previous slide
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+
+  // Whether the carousel can scroll to next slide
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  // Handles carousel selection events
+  // Updates the current slide index and total count
+  const handleSelect = useEffectEvent((api: CarouselApi) => {
+    setCount(api!.scrollSnapList().length);
+    setCurrent(api!.selectedScrollSnap() + 1);
+  });
+
+  // Updates the state of navigation buttons
+  // Determines if prev/next buttons should be enabled or disabled
+  const updateScrollButtons = useEffectEvent((api: CarouselApi) => {
+    setCanScrollPrev(api!.canScrollPrev());
+    setCanScrollNext(api!.canScrollNext());
+  });
+
+  // Effect hook to initialize carousel and listen for selection changes
+  // Sets up event listeners when carousel API is available
+  useEffect(() => {
+    if (!api) return;
+
+    handleSelect(api);
+    updateScrollButtons(api);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+      updateScrollButtons(api);
+    });
+  }, [api]);
+
+  // Scrolls carousel to previous slide
+  const scrollPrev = () => {
+    api?.scrollPrev();
+  };
+
+  // Scrolls carousel to next slide
+  const scrollNext = () => {
+    api?.scrollNext();
+  };
+
+  // Formats a number with leading zero for display
+  const formatNumber = (num: number) => num.toString().padStart(2, "0");
+
+  return (
+    <div className="flex flex-col gap-y-7.5 md:gap-y-10 lg:gap-y-12.5">
+      {/* Carousel Container */}
+      <div className="ring-border rounded-xl p-6 ring">
+        <Carousel setApi={setApi}>
+          <CarouselContent className="rounded-lg">
+            {Properties.map((prop) => (
+              <CarouselItem
+                key={prop.id}
+                className="flex max-w-sm rounded-lg pl-4 md:basis-1/2 md:pl-6 xl:basis-1/3"
+              >
+                <div>
+                  {/* Property Image with Type Badge */}
+                  <div className="relative mb-4 flex items-center justify-center">
+                    {/* Property type badge overlay */}
+                    <span className="ring-border bg-background back-drop-md absolute top-2 left-2 flex w-fit gap-x-2 rounded-full px-3.5 py-1.5 ring">
+                      {prop.propertyType}
+                    </span>
+
+                    {/* Property image */}
+                    <Image
+                      src={prop.image}
+                      alt={prop.name}
+                      width={100}
+                      height={100}
+                      unoptimized
+                      className="text-grey-20 size-full rounded-lg"
+                    />
+                  </div>
+
+                  {/* Property Details */}
+                  <div className="flex flex-col gap-y-5">
+                    {/* Property Name and Description */}
+                    <div>
+                      <h1 className="text-lg font-semibold md:text-xl lg:text-2xl">
+                        {prop.name}
+                      </h1>
+                      <p className="text-grey-40 text-body line-clamp-2 lg:line-clamp-2">
+                        {prop.description}
+                      </p>
+                    </div>
+
+                    {/* Property Features (Bedrooms and Bathrooms) */}
+                    <div className="flex flex-wrap gap-2 text-sm">
+                      {/* Bedrooms badge */}
+                      <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
+                        <BedSingle className="size-5" />
+                        <p>
+                          {prop.bedrooms}
+                          <span className="max-[366px]:hidden">-Bedrooms</span>
+                        </p>
+                      </div>
+
+                      {/* Bathrooms badge */}
+                      <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
+                        <Bath className="size-5" />
+                        <p>
+                          {prop.bathrooms}
+                          <span className="max-[366px]:hidden">-Bathrooms</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Price and CTA Button */}
+                    <div className="flex justify-between max-[366px]:flex-col max-[366px]:gap-y-5">
+                      {/* Property price */}
+                      <div>
+                        <p className="text-grey-40 text-body">Price</p>
+                        <p className="text-lg font-semibold md:text-xl lg:text-2xl">
+                          {prop.price}
+                        </p>
+                      </div>
+
+                      {/* View property button (hidden on mobile < lg) */}
+                      {/* TODO: add link to properties page */}
+                      <button className="bg-purple-60 text-white-99 text-body size-fit px-5 py-3.5 text-nowrap max-[366px]:w-full lg:block">
+                        View All Properties
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
+
+      {/* Navigation Controls Section */}
+      <div className="space-y-4">
+        {/* Divider line */}
+        <hr className="border-border h-1" />
+
+        <div className="flex justify-between max-[380px]:flex-col-reverse max-[380px]:gap-y-5">
+          {/* View All button (visible on mobile/tablet < lg) */}
+          {/* TODO: add link to properties page */}
+          <button className="ring-border block w-fit px-5 py-3.5 font-medium ring max-[380px]:w-full lg:hidden">
+            View All Properties
+          </button>
+
+          {/* Navigation Controls Container */}
+          <div className="flex items-center gap-x-2.5 max-[380px]:w-full max-[380px]:justify-between lg:relative lg:flex-1 lg:justify-end">
+            {/* Previous button */}
+            <button
+              onClick={scrollPrev}
+              disabled={!canScrollPrev}
+              className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
+            >
+              <ArrowLeft className="size-6" />
+            </button>
+
+            {/* Current position indicator (mobile/tablet only) */}
+            <p className="text-body font-medium lg:absolute lg:left-0">
+              {formatNumber(current)}
+              <span className="text-grey-40"> of {formatNumber(count)}</span>
+            </p>
+
+            {/* Next button */}
+            <button
+              onClick={scrollNext}
+              disabled={!canScrollNext}
+              className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
+            >
+              <ArrowRight className="size-6" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

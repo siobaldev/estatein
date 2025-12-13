@@ -1,11 +1,15 @@
 import Header from "@/components/header/header";
 import Hero from "@/components/hero";
+import FeaturedProperties from "@/components/featured-properties/featured-properties";
 
 export default function Home() {
   return (
     <main>
       <Header />
-      <Hero />
+      <div className="space-y-20 md:space-y-25 lg:space-y-30 xl:space-y-37.5">
+        <Hero />
+        <FeaturedProperties />
+      </div>
     </main>
   );
 }
