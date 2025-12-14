@@ -97,3 +97,66 @@ export const Properties = [
     price: "$3,200,000",
   },
 ];
+
+export const Testimonials = [
+  {
+    id: 1,
+    rating: 5,
+    title: "Beyond Our Expectations!",
+    message:
+      "Working with Estatein exceeded all our expectations. From the initial consultation to closing day, every detail was handled with care and precision. They found us the perfect family home within our budget and timeline. Their market knowledge is unmatched!",
+    name: "Sarah Mitchell",
+    location: "USA, Texas",
+    avatar: "/assets/avatars/sarah-mitchell.webp",
+  },
+  {
+    id: 2,
+    rating: 4,
+    title: "Seamless First-Time Experience",
+    message:
+      "As first-time homebuyers, we were nervous about the process. Estatein made everything so smooth and stress-free. They patiently answered all our questions and guided us every step of the way. We couldn't have asked for better support during this important milestone!",
+    name: "David Chen",
+    location: "USA, Washington",
+    avatar: "/assets/avatars/david-chen.webp",
+  },
+  {
+    id: 3,
+    rating: 5,
+    title: "Outstanding Market Insight",
+    message:
+      "Estatein's deep understanding of the local market helped us find an investment property with excellent potential. Their analytical approach and honest advice gave us confidence in our decision. The property has already appreciated significantly. Thank you for your expertise!",
+    name: "Robert Anderson",
+    location: "USA, Colorado",
+    avatar: "/assets/avatars/robert-anderson.webp",
+  },
+  {
+    id: 4,
+    rating: 4,
+    title: "Professional and Personable",
+    message:
+      "The Estatein team struck the perfect balance between professionalism and personal touch. They listened to our needs, showed us only properties that matched our criteria, and negotiated a fantastic deal on our behalf. We're thrilled with our new condo downtown!",
+    name: "Jessica Rodriguez",
+    location: "USA, Arizona",
+    avatar: "/assets/avatars/jessica-rodriguez.webp",
+  },
+  {
+    id: 5,
+    rating: 5,
+    title: "Sold Above Asking Price!",
+    message:
+      "We needed to sell our home quickly due to relocation. Estatein's marketing strategy was brilliant - professional photos, virtual tours, and targeted outreach. We received multiple offers within a week and sold above asking price. Absolutely phenomenal service!",
+    name: "Patricia O'Brien",
+    location: "USA, Oregon",
+    avatar: "/assets/avatars/patricia-obrien.webp",
+  },
+  {
+    id: 6,
+    rating: 4,
+    title: "Dedicated and Trustworthy",
+    message:
+      "After working with several agencies, Estatein stood out for their dedication and integrity. They never pushed us into anything and always had our best interests at heart. Their patience paid off when we found our dream retirement home. Forever grateful!",
+    name: "Thomas Williams",
+    location: "USA, North Carolina",
+    avatar: "/assets/avatars/thomas-williams.webp",
+  },
+];
