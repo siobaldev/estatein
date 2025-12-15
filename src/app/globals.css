@@ -7,6 +7,18 @@
   /* FONT */
   --font-urbanist: var(--font-urbanist);
 
+  /* Title (h1): 28px → 60px */
+  --text-title: clamp(1.75rem, 0.8833rem + 4.3333vw, 3.75rem);
+
+  /* Subtitle (h2): 24px → 48px */
+  --text-sub-title: clamp(1.5rem, 0.75rem + 3.75vw, 3rem);
+
+  /* Stats: 24px → 40px */
+  --text-stats: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+
+  /* Body (p, buttons, links): 14px → 18px */
+  --text-body: clamp(0.875rem, 0.7583rem + 0.5833vw, 1.125rem);
+
   /* COLORS */
   /* Purple Shades*/
   --color-purple-60: #703bf7;
@@ -30,12 +42,6 @@
   --color-grey-40: #666666;
   --color-grey-50: #808080;
   --color-grey-60: #999999;
-
-  --shadow-4: 0 0 0 4px var(--color-sub-background);
-  --shadow-6: 0 0 0 6px var(--color-sub-background);
-  --shadow-10: 0 0 0 10px var(--color-sub-background);
-
-  --drop-shadow-4: 4px rgb(112 59 247 / 0.1);
 }
 
 @theme inline {
@@ -43,33 +49,13 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
   --color-background: var(--background);
   --color-sub-background: var(--sub-background);
   --color-foreground: var(--foreground);
   --color-sub-foreground: var(--sub-foreground);
 
-  /* RESPONSIVE TYPOGRAPHY */
-  --text-title: var(--text-title);
-  --text-sub-title: var(--text-sub-title);
-  --text-stats: var(--text-stats);
-  --text-body: var(--text-body);
-
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
   --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
 }
 
 :root {
@@ -78,29 +64,7 @@
   --sub-background: var(--color-white-97);
   --foreground: var(--color-grey-08);
   --border: var(--color-white-90);
-  --sub-foreground: var(--color-grey-30);
-
-  /* Mobile Typography (default) */
-  --text-title: 1.75rem; /* 28px - h1 */
-  --text-sub-title: 1.5rem; /* 24px - h2 */
-  --text-stats: 1.5rem; /* 24px */
-  --text-body: 0.875rem; /* 14px - p, buttons, links */
-
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --sub-foreground: var(--color-grey-40);
 }
 
 .dark {
@@ -109,50 +73,6 @@
   --foreground: var(--color-white-99);
   --border: var(--color-grey-15);
   --sub-foreground: var(--color-grey-60);
-
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-}
-
-/* Tablet (md) */
-@media (min-width: 768px) {
-  :root {
-    --text-title: 2.25rem; /* 36px - h1 */
-    --text-sub-title: 2.0625rem; /* 33px - h2 */
-    --text-body: 1rem; /* 16px - p, buttons, links*/
-  }
-}
-
-/* Large (lg) */
-@media (min-width: 1024px) {
-  :root {
-    --text-title: 2.875rem; /* 46px - h1 */
-    --text-sub-title: 2.375rem; /* 38px - h2 */
-    --text-stats: 1.875rem; /* 30px */
-  }
-}
-
-/* Extra Large (xl) */
-@media (min-width: 1280px) {
-  :root {
-    --text-title: 3.75rem; /* 60px - h1 */
-    --text-sub-title: 3rem; /* 48px - h2 */
-    --text-stats: 2.5rem; /* 40px */
-    --text-body: 1.125rem; /* 18px - p, buttons, links */
-  }
 }
 
 @layer base {
@@ -182,6 +102,17 @@
 }
 
 @layer utilities {
+  .wrapper {
+    max-width: clamp(20rem, 100%, 90rem);
+    margin-inline: auto;
+    padding-inline: clamp(1.5rem, 5vw, 6rem);
+    transition: padding-inline 0.3s ease-out;
+
+    @media (min-width: 1536px) {
+      padding-inline: 0;
+    }
+  }
+
   /* Hamburger Menu */
   .line {
     fill: none;

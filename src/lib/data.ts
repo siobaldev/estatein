@@ -160,3 +160,54 @@ export const Testimonials = [
     avatar: "/assets/avatars/thomas-williams.webp",
   },
 ];
+
+export const FAQs = [
+  {
+    id: 1,
+    question: "How do I search for properties on Estatein?",
+    answer:
+      "Learn how to use our user-friendly search tools to find properties that match your criteria. Our advanced search allows you to filter by location, price range, property type, number of bedrooms, amenities, and more. You can save your searches and receive alerts when new properties matching your preferences become available.",
+  },
+  {
+    id: 2,
+    question: "What documents do I need to sell my property through Estatein?",
+    answer:
+      "Find out about the necessary documentation for listing your property with us. You'll typically need proof of ownership (deed), recent mortgage statement, property tax records, HOA documents (if applicable), and any warranties or manuals for appliances and systems. We'll provide a complete checklist during our initial consultation.",
+  },
+  {
+    id: 3,
+    question: "How can I contact an Estatein agent?",
+    answer:
+      "Discover the different ways you can get in touch with our experienced agents. You can reach us by phone, email, contact form on our website, or visit our office during business hours. We also offer virtual consultations via video call for your convenience.",
+  },
+  {
+    id: 4,
+    question: "What areas does Estatein serve?",
+    answer:
+      "We serve multiple communities and surrounding areas with comprehensive real estate services. Our team has deep knowledge of local neighborhoods, market trends, school districts, and property values across the region. We can help you find the perfect location that fits your lifestyle and needs.",
+  },
+  {
+    id: 5,
+    question: "What is Estatein's commission structure?",
+    answer:
+      "Our commission structure is competitive and transparent. The exact rate depends on factors like property type, price point, and services required. We discuss all fees upfront during our initial consultation with no hidden costs or surprises, ensuring you understand all costs before moving forward.",
+  },
+  {
+    id: 6,
+    question: "Does Estatein offer virtual property tours?",
+    answer:
+      "Yes! We offer comprehensive virtual tours for most of our listings, including 3D walkthroughs, video tours, and live virtual showings with our agents. This allows you to explore properties from anywhere and narrow down your choices before scheduling in-person visits.",
+  },
+  {
+    id: 7,
+    question: "How long has Estatein been in business?",
+    answer:
+      "Estatein has been serving the community for many years, building a reputation for integrity, expertise, and exceptional customer service. Our experienced team has helped thousands of clients successfully buy, sell, and rent properties throughout our service area.",
+  },
+  {
+    id: 8,
+    question: "What makes Estatein different from other real estate agencies?",
+    answer:
+      "We pride ourselves on personalized service, deep market knowledge, innovative marketing strategies, and a client-first approach. Our team uses cutting-edge technology combined with traditional relationship-building to deliver results. We're available when you need us and committed to making your real estate journey as smooth as possible.",
+  },
+];

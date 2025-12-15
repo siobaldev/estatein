@@ -2,6 +2,7 @@ import Header from "@/components/header/header";
 import Hero from "@/components/hero";
 import FeaturedProperties from "@/components/featured-properties/featured-properties";
 import Testimonial from "@/components/testimonial/testimonial";
+import FAQs from "@/components/faqs/faqs";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <FeaturedProperties />
         <Testimonial />
+        <FAQs />
       </div>
     </main>
   );
