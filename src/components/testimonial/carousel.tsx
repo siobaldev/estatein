@@ -110,7 +110,9 @@ export default function CarouselTestimonial() {
                     </h1>
 
                     {/* Testimonial Message */}
-                    <p className="text-body font-medium">{item.message}</p>
+                    <p className="text-body text-sub-foreground font-medium">
+                      {item.message}
+                    </p>
                   </div>
                 </div>
 
@@ -132,7 +134,7 @@ export default function CarouselTestimonial() {
                       {item.name}
                     </p>
                     {/* Author Location*/}
-                    <p className="text-body text-grey-60 font-medium">
+                    <p className="text-body text-sub-foreground font-medium">
                       {item.location}
                     </p>
                   </div>
@@ -169,7 +171,10 @@ export default function CarouselTestimonial() {
             {/* Current position indicator (mobile/tablet only) */}
             <p className="text-body font-medium lg:absolute lg:left-0">
               {formatNumber(current)}
-              <span className="text-grey-40"> of {formatNumber(count)}</span>
+              <span className="text-sub-foreground">
+                {" "}
+                of {formatNumber(count)}
+              </span>
             </p>
 
             {/* Next button */}
