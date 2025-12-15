@@ -82,7 +82,7 @@ export default function CarouselProperties() {
                 {/* Property Image with Type Badge */}
                 <div className="relative mb-4 flex items-center justify-center">
                   {/* Property type badge overlay */}
-                  <span className="bg-sub-background ring-border text-body shadow-sub-background/40 absolute top-2 left-2 flex w-fit gap-x-2 rounded-full px-3 py-1.5 font-semibold shadow dark:ring">
+                  <span className="bg-sub-background ring-border text-body shadow-sub-background/40 absolute top-2 left-2 flex w-fit rounded-full px-3 py-1.5 font-semibold shadow ring">
                     {prop.propertyType}
                   </span>
 
@@ -93,7 +93,7 @@ export default function CarouselProperties() {
                     width={100}
                     height={100}
                     unoptimized
-                    className="text-grey-20 size-full rounded-lg"
+                    className="size-full rounded-lg"
                   />
                 </div>
 
@@ -104,19 +104,19 @@ export default function CarouselProperties() {
                     <h1 className="text-lg font-semibold md:text-xl lg:text-2xl">
                       {prop.name}
                     </h1>
-                    <p className="text-grey-40 text-body line-clamp-2 lg:line-clamp-2">
+                    <p className="text-sub-foreground text-body line-clamp-2 font-medium">
                       {prop.description}
                     </p>
                   </div>
 
                   {/* Property Features (Bedrooms and Bathrooms) */}
-                  <div className="flex flex-wrap gap-2 text-sm">
+                  <div className="flex flex-wrap gap-2 text-sm font-medium">
                     {/* Bedrooms badge */}
                     <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
                       <BedSingle className="size-5" />
                       <p>
                         {prop.bedrooms}
-                        <span className="max-[366px]:hidden">-Bedrooms</span>
+                        <span className="max-[366px]:hidden"> - Bedrooms</span>
                       </p>
                     </div>
 
@@ -125,7 +125,7 @@ export default function CarouselProperties() {
                       <Bath className="size-5" />
                       <p>
                         {prop.bathrooms}
-                        <span className="max-[366px]:hidden">-Bathrooms</span>
+                        <span className="max-[366px]:hidden"> - Bathrooms</span>
                       </p>
                     </div>
                   </div>
@@ -134,7 +134,7 @@ export default function CarouselProperties() {
                   <div className="flex justify-between max-[366px]:flex-col max-[366px]:gap-y-5">
                     {/* Property price */}
                     <div>
-                      <p className="text-grey-40 text-body">Price</p>
+                      <p className="text-sub-foreground text-body">Price</p>
                       <p className="text-lg font-semibold md:text-xl lg:text-2xl">
                         {prop.price}
                       </p>
@@ -142,7 +142,7 @@ export default function CarouselProperties() {
 
                     {/* View property button (hidden on mobile < lg) */}
                     {/* TODO: add link to properties page */}
-                    <button className="bg-purple-60 text-white-99 text-body size-fit px-5 py-3.5 text-nowrap max-[366px]:w-full lg:block">
+                    <button className="bg-purple-60 text-white-99 text-body size-fit px-5 py-3.5 font-medium text-nowrap max-[366px]:w-full lg:block">
                       View All Properties
                     </button>
                   </div>
@@ -179,7 +179,10 @@ export default function CarouselProperties() {
             {/* Current position indicator (mobile/tablet only) */}
             <p className="text-body font-medium lg:absolute lg:left-0">
               {formatNumber(current)}
-              <span className="text-grey-40"> of {formatNumber(count)}</span>
+              <span className="text-sub-foreground">
+                {" "}
+                of {formatNumber(count)}
+              </span>
             </p>
 
             {/* Next button */}
