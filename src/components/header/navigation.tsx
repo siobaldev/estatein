@@ -15,7 +15,7 @@ export default function Navigation() {
   };
 
   return (
-    <ul className="hidden gap-x-1 md:flex">
+    <ul className="hidden gap-x-1 lg:flex">
       {NavItems.map((item) => (
         <li key={item.label} className="relative">
           <Link

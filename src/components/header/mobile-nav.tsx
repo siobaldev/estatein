@@ -24,7 +24,7 @@ export default function MobileNav() {
     <div>
       <Drawer open={open} onOpenChange={setOpen}>
         {/* Animated Hamburger Menu Button - Only visible on mobile */}
-        <DrawerTrigger className="bg-background ring-border hover:ring-purple-60 active:ring-purple-60 relative p-2 ring active:ring-2 md:hidden">
+        <DrawerTrigger className="bg-background ring-border hover:ring-purple-60 active:ring-purple-60 relative p-2 ring active:ring-2 lg:hidden">
           <svg
             viewBox="0 0 32 32"
             className={`stroke-foreground h-6 transition-transform duration-500 sm:h-7 ${
