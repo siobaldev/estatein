@@ -8,9 +8,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="mx-6 mt-10 grid grid-cols-1 md:mx-11 lg:relative lg:mx-0 lg:mt-0 lg:grid-cols-2 lg:items-start xl:mx-auto">
+    // TODO: Add wrapper and adjust padding
+    <section className="wrapper mt-10 grid grid-cols-1 lg:relative lg:mx-0 lg:mt-0 lg:grid-cols-2 lg:items-start lg:gap-7.5 lg:py-10 xl:mx-auto">
       {/* Main Content: Headlines, CTAs, and stats */}
-      <div className="z-20 order-2 flex h-full flex-col justify-center gap-y-10 lg:order-1 lg:ml-14 lg:py-10 lg:pr-7.5">
+      <div className="z-20 order-2 flex h-full flex-col justify-center gap-y-10 lg:order-1">
         {/* Headline Section with CTA Badge */}
         <div className="relative -mt-15 flex flex-col space-y-4 lg:mt-0 lg:flex-row-reverse lg:items-center lg:justify-center">
           {/* Animated Circular Call-to-Action Badge */}
@@ -41,7 +42,7 @@ export default function Hero() {
         <div className="text-body flex flex-col gap-4 font-medium sm:flex-row">
           {/* Secondary action button with outline style */}
           {/* TODO: Add link to About page */}
-          <button className="ring-border w-full px-5 py-3.5 ring-1">
+          <button className="ring-border hover:ring-purple-60 w-full px-5 py-3.5 ring">
             Learn More
           </button>
 
@@ -67,7 +68,9 @@ export default function Hero() {
                 <h2 className="text-stats font-bold">{stat.value}</h2>
 
                 {/* Statistic label */}
-                <p className="text-grey-60 text-sm font-medium">{stat.label}</p>
+                <p className="text-sub-foreground text-body font-medium">
+                  {stat.label}
+                </p>
               </li>
             ))}
           </ul>
@@ -76,7 +79,7 @@ export default function Hero() {
 
       {/* Hero Image: Building image with decorative background */}
       <div className="order-1 flex size-full items-center lg:order-2">
-        <div className="bg-sub-background ring-border relative flex size-full items-center justify-center overflow-hidden rounded-xl ring lg:rounded-none lg:ring-0">
+        <div className="bg-sub-background ring-border relative flex size-full items-center justify-center overflow-hidden rounded-xl ring">
           {/* Building image */}
           <Image
             src={"/assets/Building.webp"}
@@ -105,12 +108,12 @@ export default function Hero() {
               {/* TODO: Add link to services */}
               <div className="relative flex items-center justify-center">
                 {/* Icon container background */}
-                <IconContainer className="size-12 lg:size-15 xl:size-20.5" />
+                <IconContainer className="size-12 stroke-2 lg:size-15 xl:size-20.5" />
                 {/* Feature icon centered in container */}
                 <card.icon className="text-purple-75 absolute size-5 xl:size-8.5" />
               </div>
               {/* Feature label text */}
-              <p className="text-body text-center">{card.label}</p>
+              <p className="text-body text-center font-medium">{card.label}</p>
             </li>
           ))}
         </ul>

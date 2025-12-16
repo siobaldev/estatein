@@ -42,6 +42,10 @@
   --color-grey-40: #666666;
   --color-grey-50: #808080;
   --color-grey-60: #999999;
+
+  --shadow-4: 0 0 0 4px var(--color-sub-background);
+  --shadow-6: 0 0 0 6px var(--color-sub-background);
+  --shadow-10: 0 0 0 10px var(--color-sub-background);
 }
 
 @theme inline {
