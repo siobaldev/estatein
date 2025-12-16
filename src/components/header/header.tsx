@@ -14,7 +14,7 @@ export default function Header() {
       {/* Main Navigation Bar */}
       <nav className="border-border flex h-20 items-center justify-center border-b md:h-[100px]">
         {/* Navigation Container */}
-        <div className="flex w-full items-center justify-between px-6 md:mx-11 md:px-0">
+        <div className="wrapper flex w-full items-center justify-between px-6 md:px-0">
           {/* Logo and Brand Name links to homepage */}
           <Link
             href={"/"}
@@ -45,7 +45,7 @@ export default function Header() {
             {/* Contact Button only visible on desktop (md and above) */}
             <Link
               href={"/"}
-              className="bg-background ring-border shadow-border hover:ring-purple-60 text-body hidden shadow ring md:block md:px-4 md:py-3 lg:px-5"
+              className="bg-background ring-border shadow-border hover:ring-purple-60 text-body hidden shadow ring md:px-4 md:py-3 lg:block lg:px-5"
             >
               Contact Us
             </Link>
