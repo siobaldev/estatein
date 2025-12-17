@@ -211,3 +211,59 @@ export const FAQs = [
       "We pride ourselves on personalized service, deep market knowledge, innovative marketing strategies, and a client-first approach. Our team uses cutting-edge technology combined with traditional relationship-building to deliver results. We're available when you need us and committed to making your real estate journey as smooth as possible.",
   },
 ];
+
+export const FooterItems = [
+  {
+    id: 1,
+    title: "Home",
+    links: [
+      { id: 1, name: "Hero Section", url: "/#hero" },
+      { id: 2, name: "Features", url: "/#features" },
+      { id: 3, name: "Properties", url: "/#properties" },
+      { id: 4, name: "Testimonials", url: "/#testimonials" },
+      { id: 5, name: "FAQ's", url: "/#faq" },
+    ],
+  },
+  {
+    id: 2,
+    title: "About Us",
+    links: [
+      { id: 1, name: "Our Story", url: "/about#ourstory" },
+      { id: 2, name: "Our Works", url: "/about#ourworks" },
+      { id: 3, name: "How It Works", url: "/about#howitworks" },
+      { id: 4, name: "Our Team", url: "/about#ourteam" },
+      { id: 5, name: "Our Clients", url: "/about#ourclients" },
+    ],
+  },
+  {
+    id: 3,
+    title: "Properties",
+    links: [
+      { id: 1, name: "Portfolio", url: "/properties#portfolio" },
+      { id: 2, name: "Categories", url: "/properties#categories" },
+    ],
+  },
+  {
+    id: 4,
+    title: "Services",
+    links: [
+      { id: 1, name: "Valuation Mastery", url: "/services#valuation" },
+      { id: 2, name: "Strategic Marketing", url: "/services#marketing" },
+      { id: 3, name: "Negotiation Wizardry", url: "/services#negotiation" },
+      { id: 4, name: "Closing Success", url: "/services#closing" },
+      {
+        id: 5,
+        name: "Property Management",
+        url: "/services#property-management",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Contact Us",
+    links: [
+      { id: 1, name: "Contact Form", url: "/contact#contactform" },
+      { id: 2, name: "Our Offices", url: "/contact#offices" },
+    ],
+  },
+];
