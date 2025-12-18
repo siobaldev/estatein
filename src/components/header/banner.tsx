@@ -32,7 +32,7 @@ export default function Banner() {
 
         {/* Call-to-Action Link */}
         <Link
-          href={"/"}
+          href={"/about"}
           className="ml-5 cursor-pointer p-0.5 underline min-[370px]:ml-0 md:p-1"
         >
           Learn More
