@@ -8,7 +8,12 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Properties } from "@/lib/data";
-import { BedSingle, Bath, ArrowLeft, ArrowRight } from "lucide-react";
+import {
+  BedIcon,
+  BathtubIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+} from "@phosphor-icons/react";
 import Image from "next/image";
 
 export default function CarouselProperties() {
@@ -113,7 +118,7 @@ export default function CarouselProperties() {
                   <div className="flex flex-wrap gap-2 text-sm font-medium">
                     {/* Bedrooms badge */}
                     <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
-                      <BedSingle className="size-5" />
+                      <BedIcon aria-hidden="true" className="size-5" />
                       <p>
                         {prop.bedrooms}
                         <span className="max-[366px]:hidden"> - Bedrooms</span>
@@ -122,7 +127,7 @@ export default function CarouselProperties() {
 
                     {/* Bathrooms badge */}
                     <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
-                      <Bath className="size-5" />
+                      <BathtubIcon aria-hidden="true" className="size-5" />
                       <p>
                         {prop.bathrooms}
                         <span className="max-[366px]:hidden"> - Bathrooms</span>
@@ -170,10 +175,11 @@ export default function CarouselProperties() {
             {/* Previous button */}
             <button
               onClick={scrollPrev}
+              aria-label="Previous Testimonial"
               disabled={!canScrollPrev}
               className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
             >
-              <ArrowLeft className="size-6" />
+              <ArrowLeftIcon aria-hidden="true" className="size-6" />
             </button>
 
             {/* Current position indicator (mobile/tablet only) */}
@@ -188,10 +194,11 @@ export default function CarouselProperties() {
             {/* Next button */}
             <button
               onClick={scrollNext}
+              aria-label="Next Testimonial"
               disabled={!canScrollNext}
               className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
             >
-              <ArrowRight className="size-6" />
+              <ArrowRightIcon aria-hidden="true" className="size-6" />
             </button>
           </div>
         </div>
