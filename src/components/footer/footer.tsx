@@ -48,7 +48,10 @@ export default function Footer() {
             <EnvelopeSimpleIcon className="stroke-sub-foreground text-sub-foreground absolute left-5 size-5 md:size-5" />
             {/* Email Input Field */}
             <input
+              autoComplete="email"
               type="email"
+              id="email"
+              name="email"
               placeholder="Enter your email"
               required
               className="border-border placeholder:text-sub-foreground caret-purple-60 focus:ring-purple-60 text-body w-full rounded-lg border px-12 py-3.5 font-medium outline-none focus:ring md:w-fit"
@@ -57,7 +60,7 @@ export default function Footer() {
             <button
               type="submit"
               aria-label="Subscribe to newsletter"
-              className="absolute right-5"
+              className="absolute right-1.5 p-3.5"
             >
               <PaperPlaneTiltIcon
                 weight="fill"
