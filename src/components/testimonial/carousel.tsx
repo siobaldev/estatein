@@ -8,7 +8,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Testimonials } from "@/lib/data";
-import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { StarIcon, ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 
 export default function CarouselTestimonial() {
@@ -83,14 +83,19 @@ export default function CarouselTestimonial() {
               <div className="border-border flex flex-col justify-between gap-y-6 rounded-xl border p-6 lg:gap-y-7.5 xl:gap-y-10">
                 <div className="flex flex-col gap-y-6 lg:gap-y-7.5 xl:gap-y-10">
                   {/* Star Rating Section */}
-                  <ul className="flex gap-x-2">
+                  <ul
+                    className="flex gap-x-2"
+                    aria-label={`Rating: ${item.rating} out of 5 stars`}
+                  >
                     {/* Generate 5 stars dynamically based on rating value */}
                     {Array.from({ length: 5 }, (_, index) => (
                       <li
                         key={index}
                         className="border-border bg-sub-background rounded-full border p-1.5"
                       >
-                        <Star
+                        <StarIcon
+                          weight="fill"
+                          aria-hidden="true"
                           className={`size-4.5 ${
                             // Conditional styling: filled if index is less than rating
                             index < item.rating
@@ -163,9 +168,10 @@ export default function CarouselTestimonial() {
             <button
               onClick={scrollPrev}
               disabled={!canScrollPrev}
+              aria-label="Previous Testimonial"
               className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
             >
-              <ArrowLeft className="size-6" />
+              <ArrowLeftIcon aria-hidden="true" className="size-6" />
             </button>
 
             {/* Current position indicator (mobile/tablet only) */}
@@ -181,9 +187,10 @@ export default function CarouselTestimonial() {
             <button
               onClick={scrollNext}
               disabled={!canScrollNext}
+              aria-label="Next Testimonial"
               className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
             >
-              <ArrowRight className="size-6" />
+              <ArrowRightIcon aria-hidden="true" className="size-6" />
             </button>
           </div>
         </div>
