@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { X } from "lucide-react";
+import { XIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import AbstractLines from "../../../public/assets/Abstract-Lines.svg?url";
 
@@ -20,7 +20,10 @@ export default function Banner() {
       className={`border-border relative flex h-[50px] w-full items-center overflow-hidden border-b md:justify-center ${isVisible ? "" : "hidden"}`}
     >
       {/* Decorative Background Pattern */}
-      <AbstractLines className="stroke-border absolute z-10 size-auto stroke-1" />
+      <AbstractLines
+        aria-hidden="true"
+        className="stroke-border absolute z-10 size-auto stroke-1"
+      />
 
       {/* Content Container */}
       <div className="md:text-body z-20 flex flex-wrap items-center gap-x-1 pr-8 pl-2 text-xs md:pl-8 md:text-sm xl:text-lg">
@@ -41,7 +44,7 @@ export default function Banner() {
           aria-label="Close banner"
           className="bg-foreground/10 absolute right-2 rounded-full p-1 md:right-8"
         >
-          <X className="size-4 lg:size-5 xl:size-6" />
+          <XIcon aria-hidden="true" className="size-4 lg:size-5 xl:size-6" />
         </button>
       </div>
     </div>
