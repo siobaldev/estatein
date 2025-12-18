@@ -1,9 +1,9 @@
 import {
-  MapPinHouse,
-  CircleDollarSign,
-  Building2,
-  ChartNoAxesCombined,
-} from "lucide-react";
+  HouseLineIcon,
+  CurrencyDollarIcon,
+  BuildingsIcon,
+  ChartLineUpIcon,
+} from "@phosphor-icons/react/dist/ssr";
 
 export const NavItems = [
   { label: "Home", href: "#home" },
@@ -19,12 +19,28 @@ export const HeroStats = [
 ];
 
 export const FeatureCards = [
-  { id: 1, icon: MapPinHouse, label: "Find Your Dream Home" },
-  { id: 2, icon: CircleDollarSign, label: "Unlock Property Value" },
-  { id: 3, icon: Building2, label: "Effortless Property Management" },
+  {
+    id: 1,
+    icon: HouseLineIcon,
+    href: "/properties",
+    label: "Find Your Dream Home",
+  },
+  {
+    id: 2,
+    icon: CurrencyDollarIcon,
+    href: "/services#unlock-property-value",
+    label: "Unlock Property Value",
+  },
+  {
+    id: 3,
+    icon: BuildingsIcon,
+    href: "/services#effortless-property-management",
+    label: "Effortless Property Management",
+  },
   {
     id: 4,
-    icon: ChartNoAxesCombined,
+    icon: ChartLineUpIcon,
+    href: "/services#smart-investments",
     label: "Smart Investments, Informed Decisions",
   },
 ];
