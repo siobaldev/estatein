@@ -2,10 +2,7 @@ import AbstractLines from "../../public/assets/Abstract-Lines.svg";
 import CircularTextCTA from "../../public/assets/Circular-Text-CTA.svg";
 import IconContainer from "../../public/assets/Icon-Container.svg";
 import { HeroStats } from "@/lib/data";
-import {
-  ArrowRightIcon,
-  ArrowUpRightIcon,
-} from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { FeatureCards } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
@@ -28,7 +25,7 @@ export default function Hero() {
 
               {/* Arrow icon in center of spinning text */}
               <Link aria-label="Link to Properties" href={"/properties"}>
-                <ArrowRightIcon aria-hidden="true" />
+                <ArrowUpRightIcon aria-hidden="true" className="size-6" />
               </Link>
             </div>
           </div>
@@ -46,7 +43,7 @@ export default function Hero() {
         </div>
 
         {/* Primary Call-to-Action Buttons */}
-        <div className="text-body flex flex-col gap-4 text-center font-medium sm:flex-row">
+        <div className="text-body flex flex-col items-center gap-4 text-center font-medium sm:flex-row">
           {/* Secondary action button with outline style */}
           <Link
             href={"/about"}
