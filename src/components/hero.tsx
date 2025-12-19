@@ -49,7 +49,8 @@ export default function Hero() {
             href={"/about"}
             className="ring-border hover:ring-purple-60 w-full px-5 py-3.5 ring"
           >
-            Learn more about Estatein
+            Learn more
+            <span className="sr-only"> about Estatein</span>
           </Link>
 
           {/* Primary action button with filled style */}

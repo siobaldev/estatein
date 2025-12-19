@@ -36,7 +36,8 @@ export default function Banner() {
           aria-label="Learn more about Estatein"
           className="ml-4.5 cursor-pointer p-0.5 underline min-[436px]:ml-0 md:p-1"
         >
-          Learn more about Estatein
+          Learn more
+          <span className="sr-only"> about Estatein</span>
         </Link>
 
         {/* Close/Dismiss Button */}
