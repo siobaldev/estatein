@@ -24,7 +24,11 @@ export default function Hero() {
               />
 
               {/* Arrow icon in center of spinning text */}
-              <Link aria-label="Link to Properties" href={"/properties"}>
+              <Link
+                aria-label="Link to Properties"
+                href={"/properties"}
+                className="z-10"
+              >
                 <ArrowUpRightIcon aria-hidden="true" className="size-6" />
               </Link>
             </div>
