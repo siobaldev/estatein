@@ -69,6 +69,11 @@
   --foreground: var(--color-grey-08);
   --border: var(--color-white-90);
   --sub-foreground: var(--color-grey-40);
+
+  /* Page Not Found colors */
+  --stroke-color: var(--color-grey-15);
+  --fill-base: var(--color-grey-08);
+  --fill-accent: var(--color-purple-60);
 }
 
 .dark {
@@ -77,6 +82,10 @@
   --foreground: var(--color-white-99);
   --border: var(--color-grey-15);
   --sub-foreground: var(--color-grey-60);
+
+  /* Page Not Found colors */
+  --stroke-color: var(--color-white-90);
+  --fill-base: var(--color-white-97);
 }
 
 @layer base {
