@@ -15,6 +15,8 @@ import {
   ArrowRightIcon,
 } from "@phosphor-icons/react";
 import Image from "next/image";
+import AnimatedLink from "../ui/animated-link";
+import AnimatedButton from "../ui/animated-button";
 
 export default function CarouselProperties() {
   // Carousel API instance for controlling carousel behavior
@@ -83,7 +85,7 @@ export default function CarouselProperties() {
               key={prop.id}
               className="flex max-w-md rounded-lg pl-4 md:basis-1/2 md:pl-6 xl:basis-1/3"
             >
-              <div className="border-border rounded-xl border p-6">
+              <div className="border-border hover:border-purple-60 hover:inset-shadow-purple-60 rounded-xl border p-6 transition-all duration-300 select-none hover:inset-shadow-sm">
                 {/* Property Image with Type Badge */}
                 <div className="relative mb-4 flex items-center justify-center">
                   {/* Property type badge overlay */}
@@ -146,10 +148,12 @@ export default function CarouselProperties() {
                     </div>
 
                     {/* View property button (hidden on mobile < lg) */}
-                    {/* TODO: add link to properties page */}
-                    <button className="bg-purple-60 text-white-99 text-body size-fit px-5 py-3.5 font-medium text-nowrap max-[366px]:w-full lg:block">
-                      View All Properties
-                    </button>
+                    <AnimatedLink
+                      href={"/properties"}
+                      className="bg-purple-60 text-white-99 text-body size-fit px-5 py-3.5 font-medium text-nowrap max-[366px]:w-full lg:block"
+                    >
+                      View Property Details
+                    </AnimatedLink>
                   </div>
                 </div>
               </div>
@@ -165,22 +169,24 @@ export default function CarouselProperties() {
 
         <div className="flex justify-between max-[380px]:flex-col-reverse max-[380px]:gap-y-5">
           {/* View All button (visible on mobile/tablet < lg) */}
-          {/* TODO: add link to properties page */}
-          <button className="ring-border block w-fit px-5 py-3.5 font-medium ring max-[380px]:w-full lg:hidden">
+          <AnimatedLink
+            href={"/properties"}
+            className="ring-border block w-fit px-5 py-3.5 font-medium ring max-[380px]:w-full lg:hidden"
+          >
             View All Properties
-          </button>
+          </AnimatedLink>
 
           {/* Navigation Controls Container */}
           <div className="flex items-center gap-x-2.5 max-[380px]:w-full max-[380px]:justify-between lg:relative lg:flex-1 lg:justify-end">
             {/* Previous button */}
-            <button
+            <AnimatedButton
               onClick={scrollPrev}
               aria-label="Previous Testimonial"
               disabled={!canScrollPrev}
-              className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
+              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring transition-all duration-300 disabled:cursor-default disabled:opacity-50"
             >
               <ArrowLeftIcon aria-hidden="true" className="size-6" />
-            </button>
+            </AnimatedButton>
 
             {/* Current position indicator (mobile/tablet only) */}
             <p className="text-body font-medium lg:absolute lg:left-0">
@@ -192,14 +198,17 @@ export default function CarouselProperties() {
             </p>
 
             {/* Next button */}
-            <button
+            <AnimatedButton
               onClick={scrollNext}
               aria-label="Next Testimonial"
               disabled={!canScrollNext}
-              className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
+              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring transition-all duration-300 disabled:cursor-default disabled:opacity-50"
             >
-              <ArrowRightIcon aria-hidden="true" className="size-6" />
-            </button>
+              <ArrowRightIcon
+                aria-hidden="true"
+                className="group-hover:text-purple-60 group-hover:duration 300 size-6 group-hover:transition-all"
+              />
+            </AnimatedButton>
           </div>
         </div>
       </div>
