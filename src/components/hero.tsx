@@ -6,6 +6,7 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { FeatureCards } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
+import AnimatedLink from "./ui/animated-element";
 
 export default function Hero() {
   return (
@@ -15,23 +16,25 @@ export default function Hero() {
         {/* Headline Section with CTA Badge */}
         <div className="relative -mt-15 flex flex-col space-y-4 lg:mt-0 lg:flex-row-reverse lg:items-center lg:justify-center">
           {/* Animated Circular Call-to-Action Badge */}
-          <div className="ring-border bg-background flex size-30 items-center justify-center rounded-full ring lg:absolute lg:-right-22">
-            <div className="ring-border bg-sub-background relative flex size-15 items-center justify-center rounded-full ring">
-              {/* Spinning circular text animation */}
-              <CircularTextCTA
-                aria-hidden="true"
-                className="animation-duration-[10s] fill-foreground absolute size-26 animate-spin"
-              />
+          <div className="ring-border group bg-background relative flex size-30 items-center justify-center rounded-full ring lg:absolute lg:-right-22">
+            {/* Spinning circular text animation */}
+            <CircularTextCTA
+              aria-hidden="true"
+              className="animation-duration-[10s] fill-foreground absolute size-26 animate-spin"
+            />
 
-              {/* Arrow icon in center of spinning text */}
-              <Link
-                aria-label="Link to Properties"
-                href={"/properties"}
-                className="z-10"
-              >
-                <ArrowUpRightIcon aria-hidden="true" className="size-6" />
-              </Link>
-            </div>
+            {/* Link to /properties */}
+            <AnimatedLink
+              aria-label="Link to Properties"
+              href={"/properties"}
+              className="ring-border bg-sub-background relative z-10 items-center justify-center rounded-full ring"
+            >
+              {/* Arrow Icon */}
+              <ArrowUpRightIcon
+                aria-hidden="true"
+                className="group-hover:text-purple-60 m-4 size-6 transition-all duration-300"
+              />
+            </AnimatedLink>
           </div>
 
           {/* Main Headline and Description */}
@@ -49,21 +52,21 @@ export default function Hero() {
         {/* Primary Call-to-Action Buttons */}
         <div className="text-body flex flex-col items-center gap-4 text-center font-medium sm:flex-row">
           {/* Secondary action button with outline style */}
-          <Link
+          <AnimatedLink
             href={"/about"}
-            className="ring-border hover:ring-purple-60 w-full px-5 py-3.5 ring"
+            className="ring-border hover:ring-purple-60 w-full px-5 py-3.5 ring transition-all duration-300"
           >
             Learn more
             <span className="sr-only"> about Estatein</span>
-          </Link>
+          </AnimatedLink>
 
           {/* Primary action button with filled style */}
-          <Link
+          <AnimatedLink
             href={"/properties"}
             className="bg-purple-60 text-white-99 w-full px-5 py-3.5"
           >
             Browse Property
-          </Link>
+          </AnimatedLink>
         </div>
 
         {/* Statistics Display */}
