@@ -6,10 +6,10 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 export const NavItems = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Properties", href: "#properties" },
-  { label: "Services", href: "#services" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Properties", href: "/properties" },
+  { label: "Services", href: "/services" },
 ];
 
 export const HeroStats = [

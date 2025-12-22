@@ -6,7 +6,7 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { FeatureCards } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
-import AnimatedLink from "./ui/animated-element";
+import AnimatedLink from "./ui/animated-link";
 
 export default function Hero() {
   return (
