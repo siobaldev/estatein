@@ -34,7 +34,7 @@ export default function Banner() {
         <Link
           href={"/about"}
           aria-label="Learn more about Estatein"
-          className="ml-4.5 cursor-pointer p-0.5 underline min-[436px]:ml-0 md:p-1"
+          className="ml-4.5 cursor-pointer p-0.5 underline min-[376px]:ml-0 md:p-1"
         >
           Learn more
           <span className="sr-only"> about Estatein</span>

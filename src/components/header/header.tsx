@@ -1,9 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
 import Banner from "./banner";
 import Navigation from "./navigation";
 import ThemeToggle from "../ui/theme-toggle";
 import MobileNav from "./mobile-nav";
+import AnimatedLink from "../ui/animated-link";
 
 export default function Header() {
   return (
@@ -16,7 +16,7 @@ export default function Header() {
         {/* Navigation Container */}
         <div className="wrapper flex w-full items-center justify-between px-6 md:px-0">
           {/* Logo and Brand Name links to homepage */}
-          <Link
+          <AnimatedLink
             href={"/"}
             className="flex items-center gap-x-1.5 p-1 md:gap-x-2.5 md:p-2"
           >
@@ -32,7 +32,7 @@ export default function Header() {
             <span className="text-foreground text-lg font-bold sm:text-xl lg:text-2xl">
               Estatein
             </span>
-          </Link>
+          </AnimatedLink>
 
           {/* Desktop Navigation Menu hidden on mobile */}
           <Navigation />
@@ -43,12 +43,12 @@ export default function Header() {
             <ThemeToggle />
 
             {/* Contact Button only visible on desktop (md and above) */}
-            <Link
-              href={"/"}
+            <AnimatedLink
+              href={"/contact"}
               className="bg-background ring-border shadow-border hover:ring-purple-60 text-body hidden shadow ring md:px-4 md:py-3 lg:block lg:px-5"
             >
               Contact Us
-            </Link>
+            </AnimatedLink>
 
             {/* Mobile Navigation Drawer only visible on mobile (below md) */}
             <MobileNav />

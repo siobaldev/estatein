@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { NavItems } from "@/lib/data";
+import AnimatedLink from "../ui/animated-link";
 
 export default function Navigation() {
   // Tracks the currently active navigation section
@@ -18,7 +18,8 @@ export default function Navigation() {
     <ul className="hidden gap-x-1 lg:flex">
       {NavItems.map((item) => (
         <li key={item.label} className="relative">
-          <Link
+          {/* Animated Link */}
+          <AnimatedLink
             href={item.href}
             // Remove from tab order when link is already active (prevents redundant tab stops)
             tabIndex={activeSection === item.label ? -1 : 0}
@@ -32,7 +33,7 @@ export default function Navigation() {
             }`}
           >
             {item.label}
-          </Link>
+          </AnimatedLink>
         </li>
       ))}
     </ul>
