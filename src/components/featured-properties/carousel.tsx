@@ -147,7 +147,7 @@ export default function CarouselProperties() {
                       </p>
                     </div>
 
-                    {/* View property button (hidden on mobile < lg) */}
+                    {/* TODO: add individual property links */}
                     <AnimatedLink
                       href={"/properties"}
                       className="bg-purple-60 text-white-99 text-body size-fit px-5 py-3.5 font-medium text-nowrap max-[366px]:w-full lg:block"
@@ -167,17 +167,17 @@ export default function CarouselProperties() {
         {/* Divider line */}
         <hr className="border-border h-1" />
 
-        <div className="flex justify-between max-[380px]:flex-col-reverse max-[380px]:gap-y-5">
+        <div className="flex justify-between max-[400px]:flex-col-reverse max-[400px]:gap-y-5">
           {/* View All button (visible on mobile/tablet < lg) */}
           <AnimatedLink
             href={"/properties"}
-            className="ring-border block w-fit px-5 py-3.5 font-medium ring max-[380px]:w-full lg:hidden"
+            className="ring-border active:ring-purple-60 block w-fit px-5 py-3.5 text-center font-medium ring active:ring-2 max-[400px]:w-full lg:hidden"
           >
             View All Properties
           </AnimatedLink>
 
           {/* Navigation Controls Container */}
-          <div className="flex items-center gap-x-2.5 max-[380px]:w-full max-[380px]:justify-between lg:relative lg:flex-1 lg:justify-end">
+          <div className="flex items-center gap-x-2.5 max-[400px]:w-full max-[400px]:justify-between lg:relative lg:flex-1 lg:justify-end">
             {/* Previous button */}
             <AnimatedButton
               onClick={scrollPrev}
