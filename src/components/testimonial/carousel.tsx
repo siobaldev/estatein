@@ -10,6 +10,8 @@ import {
 import { Testimonials } from "@/lib/data";
 import { StarIcon, ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
 import Image from "next/image";
+import AnimatedLink from "../ui/animated-link";
+import AnimatedButton from "../ui/animated-button";
 
 export default function CarouselTestimonial() {
   // Carousel API instance for controlling carousel behavior
@@ -80,7 +82,7 @@ export default function CarouselTestimonial() {
               className="flex max-w-md rounded-lg pl-4 md:basis-1/2 md:pl-6 xl:basis-1/3"
             >
               {/* Testimonial Card Container */}
-              <div className="border-border flex flex-col justify-between gap-y-6 rounded-xl border p-6 lg:gap-y-7.5 xl:gap-y-10">
+              <div className="border-border flex flex-col justify-between gap-y-6 rounded-xl border p-6 select-none lg:gap-y-7.5 xl:gap-y-10">
                 <div className="flex flex-col gap-y-6 lg:gap-y-7.5 xl:gap-y-10">
                   {/* Star Rating Section */}
                   <ul
@@ -155,24 +157,26 @@ export default function CarouselTestimonial() {
         {/* Divider line */}
         <hr className="border-border h-1" />
 
-        <div className="flex justify-between max-[380px]:flex-col-reverse max-[380px]:gap-y-5">
+        <div className="flex justify-between max-[400px]:flex-col-reverse max-[400px]:gap-y-5">
           {/* View All button (visible on mobile/tablet < lg) */}
-          {/* TODO: add link to properties page */}
-          <button className="ring-border block w-fit px-5 py-3.5 font-medium ring max-[380px]:w-full lg:hidden">
+          <AnimatedLink
+            href={"/properties"}
+            className="ring-border active:ring-purple-60 block w-fit px-5 py-3.5 text-center font-medium ring active:ring-2 max-[400px]:w-full lg:hidden"
+          >
             View All Testimonials
-          </button>
+          </AnimatedLink>
 
           {/* Navigation Controls Container */}
-          <div className="flex items-center gap-x-2.5 max-[380px]:w-full max-[380px]:justify-between lg:relative lg:flex-1 lg:justify-end">
+          <div className="flex items-center gap-x-2.5 max-[400px]:w-full max-[400px]:justify-between lg:relative lg:flex-1 lg:justify-end">
             {/* Previous button */}
-            <button
+            <AnimatedButton
               onClick={scrollPrev}
               disabled={!canScrollPrev}
               aria-label="Previous Testimonial"
-              className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
+              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring transition-all duration-300 disabled:cursor-default disabled:opacity-50"
             >
               <ArrowLeftIcon aria-hidden="true" className="size-6" />
-            </button>
+            </AnimatedButton>
 
             {/* Current position indicator (mobile/tablet only) */}
             <p className="text-body font-medium lg:absolute lg:left-0">
@@ -184,14 +188,14 @@ export default function CarouselTestimonial() {
             </p>
 
             {/* Next button */}
-            <button
+            <AnimatedButton
               onClick={scrollNext}
               disabled={!canScrollNext}
               aria-label="Next Testimonial"
-              className="ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
+              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring transition-all duration-300 disabled:cursor-default disabled:opacity-50"
             >
               <ArrowRightIcon aria-hidden="true" className="size-6" />
-            </button>
+            </AnimatedButton>
           </div>
         </div>
       </div>
