@@ -1,5 +1,5 @@
-import Link from "next/link";
 import AbstractSquares from "../../../public/assets/Abstract-Squares.svg?url";
+import AnimatedLink from "../ui/animated-link";
 
 export default function CallToAction() {
   return (
@@ -24,12 +24,12 @@ export default function CallToAction() {
         </div>
 
         {/* Link to properties page */}
-        <Link
+        <AnimatedLink
           href="/properties"
           className="bg-purple-60 text-white-99 text-body w-full px-5 py-3.5 text-center font-medium text-nowrap md:size-fit"
         >
           Explore Property
-        </Link>
+        </AnimatedLink>
       </div>
 
       {/* Decorative Background Patterns */}

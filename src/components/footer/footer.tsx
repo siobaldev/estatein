@@ -2,14 +2,14 @@ import CallToAction from "./call-to-action";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  PaperPlaneTiltIcon,
-  EnvelopeSimpleIcon,
   FacebookLogoIcon,
   LinkedinLogoIcon,
   TwitterLogoIcon,
   YoutubeLogoIcon,
 } from "@phosphor-icons/react/ssr";
 import { FooterItems } from "@/lib/data";
+import AnimatedLink from "../ui/animated-link";
+import Newsletter from "./newsletter";
 
 export default function Footer() {
   return (
@@ -24,7 +24,7 @@ export default function Footer() {
         {/* Brand logo and email subscription form */}
         <div className="space-y-5">
           {/* Brand Logo - Links to homepage */}
-          <Link
+          <AnimatedLink
             href={"/"}
             className="flex w-fit items-center gap-x-1.5 p-1 md:gap-x-2.5 md:p-2"
           >
@@ -40,35 +40,9 @@ export default function Footer() {
             <span className="text-foreground text-lg font-bold sm:text-xl lg:text-2xl">
               Estatein
             </span>
-          </Link>
+          </AnimatedLink>
 
-          {/* Email subscribetion */}
-          <form className="relative flex w-full items-center gap-x-2.5 md:w-fit">
-            {/* Email Icon */}
-            <EnvelopeSimpleIcon className="stroke-sub-foreground text-sub-foreground absolute left-5 size-5 md:size-5" />
-            {/* Email Input Field */}
-            <input
-              autoComplete="email"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-              className="border-border placeholder:text-sub-foreground caret-purple-60 focus:ring-purple-60 text-body w-full rounded-lg border px-12 py-3.5 font-medium outline-none focus:ring md:w-fit"
-            />
-            {/* Send/Submit Icon */}
-            <button
-              type="submit"
-              aria-label="Subscribe to newsletter"
-              className="absolute right-1.5 p-3.5"
-            >
-              <PaperPlaneTiltIcon
-                weight="fill"
-                aria-hidden="true"
-                className="fill-foreground size-5 md:size-6"
-              />
-            </button>
-          </form>
+          <Newsletter />
         </div>
 
         {/* Footer navigation links grouped by category */}
@@ -87,7 +61,7 @@ export default function Footer() {
                   <li key={link.id}>
                     <Link
                       href={link.url}
-                      className="text-body hover:text-purple-60 font-medium text-nowrap hover:underline"
+                      className="text-body hover:text-purple-60 font-medium text-nowrap transition-colors duration-300 hover:underline"
                     >
                       {link.name}
                     </Link>
