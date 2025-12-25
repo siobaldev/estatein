@@ -85,11 +85,11 @@ export default function CarouselProperties() {
               key={prop.id}
               className="flex max-w-md rounded-lg pl-4 md:basis-1/2 md:pl-6 xl:basis-1/3"
             >
-              <div className="border-border hover:border-purple-60 hover:inset-shadow-purple-60 rounded-xl border p-6 transition-all duration-300 select-none hover:inset-shadow-sm">
+              <div className="ring-border hover:ring-purple-60 my-px rounded-xl p-6 ring select-none">
                 {/* Property Image with Type Badge */}
                 <div className="relative mb-4 flex items-center justify-center">
                   {/* Property type badge overlay */}
-                  <span className="bg-sub-background ring-border text-body shadow-sub-background/40 absolute top-2 left-2 flex w-fit rounded-full px-3 py-1.5 font-semibold shadow ring">
+                  <span className="bg-sub-background ring-border text-body shadow-border absolute top-2 left-2 flex w-fit rounded-full px-3 py-1.5 font-semibold shadow ring">
                     {prop.propertyType}
                   </span>
 
@@ -171,7 +171,7 @@ export default function CarouselProperties() {
           {/* View All button (visible on mobile/tablet < lg) */}
           <AnimatedLink
             href={"/properties"}
-            className="ring-border active:ring-purple-60 block w-fit px-5 py-3.5 text-center font-medium ring active:ring-2 max-[400px]:w-full lg:hidden"
+            className="ring-border block w-fit px-5 py-3.5 text-center font-medium ring max-[400px]:w-full lg:hidden"
           >
             View All Properties
           </AnimatedLink>
@@ -183,7 +183,7 @@ export default function CarouselProperties() {
               onClick={scrollPrev}
               aria-label="Previous Testimonial"
               disabled={!canScrollPrev}
-              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring transition-all duration-300 disabled:cursor-default disabled:opacity-50"
+              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
             >
               <ArrowLeftIcon aria-hidden="true" className="size-6" />
             </AnimatedButton>
@@ -202,12 +202,9 @@ export default function CarouselProperties() {
               onClick={scrollNext}
               aria-label="Next Testimonial"
               disabled={!canScrollNext}
-              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring transition-all duration-300 disabled:cursor-default disabled:opacity-50"
+              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
             >
-              <ArrowRightIcon
-                aria-hidden="true"
-                className="group-hover:text-purple-60 group-hover:duration 300 size-6 group-hover:transition-all"
-              />
+              <ArrowRightIcon aria-hidden="true" className="size-6" />
             </AnimatedButton>
           </div>
         </div>

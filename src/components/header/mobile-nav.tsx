@@ -28,7 +28,7 @@ export default function MobileNav() {
         <DrawerTrigger
           aria-label="Mobile Menu"
           asChild
-          className="bg-background ring-border hover:ring-purple-60 active:ring-purple-60 relative p-2 ring active:ring-2 lg:hidden"
+          className="bg-background ring-border hover:ring-purple-60 shadow-border relative p-2 shadow ring lg:hidden"
         >
           <AnimatedButton>
             <svg
