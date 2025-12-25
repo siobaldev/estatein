@@ -1,12 +1,10 @@
 import AbstractLines from "../../public/assets/Abstract-Lines.svg";
 import CircularTextCTA from "../../public/assets/Circular-Text-CTA.svg";
-import IconContainer from "../../public/assets/Icon-Container.svg";
 import { HeroStats } from "@/lib/data";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
-import { FeatureCards } from "@/lib/data";
-import Link from "next/link";
 import Image from "next/image";
 import AnimatedLink from "./ui/animated-link";
+import Services from "./ui/services";
 
 export default function Hero() {
   return (
@@ -117,43 +115,7 @@ export default function Hero() {
       </div>
 
       {/* Feature Cards Showcase */}
-      <div className="ring-border shadow-4 lg:shadow-6 xl:shadow-10 z-20 order-3 mt-10 w-full rounded-lg p-2.5 ring lg:col-span-2 lg:mt-0">
-        <ul className="grid grid-cols-1 gap-2.5 min-[416px]:grid-cols-2 lg:grid-cols-4">
-          {FeatureCards.map((card) => (
-            <li
-              key={card.id}
-              className="bg-sub-background ring-border relative flex flex-col items-center justify-center gap-y-4 rounded-lg px-3.5 py-5 ring"
-            >
-              <Link
-                href={card.href}
-                aria-label={`Link to ${card.href}`}
-                className="absolute top-2.5 right-2.5"
-              >
-                <ArrowUpRightIcon
-                  aria-hidden="true"
-                  className="text-sub-foreground size-6"
-                />
-              </Link>
-
-              {/* Feature icon with decorative container */}
-              <div className="relative flex items-center justify-center">
-                {/* Icon container background */}
-                <IconContainer
-                  aria-hidden="true"
-                  className="size-12 stroke-2 lg:size-15 xl:size-20.5"
-                />
-                {/* Feature icon centered in container */}
-                <card.icon
-                  aria-hidden="true"
-                  className="text-purple-75 absolute size-5 xl:size-8.5"
-                />
-              </div>
-              {/* Feature label text */}
-              <p className="text-body text-center font-medium">{card.label}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Services />
     </section>
   );
 }
