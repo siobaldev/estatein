@@ -235,9 +235,8 @@ export const FooterItems = [
     links: [
       { id: 1, name: "Hero Section", url: "/#hero" },
       { id: 2, name: "Features", url: "/#features" },
-      { id: 3, name: "Properties", url: "/#properties" },
-      { id: 4, name: "Testimonials", url: "/#testimonials" },
-      { id: 5, name: "FAQ's", url: "/#faq" },
+      { id: 3, name: "Testimonials", url: "/#testimonials" },
+      { id: 4, name: "FAQ's", url: "/#faq" },
     ],
   },
   {

@@ -3,7 +3,7 @@ import AccordionList from "./accordion-list";
 
 export default function FAQs() {
   return (
-    <section className="wrapper">
+    <section id="faqs" className="wrapper">
       <TripleStar />
       <div className="flex flex-col gap-y-7.5">
         <div className="flex items-end justify-between gap-x-20">

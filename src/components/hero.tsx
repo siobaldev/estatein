@@ -10,7 +10,10 @@ import AnimatedLink from "./ui/animated-link";
 
 export default function Hero() {
   return (
-    <section className="wrapper mt-10 grid grid-cols-1 lg:relative lg:mx-0 lg:mt-0 lg:grid-cols-2 lg:items-start lg:gap-7.5 lg:py-10 xl:mx-auto">
+    <section
+      id="hero"
+      className="wrapper mt-10 grid grid-cols-1 lg:relative lg:mx-0 lg:mt-0 lg:grid-cols-2 lg:items-start lg:gap-7.5 lg:py-10 xl:mx-auto"
+    >
       {/* Main Content: Headlines, CTAs, and stats */}
       <div className="z-20 order-2 flex h-full flex-col justify-center gap-y-10 lg:order-1">
         {/* Headline Section with CTA Badge */}

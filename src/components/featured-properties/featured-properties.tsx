@@ -4,7 +4,7 @@ import CarouselProperties from "./carousel";
 
 export default function FeaturedProperties() {
   return (
-    <section className="wrapper">
+    <section id="features" className="wrapper">
       {/* Decorative triple star */}
       <TripleStar />
 
