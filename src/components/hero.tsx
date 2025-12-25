@@ -17,26 +17,26 @@ export default function Hero() {
         {/* Headline Section with CTA Badge */}
         <div className="relative -mt-15 flex flex-col space-y-4 lg:mt-0 lg:flex-row-reverse lg:items-center lg:justify-center">
           {/* Animated Circular Call-to-Action Badge */}
-          <div className="ring-border group bg-background relative flex size-30 items-center justify-center rounded-full ring lg:absolute lg:-right-22">
+          <AnimatedLink
+            aria-label="Link to Properties"
+            href={"/properties"}
+            className="ring-border group bg-background relative flex size-30 items-center justify-center rounded-full ring lg:absolute lg:-right-22"
+          >
             {/* Spinning circular text animation */}
             <CircularTextCTA
               aria-hidden="true"
               className="animation-duration-[10s] fill-foreground absolute size-26 animate-spin"
             />
 
-            {/* Link to /properties */}
-            <AnimatedLink
-              aria-label="Link to Properties"
-              href={"/properties"}
-              className="ring-border bg-sub-background relative z-10 items-center justify-center rounded-full ring"
-            >
+            {/* Icon Container*/}
+            <div className="ring-border bg-sub-background relative z-10 items-center justify-center rounded-full ring">
               {/* Arrow Icon */}
               <ArrowUpRightIcon
                 aria-hidden="true"
-                className="group-hover:text-purple-60 m-4 size-6 transition-all duration-300"
+                className="group-hover:text-purple-60 m-4 size-6"
               />
-            </AnimatedLink>
-          </div>
+            </div>
+          </AnimatedLink>
 
           {/* Main Headline and Description */}
           <div className="space-y-4">
@@ -55,7 +55,7 @@ export default function Hero() {
           {/* Secondary action button with outline style */}
           <AnimatedLink
             href={"/about"}
-            className="ring-border hover:ring-purple-60 w-full px-5 py-3.5 ring transition-all duration-300"
+            className="ring-border hover:ring-purple-60 w-full px-5 py-3.5 ring"
           >
             Learn more
             <span className="sr-only"> about Estatein</span>

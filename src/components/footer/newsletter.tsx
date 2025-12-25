@@ -92,7 +92,7 @@ export default function Newsletter() {
           id="email"
           disabled={status === "loading" || status === "success"}
           placeholder="Enter your email"
-          className={`border-border hover:border-purple-60 placeholder:text-sub-foreground caret-purple-60 focus:ring-purple-60 text-body w-full rounded-lg border px-12 py-3.5 font-medium transition-all duration-300 outline-none focus:ring md:w-fit ${errors.email ? "border-red-400" : "border-border"}`}
+          className={`ring-border hover:ring-purple-60 placeholder:text-sub-foreground caret-purple-60 focus:ring-purple-60 text-body w-full rounded-lg px-12 py-3.5 font-medium ring outline-none md:w-fit ${errors.email ? "ring-red-400" : "ring-border"}`}
         />
 
         {/* Submit Button with animated icons */}

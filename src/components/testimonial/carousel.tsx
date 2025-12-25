@@ -82,7 +82,7 @@ export default function CarouselTestimonial() {
               className="flex max-w-md rounded-lg pl-4 md:basis-1/2 md:pl-6 xl:basis-1/3"
             >
               {/* Testimonial Card Container */}
-              <div className="border-border flex flex-col justify-between gap-y-6 rounded-xl border p-6 select-none lg:gap-y-7.5 xl:gap-y-10">
+              <div className="ring-border my-px flex flex-col justify-between gap-y-6 rounded-xl p-6 ring select-none lg:gap-y-7.5 xl:gap-y-10">
                 <div className="flex flex-col gap-y-6 lg:gap-y-7.5 xl:gap-y-10">
                   {/* Star Rating Section */}
                   <ul
@@ -93,7 +93,7 @@ export default function CarouselTestimonial() {
                     {Array.from({ length: 5 }, (_, index) => (
                       <li
                         key={index}
-                        className="border-border bg-sub-background rounded-full border p-1.5"
+                        className="ring-border bg-sub-background rounded-full p-1.5 ring"
                       >
                         <StarIcon
                           weight="fill"
@@ -161,7 +161,7 @@ export default function CarouselTestimonial() {
           {/* View All button (visible on mobile/tablet < lg) */}
           <AnimatedLink
             href={"/properties"}
-            className="ring-border active:ring-purple-60 block w-fit px-5 py-3.5 text-center font-medium ring active:ring-2 max-[400px]:w-full lg:hidden"
+            className="ring-border block w-fit px-5 py-3.5 text-center font-medium ring max-[400px]:w-full lg:hidden"
           >
             View All Testimonials
           </AnimatedLink>
@@ -173,7 +173,7 @@ export default function CarouselTestimonial() {
               onClick={scrollPrev}
               disabled={!canScrollPrev}
               aria-label="Previous Testimonial"
-              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring transition-all duration-300 disabled:cursor-default disabled:opacity-50"
+              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
             >
               <ArrowLeftIcon aria-hidden="true" className="size-6" />
             </AnimatedButton>
@@ -192,7 +192,7 @@ export default function CarouselTestimonial() {
               onClick={scrollNext}
               disabled={!canScrollNext}
               aria-label="Next Testimonial"
-              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring transition-all duration-300 disabled:cursor-default disabled:opacity-50"
+              className="ring-border hover:ring-purple-60 disabled:hover:ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
             >
               <ArrowRightIcon aria-hidden="true" className="size-6" />
             </AnimatedButton>

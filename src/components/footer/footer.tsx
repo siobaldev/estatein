@@ -1,13 +1,6 @@
 import CallToAction from "./call-to-action";
 import Image from "next/image";
-import Link from "next/link";
-import {
-  FacebookLogoIcon,
-  LinkedinLogoIcon,
-  TwitterLogoIcon,
-  YoutubeLogoIcon,
-} from "@phosphor-icons/react/ssr";
-import { FooterItems } from "@/lib/data";
+import { FooterItems, SocialIcons } from "@/lib/data";
 import AnimatedLink from "../ui/animated-link";
 import Newsletter from "./newsletter";
 
@@ -59,12 +52,12 @@ export default function Footer() {
               <ul className="flex flex-col gap-y-2">
                 {item.links.map((link) => (
                   <li key={link.id}>
-                    <Link
-                      href={link.url}
-                      className="text-body hover:text-purple-60 font-medium text-nowrap transition-colors duration-300 hover:underline"
+                    <AnimatedLink
+                      href={link.href}
+                      className="text-body hover:text-purple-60 inline-block font-medium text-nowrap hover:underline"
                     >
                       {link.name}
-                    </Link>
+                    </AnimatedLink>
                   </li>
                 ))}
               </ul>
@@ -83,58 +76,21 @@ export default function Footer() {
           </div>
 
           {/* Brand Logos Container */}
-          <div className="flex items-center justify-center">
-            {/* Facebook Logo */}
-            <Link
-              href={"/"}
-              aria-label="Visit our Facebook page"
-              className="bg-background flex size-15 items-center justify-center rounded-full p-1"
-            >
-              <FacebookLogoIcon
-                weight="fill"
-                aria-hidden="true"
-                className="fill-foreground size-5"
-              />
-            </Link>
-
-            {/* LinkedIn Logo */}
-            <Link
-              href={"/"}
-              aria-label="Visit our LinkedIn page"
-              className="bg-background flex size-15 items-center justify-center rounded-full p-2"
-            >
-              <LinkedinLogoIcon
-                weight="fill"
-                aria-hidden="true"
-                className="fill-foreground size-5"
-              />
-            </Link>
-
-            {/* Twitter Logo */}
-            <Link
-              href={"/"}
-              aria-label="Visit our Twitter page"
-              className="bg-background flex size-15 items-center justify-center rounded-full p-2"
-            >
-              <TwitterLogoIcon
-                weight="fill"
-                aria-hidden="true"
-                className="fill-foreground size-5"
-              />
-            </Link>
-
-            {/* Youtube Logo */}
-            <Link
-              href={"/"}
-              aria-label="Visit our YouTube page"
-              className="bg-background flex size-15 items-center justify-center rounded-full p-2"
-            >
-              <YoutubeLogoIcon
-                weight="fill"
-                aria-hidden="true"
-                className="fill-foreground size-5"
-              />
-            </Link>
+          <div className="flex items-center justify-center gap-x-2">
+            {SocialIcons.map((icon) => (
+              <AnimatedLink
+                key={icon.id}
+                href={"/"}
+                aria-label={icon.ariaLabel}
+                className="bg-background group flex size-15 items-center justify-center rounded-full p-1"
+              >
+                <icon.icon
+                  weight="fill"
+                  aria-hidden="true"
+                  className="fill-foreground group-hover:fill-purple-60 size-5"
+                />
+              </AnimatedLink>
+            ))}
           </div>
         </div>
       </div>
