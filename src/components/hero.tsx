@@ -1,5 +1,5 @@
-import AbstractLines from "../../public/assets/Abstract-Lines.svg";
-import CircularTextCTA from "../../public/assets/Circular-Text-CTA.svg";
+import AbstractLines from "@assets/Abstract-Lines.svg";
+import CircularTextCTA from "@assets/Circular-Text-CTA.svg";
 import { HeroStats } from "@/lib/data";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";

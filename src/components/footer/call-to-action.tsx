@@ -1,4 +1,4 @@
-import AbstractSquares from "../../../public/assets/Abstract-Squares.svg?url";
+import AbstractSquares from "@assets/Abstract-Squares.svg";
 import AnimatedLink from "../ui/animated-link";
 
 export default function CallToAction() {
