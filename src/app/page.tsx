@@ -2,34 +2,17 @@ import Hero from "@/components/hero";
 import FeaturedProperties from "@/components/featured-properties/featured-properties";
 import Testimonial from "@/components/testimonial/testimonial";
 import FAQs from "@/components/faqs/faqs";
-import * as motion from "motion/react-client";
-
-const sectionVariants = {
-  hidden: { y: 20, opacity: 0 },
-  show: { y: 0, opacity: 1 },
-};
+import AnimatedSection from "@/components/animated-section";
 
 export default function Home() {
-  const sections = [
-    { Component: Hero, delay: 0.1 },
-    { Component: FeaturedProperties, delay: 0.1 },
-    { Component: Testimonial, delay: 0.1 },
-    { Component: FAQs, delay: 0.1 },
-  ];
+  const sections = [Hero, FeaturedProperties, Testimonial, FAQs];
 
   return (
     <main className="space-y-20 md:space-y-25 lg:space-y-30 xl:space-y-37.5">
-      {sections.map(({ Component, delay }, index) => (
-        <motion.div
-          key={index}
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay }}
-        >
+      {sections.map((Component, index) => (
+        <AnimatedSection key={index}>
           <Component />
-        </motion.div>
+        </AnimatedSection>
       ))}
     </main>
   );
