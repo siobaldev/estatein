@@ -2,7 +2,7 @@ import Star from "../../../public/assets/Star.svg";
 
 export default function TripleStar() {
   return (
-    <div className="-ml-3 flex items-center gap-x-1">
+    <div className="absolute -top-5 -ml-3 flex items-center gap-x-1 md:-top-6 lg:-top-7 xl:-top-8">
       {/* Large star */}
       <Star
         aria-hidden="true"
