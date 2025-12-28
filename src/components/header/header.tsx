@@ -4,15 +4,16 @@ import Navigation from "./navigation";
 import ThemeToggle from "../ui/theme-toggle";
 import MobileNav from "./mobile-nav";
 import AnimatedLink from "../ui/animated-link";
+import StickyAnimatedHeader from "./header-wrapper";
 
 export default function Header() {
   return (
-    <header className="bg-sub-background">
+    <StickyAnimatedHeader>
       {/* Promotional Banner appears at the very top */}
       <Banner />
 
       {/* Main Navigation Bar */}
-      <nav className="border-border flex h-20 items-center justify-center border-b md:h-[100px]">
+      <nav className="border-border flex h-20 items-center justify-center border-b md:h-25">
         {/* Navigation Container */}
         <div className="wrapper flex w-full items-center justify-between px-6 md:px-0">
           {/* Logo and Brand Name links to homepage */}
@@ -55,6 +56,6 @@ export default function Header() {
           </div>
         </div>
       </nav>
-    </header>
+    </StickyAnimatedHeader>
   );
 }
