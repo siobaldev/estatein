@@ -97,8 +97,8 @@ export default function CarouselProperties() {
                   <Image
                     src={prop.image}
                     alt={prop.name}
-                    width={100}
-                    height={100}
+                    width={400}
+                    height={300}
                     unoptimized
                     className="size-full rounded-lg"
                   />
