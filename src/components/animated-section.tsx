@@ -7,11 +7,6 @@ interface AnimatedSectionProps {
   className?: string;
 }
 
-const sectionVariants = {
-  hidden: { y: 20, opacity: 0 },
-  show: { y: 0, opacity: 1 },
-};
-
 export default function AnimatedSection({
   children,
   delay = 0.1,
@@ -19,9 +14,8 @@ export default function AnimatedSection({
 }: AnimatedSectionProps) {
   return (
     <motion.div
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="show"
+      initial={{ y: 20, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay }}
       className={className}
