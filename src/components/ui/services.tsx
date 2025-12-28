@@ -12,7 +12,7 @@ export default function Services() {
             <AnimatedLink
               href={card.href}
               aria-label={`Link to ${card.href}`}
-              className="bg-sub-background ring-border hover:ring-purple-60 relative flex flex-col items-center justify-center gap-y-4 rounded-lg px-3.5 py-5 ring"
+              className="bg-sub-background ring-border hover:ring-purple-60 relative flex h-full flex-col items-center justify-center gap-y-4 rounded-lg px-3.5 py-5 ring"
             >
               <div className="absolute top-2.5 right-2.5 transition-all duration-300 group-hover:translate-x-1.5 group-hover:-translate-y-1.5">
                 <ArrowUpRightIcon
