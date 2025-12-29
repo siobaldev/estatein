@@ -7,6 +7,10 @@ import {
   LinkedinLogoIcon,
   TwitterLogoIcon,
   YoutubeLogoIcon,
+  StarIcon,
+  MedalIcon,
+  UsersThreeIcon,
+  HandshakeIcon,
 } from "@phosphor-icons/react/dist/ssr";
 
 export const NavItems = [
@@ -247,8 +251,8 @@ export const FooterItems = [
     id: 2,
     title: "About Us",
     links: [
-      { id: 1, name: "Our Story", href: "/about#ourstory" },
-      { id: 2, name: "Our Works", href: "/about#ourworks" },
+      { id: 1, name: "Our Story", href: "/about#our-story" },
+      { id: 2, name: "Our Values", href: "/about#our-values" },
       { id: 3, name: "How It Works", href: "/about#howitworks" },
       { id: 4, name: "Our Team", href: "/about#ourteam" },
       { id: 5, name: "Our Clients", href: "/about#ourclients" },
@@ -307,5 +311,36 @@ export const SocialIcons = [
     id: 4,
     icon: YoutubeLogoIcon,
     ariaLabel: "Visit our YouTube channel",
+  },
+];
+
+export const OurValuesCard = [
+  {
+    id: 1,
+    icon: StarIcon,
+    title: "Trust",
+    description:
+      "Trust is the cornerstone of every successful real estate transaction.",
+  },
+  {
+    id: 2,
+    icon: MedalIcon,
+    title: "Excellence",
+    description:
+      "We set the bar high for ourselves. From the properties we list to the services we provide.",
+  },
+  {
+    id: 3,
+    icon: UsersThreeIcon,
+    title: "Client-Centric",
+    description:
+      "Your dreams and needs are at the center of our universe. We listen, understand.",
+  },
+  {
+    id: 4,
+    icon: HandshakeIcon,
+    title: "Commitment",
+    description:
+      "We are dedicated to providing you with the highest level of service, professionalism, and support.",
   },
 ];
