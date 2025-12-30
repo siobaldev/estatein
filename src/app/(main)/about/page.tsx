@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import OurStory from "./_components/our-story";
 import OurValues from "./_components/our-values";
+import OurAchievements from "./_components/our-achievements";
 import AnimatedSection from "@/components/animated-section";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  const sections = [OurStory, OurValues];
+  const sections = [OurStory, OurValues, OurAchievements];
 
   return (
     <main className="space-y-20 md:space-y-25 lg:space-y-30 xl:space-y-37.5">
