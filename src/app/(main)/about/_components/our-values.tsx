@@ -7,7 +7,7 @@ export default function OurValues() {
       id="our-values"
       className="wrapper mt-10 flex flex-col gap-10 xl:flex-row"
     >
-      {/* Main content container - Headlines and stats */}
+      {/* Main content container - Headlines and description*/}
       <div className="flex items-center">
         <div className="relative">
           {/* Decorative triple star */}
@@ -55,7 +55,6 @@ export default function OurValues() {
                   {card.description}
                 </p>
               </div>
-              {/* Statistic value */}
             </li>
           ))}
         </ul>
