@@ -253,9 +253,10 @@ export const FooterItems = [
     links: [
       { id: 1, name: "Our Story", href: "/about#our-story" },
       { id: 2, name: "Our Values", href: "/about#our-values" },
-      { id: 3, name: "How It Works", href: "/about#howitworks" },
-      { id: 4, name: "Our Team", href: "/about#ourteam" },
-      { id: 5, name: "Our Clients", href: "/about#ourclients" },
+      { id: 3, name: "Our Achievements", href: "/about#our-achievements" },
+      { id: 4, name: "How It Works", href: "/about#how-it-works" },
+      { id: 5, name: "Our Team", href: "/about#our-team" },
+      { id: 6, name: "Our Clients", href: "/about#our-clients" },
     ],
   },
   {
