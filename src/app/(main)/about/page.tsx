@@ -3,6 +3,7 @@ import OurStory from "./_components/our-story";
 import OurValues from "./_components/our-values";
 import OurAchievements from "./_components/our-achievements";
 import AnimatedSection from "@/components/animated-section";
+import HowItWorks from "./_components/how-it-works";
 
 export const metadata: Metadata = {
   title: "Estatein - About Us",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  const sections = [OurStory, OurValues, OurAchievements];
+  const sections = [OurStory, OurValues, OurAchievements, HowItWorks];
 
   return (
     <main className="space-y-20 md:space-y-25 lg:space-y-30 xl:space-y-37.5">
