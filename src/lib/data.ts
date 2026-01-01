@@ -402,6 +402,33 @@ export const HowItWorksCard = [
     id: 6,
     title: "Getting the Best Deal",
     description:
-      "We'll help you negotiate the best terms and prepare your offer. Our goal is to secure the property at the right price and on favorable terms. ",
+      "We'll help you negotiate the best terms and prepare your offer. Our goal is to secure the property at the right price and on favorable terms.",
+  },
+];
+
+export const OurTeamCard = [
+  {
+    id: 1,
+    imageUrl: "/assets/avatars/max-mitchell.webp",
+    name: "Max Mitchell",
+    title: "Founder",
+  },
+  {
+    id: 2,
+    imageUrl: "/assets/avatars/sarah-johnson.webp",
+    name: "Sarah Johnson",
+    title: "Chief Real Estate Officer",
+  },
+  {
+    id: 3,
+    imageUrl: "/assets/avatars/david-brown.webp",
+    name: "David Brown",
+    title: "Head of Property Management",
+  },
+  {
+    id: 4,
+    imageUrl: "/assets/avatars/victoria-turner.webp",
+    name: "Victoria Turner",
+    title: "Legal Counsel",
   },
 ];
