@@ -432,3 +432,78 @@ export const OurTeamCard = [
     title: "Legal Counsel",
   },
 ];
+
+export const OurClientsCard = [
+  {
+    id: 1,
+    year: "Since 2015",
+    brandName: "Thompson & Associates",
+    domain: "Commercial Real Estate",
+    category: "Office Space Leasing",
+    testimonial:
+      "Estatein transformed our portfolio strategy with market insights that resulted in acquisitions exceeding our expectations.",
+  },
+  {
+    id: 2,
+    year: "Since 2020",
+    brandName: "Riverside Development Group",
+    domain: "Real Estate Development",
+    category: "Mixed-Use Development",
+    testimonial:
+      "Their team navigated complex zoning requirements and identified an exceptional waterfront property for our project.",
+  },
+  {
+    id: 3,
+    year: "Since 2021",
+    brandName: "Nexus Retail Partners",
+    domain: "Commercial Real Estate",
+    category: "Shopping Centers",
+    testimonial:
+      "The strategic locations sourced for our retail expansion have driven significant foot traffic and growth.",
+  },
+  {
+    id: 4,
+    year: "Since 2017",
+    brandName: "Heritage Property Investors",
+    domain: "Real Estate Investment",
+    category: "Historic Renovation",
+    testimonial:
+      "Estatein helped us discover hidden gems in the historic district with valuable preservation incentive knowledge.",
+  },
+  {
+    id: 5,
+    year: "Since 2022",
+    brandName: "Summit Tech Campus",
+    domain: "Industrial Real Estate",
+    category: "Technology Parks",
+    testimonial:
+      "They delivered beyond expectations, securing a location that perfectly aligns with our vision for collaborative workspace.",
+  },
+  {
+    id: 6,
+    year: "Since 2019",
+    brandName: "Coastal Hospitality Group",
+    domain: "Commercial Real Estate",
+    category: "Hotel & Resort",
+    testimonial:
+      "Their hospitality real estate expertise identified prime locations and negotiated favorable terms for our expansion.",
+  },
+  {
+    id: 7,
+    year: "Since 2016",
+    brandName: "Metro Health Systems",
+    domain: "Commercial Real Estate",
+    category: "Medical Facilities",
+    testimonial:
+      "They found strategically located properties that improved patient accessibility while meeting all regulatory standards.",
+  },
+  {
+    id: 8,
+    year: "Since 2023",
+    brandName: "Urban Living Co.",
+    domain: "Residential Real Estate",
+    category: "Multi-Family Complexes",
+    testimonial:
+      "Their market analysis and site selection expertise consistently deliver properties with strong investment potential.",
+  },
+];

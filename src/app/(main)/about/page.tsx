@@ -5,6 +5,7 @@ import OurValues from "./_components/our-values";
 import OurAchievements from "./_components/our-achievements";
 import HowItWorks from "./_components/how-it-works";
 import OurTeam from "./_components/our-team/our-team";
+import OurClients from "./_components/our-clients/our-clients";
 
 export const metadata: Metadata = {
   title: "Estatein - About Us",
@@ -13,7 +14,14 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  const sections = [OurStory, OurValues, OurAchievements, HowItWorks, OurTeam];
+  const sections = [
+    OurStory,
+    OurValues,
+    OurAchievements,
+    HowItWorks,
+    OurTeam,
+    OurClients,
+  ];
 
   return (
     <main className="space-y-20 md:space-y-25 lg:space-y-30 xl:space-y-37.5">
