@@ -2,17 +2,29 @@
 
 import Link from "next/link";
 import { XIcon } from "@phosphor-icons/react";
-import { useState } from "react";
+import { useState, useEffect, useEffectEvent } from "react";
 import AbstractLines from "../../../public/assets/Abstract-Lines.svg?url";
 
 export default function Banner() {
   // Controls the visibility state of the banner
   const [isVisible, setIsVisible] = useState<boolean>(true);
 
+  const bannerEvent = useEffectEvent(() => {
+    const dismissed = localStorage.getItem("banner-dismissed");
+    if (dismissed === "true") {
+      setIsVisible(false);
+    }
+  });
+
+  useEffect(() => {
+    bannerEvent();
+  }, []);
+
   // Handles the close button click event
   // Hides the banner by setting isVisible to false
   const handleClick = () => {
     setIsVisible(false);
+    localStorage.setItem("banner-dismissed", "true");
   };
 
   return (
