@@ -271,14 +271,16 @@ export const FooterItems = [
     id: 4,
     title: "Services",
     links: [
-      { id: 1, name: "Valuation Mastery", href: "/services#valuation" },
-      { id: 2, name: "Strategic Marketing", href: "/services#marketing" },
-      { id: 3, name: "Negotiation Wizardry", href: "/services#negotiation" },
-      { id: 4, name: "Closing Success", href: "/services#closing" },
+      { id: 1, name: "Valuation Mastery", href: "/services#valuation-mastery" },
       {
-        id: 5,
-        name: "Property Management",
-        href: "/services#property-management",
+        id: 2,
+        name: "Strategic Marketing",
+        href: "/services#strategic-marketing",
+      },
+      {
+        id: 3,
+        name: "Negotiation Wizardry",
+        href: "/services#negotiation-wizardry",
       },
     ],
   },
