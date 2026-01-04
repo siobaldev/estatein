@@ -25,7 +25,7 @@ export default function Testimonial() {
           </div>
 
           {/* CTA button - hidden on mobile, visible on desktop (lg+) */}
-          <AnimatedButton className="ring-border hover:ring-purple-60 hidden size-fit px-5 py-3.5 font-medium text-nowrap ring transition-all duration-300 lg:block">
+          <AnimatedButton className="ring-border hover:ring-purple-60 hidden size-fit px-5 py-3.5 font-medium text-nowrap ring lg:block">
             View All Testimonials
           </AnimatedButton>
         </div>
