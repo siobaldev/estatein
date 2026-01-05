@@ -65,7 +65,7 @@ export default function StrategicMarketing() {
               </p>
             </div>
           ))}
-          <div className="ring-border relative z-10 space-y-5 overflow-hidden rounded-lg p-6 ring md:col-span-2 lg:p-10 xl:p-12.5">
+          <div className="ring-border bg-sub-background relative z-10 space-y-5 overflow-hidden rounded-lg p-6 ring md:col-span-2 lg:p-10 xl:p-12.5">
             {/* Title and Animated Link container */}
             <div className="flex flex-col gap-y-5 md:flex-row md:items-center md:justify-between">
               <h3 className="text-lg font-semibold md:text-xl lg:text-2xl">
