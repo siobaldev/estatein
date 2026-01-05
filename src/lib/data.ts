@@ -11,6 +11,11 @@ import {
   MedalIcon,
   UsersThreeIcon,
   HandshakeIcon,
+  TargetIcon,
+  SealCheckIcon,
+  WrenchIcon,
+  ChartLineIcon,
+  ShieldCheckIcon,
 } from "@phosphor-icons/react/dist/ssr";
 
 export const NavItems = [
@@ -507,5 +512,67 @@ export const OurClientsCard = [
     category: "Multi-Family Complexes",
     testimonial:
       "Their market analysis and site selection expertise consistently deliver properties with strong investment potential.",
+  },
+];
+
+export const ValuationMasteryCards = [
+  {
+    id: 1,
+    icon: ChartLineUpIcon,
+    title: "Valuation Mastery",
+    description:
+      "Discover the true worth of your property with our expert valuation services.",
+  },
+  {
+    id: 2,
+    icon: TargetIcon,
+    title: "Strategic Marketing",
+    description:
+      "Selling a property requires more than just a listing; it demands a strategic marketing.",
+  },
+  {
+    id: 3,
+    icon: HandshakeIcon,
+    title: "Negotiation Wizardry",
+    description:
+      "Negotiating the best deal is an art, and our negotiation experts are masters of it.",
+  },
+  {
+    id: 4,
+    icon: SealCheckIcon,
+    title: "Closing Success",
+    description:
+      "A successful sale is not complete until the closing. We guide you through the intricate closing process.",
+  },
+];
+
+export const StrategicMarketingCards = [
+  {
+    id: 1,
+    icon: UsersThreeIcon,
+    title: "Tenant Harmony",
+    description:
+      "Our Tenant Management services ensure that your tenants have a smooth and reducing vacancies.",
+  },
+  {
+    id: 2,
+    icon: WrenchIcon,
+    title: "Maintenance Ease",
+    description:
+      "Say goodbye to property maintenance headaches. We handle all aspects of property upkeep.",
+  },
+  {
+    id: 3,
+    icon: ChartLineIcon,
+    title: "Financial Peace of Mind",
+    description:
+      "Managing property finances can be complex. Our financial experts take care of rent collection",
+  },
+  {
+    id: 4,
+    icon: ShieldCheckIcon,
+    title: "Legal Guardian",
+    description:
+      "Stay compliant with property laws and regulations effortlessly.",
   },
 ];
