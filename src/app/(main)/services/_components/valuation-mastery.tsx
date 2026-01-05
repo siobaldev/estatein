@@ -32,7 +32,10 @@ export default function ValuationMastery() {
         {/* Used div instead of ul to have a div element inside grid (can't have div inside ul) */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 xl:gap-7.5">
           {ValuationMasteryCards.map((card) => (
-            <div key={card.id} className="ring-border rounded-lg p-6 ring">
+            <div
+              key={card.id}
+              className="ring-border space-y-4 rounded-lg p-6 ring md:space-y-5 lg:p-10 xl:p-12.5"
+            >
               {/* Icon, title and description */}
               <div className="inline-flex items-center gap-x-2.5 lg:gap-x-4">
                 <div className="relative flex items-center justify-center">
@@ -62,7 +65,7 @@ export default function ValuationMastery() {
               </p>
             </div>
           ))}
-          <div className="ring-border bg-sub-background via-sub-background relative z-10 space-y-5 overflow-hidden rounded-lg bg-linear-to-r from-0% via-50% p-6 ring md:col-span-2 md:p-10">
+          <div className="ring-border relative z-10 space-y-5 overflow-hidden rounded-lg p-6 ring md:col-span-2 lg:p-10 xl:p-12.5">
             {/* Title and Animated Link container */}
             <div className="flex flex-col gap-y-5 md:flex-row md:items-center md:justify-between">
               <h3 className="text-lg font-semibold md:text-xl lg:text-2xl">
@@ -90,7 +93,7 @@ export default function ValuationMastery() {
             {/* Decorative background lines */}
             <AbstractLines
               aria-hidden={true}
-              className="stroke-border absolute top-0 left-0 -z-10 h-200 stroke-1"
+              className="stroke-border/60 absolute top-0 left-0 -z-10 h-200 stroke-1"
             />
           </div>
         </div>

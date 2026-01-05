@@ -1,12 +1,12 @@
 import TripleStar from "@/components/ui/triple-star";
-import { StrategicMarketingCards } from "@/lib/data";
+import { NegotiationWizardryCards } from "@/lib/data";
 import IconContainer from "@assets/Icon-Container.svg";
 import AnimatedLink from "@/components/ui/animated-link";
 import AbstractLines from "@assets/Abstract-Lines.svg";
 
-export default function StrategicMarketing() {
+export default function NegotiationWizardry() {
   return (
-    <section id="strategic-marketing" className="wrapper relative">
+    <section id="negotiation-wizardry" className="wrapper relative">
       {/* Decorative triple star */}
       <TripleStar />
 
@@ -16,22 +16,20 @@ export default function StrategicMarketing() {
         <div className="flex flex-col gap-y-1.5">
           {/* Main content title */}
           <h1 className="text-sub-title font-semibold">
-            Effortless Property Management
+            Smart Investments, Informed Decisions
           </h1>
 
           {/* Main content description */}
           <p className="text-body text-sub-foreground font-medium">
-            Owning a property should be a pleasure, not a hassle.
-            Estatein&apos;s Property Management Service takes the stress out of
-            property ownership, offering comprehensive solutions tailored to
-            your needs. Explore the categories below to see how we can make
-            property management effortless for you
+            Building a real estate portfolio requires a strategic approach.
+            Estatein&apos;s Investment Advisory Service empowers you to make
+            smart investments and informed decisions.
           </p>
         </div>
 
         {/* Used div instead of ul to have a div element inside grid (can't have div inside ul) */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 xl:gap-7.5">
-          {StrategicMarketingCards.map((card) => (
+          {NegotiationWizardryCards.map((card) => (
             <div
               key={card.id}
               className="ring-border space-y-4 rounded-lg p-6 ring md:space-y-5 lg:p-10 xl:p-12.5"
@@ -65,11 +63,11 @@ export default function StrategicMarketing() {
               </p>
             </div>
           ))}
-          <div className="ring-border relative z-10 space-y-5 overflow-hidden rounded-lg p-6 ring md:col-span-2 lg:p-10 xl:p-12.5">
+          <div className="ring-border bg-sub-background relative z-10 space-y-5 overflow-hidden rounded-lg p-6 ring md:col-span-2 lg:p-10 xl:p-12.5">
             {/* Title and Animated Link container */}
             <div className="flex flex-col gap-y-5 md:flex-row md:items-center md:justify-between">
               <h3 className="text-lg font-semibold md:text-xl lg:text-2xl">
-                Experience Effortless Property Management
+                Unlock Your Investment Potential
               </h3>
 
               {/* Animated link to properties */}
@@ -79,15 +77,18 @@ export default function StrategicMarketing() {
               >
                 Learn more
                 {/* Descriptive text for SEO */}
-                <span className="sr-only"> about our property listings</span>
+                <span className="sr-only">
+                  {" "}
+                  about property investment opportunities
+                </span>
               </AnimatedLink>
             </div>
 
             {/* Description */}
             <p className="text-body text-sub-foreground font-medium">
-              Ready to experience hassle-free property management? Explore our
-              Property Management Service categories and let us handle the
-              complexities while you enjoy the benefits of property ownership.
+              Explore our Property Management Service categories and let us
+              handle the complexities while you enjoy the benefits of property
+              ownership.
             </p>
 
             {/* Decorative background lines */}
