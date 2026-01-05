@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import AnimatedSection from "@/components/animated-section";
 import ServicesHero from "./_components/hero-section";
 import ValuationMastery from "./_components/valuation-mastery";
+import StrategicMarketing from "./_components/strategic-marketing";
 
 export const metadata: Metadata = {
   title: "Estatein - Services",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  const sections = [ServicesHero, ValuationMastery];
+  const sections = [ServicesHero, ValuationMastery, StrategicMarketing];
 
   return (
     <main className="space-y-20 md:space-y-25 lg:space-y-30 xl:space-y-37.5">
