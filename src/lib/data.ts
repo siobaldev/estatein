@@ -16,6 +16,10 @@ import {
   WrenchIcon,
   ChartLineIcon,
   ShieldCheckIcon,
+  TrendUpIcon,
+  ChartPieSliceIcon,
+  LightbulbIcon,
+  SparkleIcon,
 } from "@phosphor-icons/react/dist/ssr";
 
 export const NavItems = [
@@ -574,5 +578,36 @@ export const StrategicMarketingCards = [
     title: "Legal Guardian",
     description:
       "Stay compliant with property laws and regulations effortlessly.",
+  },
+];
+
+export const NegotiationWizardryCards = [
+  {
+    id: 1,
+    icon: TrendUpIcon,
+    title: "Market Insight",
+    description:
+      "Stay ahead of market trends with our expert Market Analysis. We provide in-depth insights into real estate market conditions",
+  },
+  {
+    id: 2,
+    icon: ChartPieSliceIcon,
+    title: "ROI Assessment",
+    description:
+      "Make investment decisions with confidence. Our ROI Assessment services evaluate the potential returns on your investments",
+  },
+  {
+    id: 3,
+    icon: LightbulbIcon,
+    title: "Customized Strategies",
+    description:
+      "Every investor is unique, and so are their goals. We develop Customized Investment Strategies tailored to your specific needs",
+  },
+  {
+    id: 4,
+    icon: SparkleIcon,
+    title: "Diversification Mastery",
+    description:
+      "Diversify your real estate portfolio effectively. Our experts guide you in spreading your investments across various property types and locations",
   },
 ];
