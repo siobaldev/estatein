@@ -20,6 +20,10 @@ import {
   ChartPieSliceIcon,
   LightbulbIcon,
   SparkleIcon,
+  EnvelopeSimpleIcon,
+  PhoneIcon,
+  MapPinIcon,
+  AtIcon,
 } from "@phosphor-icons/react/dist/ssr";
 
 export const NavItems = [
@@ -609,5 +613,38 @@ export const NegotiationWizardryCards = [
     title: "Diversification Mastery",
     description:
       "Diversify your real estate portfolio effectively. Our experts guide you in spreading your investments across various property types and locations",
+  },
+];
+
+export const ContactInfoCards = [
+  {
+    id: 1,
+    icon: EnvelopeSimpleIcon,
+    label: "info@estatein.com",
+  },
+  {
+    id: 2,
+    icon: PhoneIcon,
+    label: "+1 (123) 456-7890",
+  },
+  {
+    id: 3,
+    icon: MapPinIcon,
+    label: "Main Headquarters",
+  },
+  {
+    id: 4,
+    icon: AtIcon,
+    label: [
+      {
+        social: "Instagram",
+      },
+      {
+        social: "Linkedin",
+      },
+      {
+        social: "Facebook",
+      },
+    ],
   },
 ];
