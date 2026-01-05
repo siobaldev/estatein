@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Explore Estatein’s real estate services designed to support buyers, sellers, and investors through every stage of the property journey, from discovery to decision-making.",
 };
 
-export default function About() {
+export default function Services() {
   const sections = [
     ServicesHero,
     ValuationMastery,
