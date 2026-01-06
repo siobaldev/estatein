@@ -45,8 +45,8 @@ export default function ContactHero() {
                   />
                 </div>
 
-                {/* Feature label text */}
-                <p className="text-body text-center font-medium">
+                {/* Label container */}
+                <div className="text-body text-center font-medium">
                   {/* Check if it's an array and map through it */}
                   {typeof card.label === "string" ? (
                     <span>{card.label}</span>
@@ -57,7 +57,7 @@ export default function ContactHero() {
                       ))}
                     </ul>
                   )}
-                </p>
+                </div>
               </li>
             ))}
           </ul>
