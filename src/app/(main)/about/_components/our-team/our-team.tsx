@@ -7,7 +7,7 @@ import AnimatedLink from "@/components/ui/animated-link";
 
 export default function OurTeam() {
   return (
-    <section id="our-team" className="wrapper mt-10 space-y-10">
+    <section id="our-team" className="wrapper scroll-mt-32.5 space-y-10">
       {/* Main content container - Headlines and description */}
       <div className="flex items-center">
         <div className="relative">

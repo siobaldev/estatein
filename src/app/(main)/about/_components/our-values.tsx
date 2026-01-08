@@ -5,7 +5,7 @@ export default function OurValues() {
   return (
     <section
       id="our-values"
-      className="wrapper mt-10 flex flex-col gap-10 xl:flex-row"
+      className="wrapper flex scroll-mt-32.5 flex-col gap-10 xl:flex-row"
     >
       {/* Main content container - Headlines and description*/}
       <div className="flex items-center">

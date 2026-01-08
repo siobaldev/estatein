@@ -258,7 +258,7 @@ export const FooterItems = [
       { id: 1, name: "Hero Section", href: "/#hero" },
       { id: 2, name: "Features", href: "/#features" },
       { id: 3, name: "Testimonials", href: "/#testimonials" },
-      { id: 4, name: "FAQ's", href: "/#faq" },
+      { id: 4, name: "FAQ's", href: "/#faqs" },
     ],
   },
   {
@@ -302,7 +302,7 @@ export const FooterItems = [
     id: 5,
     title: "Contact Us",
     links: [
-      { id: 1, name: "Contact Form", href: "/contact#contactform" },
+      { id: 1, name: "Contact Form", href: "/contact#contact-form" },
       { id: 2, name: "Our Offices", href: "/contact#offices" },
     ],
   },

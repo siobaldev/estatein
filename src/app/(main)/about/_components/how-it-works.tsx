@@ -3,7 +3,7 @@ import { HowItWorksCard } from "@/lib/data";
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="wrapper mt-10 space-y-10">
+    <section id="how-it-works" className="wrapper scroll-mt-32.5 space-y-10">
       {/* Main content container - Headlines and description */}
       <div className="flex items-center">
         <div className="relative">

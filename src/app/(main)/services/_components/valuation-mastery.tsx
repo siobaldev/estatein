@@ -6,7 +6,7 @@ import AbstractLines from "@assets/Abstract-Lines.svg";
 
 export default function ValuationMastery() {
   return (
-    <section id="valuation-mastery" className="wrapper relative">
+    <section id="valuation-mastery" className="wrapper relative scroll-mt-32.5">
       {/* Decorative triple star */}
       <TripleStar />
 

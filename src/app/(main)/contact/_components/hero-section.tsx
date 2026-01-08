@@ -4,7 +4,7 @@ import { ContactInfoCards } from "@/lib/data";
 export default function ContactHero() {
   return (
     // Main hero container with gradient background styling
-    <section className="from-border/70 bg-linear-to-br to-30%">
+    <section className="from-border/70 scroll-mt-32.5 bg-linear-to-br to-30%">
       {/* Main content container */}
       <div className="wrapper">
         {/* Header: Title and description */}

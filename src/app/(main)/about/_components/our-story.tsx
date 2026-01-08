@@ -7,7 +7,7 @@ export default function OurStory() {
   return (
     <section
       id="our-story"
-      className="wrapper mt-10 flex flex-col-reverse gap-10 lg:flex-row"
+      className="wrapper mt-10 flex scroll-mt-32.5 flex-col-reverse gap-10 lg:flex-row"
     >
       {/* Main content container - Headlines and stats */}
       <div className="flex flex-1 items-center">

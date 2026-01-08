@@ -4,7 +4,7 @@ import CarouselOurClients from "./carousel";
 
 export default function OurClients() {
   return (
-    <section id="testimonials" className="wrapper relative">
+    <section id="our-clients" className="wrapper relative scroll-mt-32.5">
       {/* Decorative triple star */}
       <TripleStar />
 

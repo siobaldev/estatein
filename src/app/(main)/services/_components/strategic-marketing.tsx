@@ -6,7 +6,10 @@ import AbstractLines from "@assets/Abstract-Lines.svg";
 
 export default function StrategicMarketing() {
   return (
-    <section id="strategic-marketing" className="wrapper relative">
+    <section
+      id="strategic-marketing"
+      className="wrapper relative scroll-mt-32.5"
+    >
       {/* Decorative triple star */}
       <TripleStar />
 

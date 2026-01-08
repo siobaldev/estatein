@@ -6,7 +6,10 @@ import AbstractLines from "@assets/Abstract-Lines.svg";
 
 export default function NegotiationWizardry() {
   return (
-    <section id="negotiation-wizardry" className="wrapper relative">
+    <section
+      id="negotiation-wizardry"
+      className="wrapper relative scroll-mt-32.5"
+    >
       {/* Decorative triple star */}
       <TripleStar />
 

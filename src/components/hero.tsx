@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="wrapper mt-10 grid grid-cols-1 lg:relative lg:mx-0 lg:mt-0 lg:grid-cols-2 lg:items-start lg:gap-7.5 lg:py-10 xl:mx-auto"
+      className="wrapper mt-10 grid scroll-mt-25 grid-cols-1 lg:relative lg:mx-0 lg:mt-0 lg:grid-cols-2 lg:items-start lg:gap-7.5 lg:py-10 xl:mx-auto"
     >
       {/* Main Content: Headlines, CTAs, and stats */}
       <div className="z-20 order-2 flex h-full flex-col justify-center gap-y-10 lg:order-1">
