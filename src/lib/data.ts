@@ -32,6 +32,7 @@ export const NavItems = [
   { label: "About Us", href: "/about" },
   { label: "Properties", href: "/properties" },
   { label: "Services", href: "/services" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export const HeroStats = [
