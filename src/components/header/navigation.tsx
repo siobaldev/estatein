@@ -39,7 +39,7 @@ export default function Navigation() {
 
   return (
     <ul className="hidden gap-x-1 lg:flex">
-      {NavItems.map((item) => (
+      {NavItems.filter((item) => item.href !== "/contact").map((item) => (
         <li key={item.label} className="relative">
           {/* Animated Link */}
           <AnimatedLink

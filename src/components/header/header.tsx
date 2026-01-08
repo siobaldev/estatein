@@ -5,6 +5,7 @@ import ThemeToggle from "../ui/theme-toggle";
 import MobileNav from "./mobile-nav";
 import AnimatedLink from "../ui/animated-link";
 import StickyAnimatedHeader from "./header-wrapper";
+import ContactButton from "./contact-button";
 
 export default function Header() {
   return (
@@ -44,12 +45,7 @@ export default function Header() {
             <ThemeToggle />
 
             {/* Contact Button only visible on desktop (md and above) */}
-            <AnimatedLink
-              href={"/contact"}
-              className="bg-background ring-border shadow-border hover:ring-purple-60 text-body hidden shadow ring md:px-4 md:py-3 lg:block lg:px-5"
-            >
-              Contact Us
-            </AnimatedLink>
+            <ContactButton />
 
             {/* Mobile Navigation Drawer only visible on mobile (below md) */}
             <MobileNav />
