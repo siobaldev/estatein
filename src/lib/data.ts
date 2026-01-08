@@ -25,6 +25,7 @@ import {
   MapPinIcon,
   AtIcon,
 } from "@phosphor-icons/react/dist/ssr";
+import { type ClientFormData } from "@/schemas/contactSchema";
 
 export const NavItems = [
   { label: "Home", href: "/" },
@@ -646,5 +647,91 @@ export const ContactInfoCards = [
         social: "Facebook",
       },
     ],
+  },
+];
+
+type MappedFieldName = Exclude<keyof ClientFormData, "terms">;
+
+type FormField = {
+  id: number;
+  name: MappedFieldName;
+  label: string;
+  type: string;
+  placeholder: string;
+  required: boolean;
+  rows?: number;
+  options?: Array<{ value: string; label: string }>;
+};
+
+export const ContactFormFields: FormField[] = [
+  {
+    id: 1,
+    name: "firstName",
+    label: "First Name",
+    type: "text",
+    placeholder: "Enter First Name",
+    required: true,
+  },
+  {
+    id: 2,
+    name: "lastName",
+    label: "Last Name",
+    type: "text",
+    placeholder: "Enter Last Name",
+    required: true,
+  },
+  {
+    id: 3,
+    name: "email",
+    label: "Email",
+    type: "email",
+    placeholder: "Enter your Email",
+    required: true,
+  },
+  {
+    id: 4,
+    name: "phone",
+    label: "Phone",
+    type: "tel",
+    placeholder: "Enter Phone Number",
+    required: true,
+  },
+  {
+    id: 5,
+    name: "inquiryType",
+    label: "Inquiry Type",
+    type: "select",
+    placeholder: "Select Inquiry Type",
+    required: true,
+    options: [
+      { value: "general", label: "General Inquiry" },
+      { value: "property", label: "Property Inquiry" },
+      { value: "investment", label: "Investment Opportunity" },
+      { value: "partnership", label: "Partnership" },
+    ],
+  },
+  {
+    id: 6,
+    name: "howDidYouHear",
+    label: "How Did You Hear About Us?",
+    type: "select",
+    placeholder: "Select",
+    required: false,
+    options: [
+      { value: "search", label: "Search Engine" },
+      { value: "social", label: "Social Media" },
+      { value: "referral", label: "Referral" },
+      { value: "advertisement", label: "Advertisement" },
+      { value: "other", label: "Other" },
+    ],
+  },
+  {
+    id: 7,
+    name: "message",
+    label: "Message",
+    type: "textarea",
+    placeholder: "Enter your Message here..",
+    required: true,
+    rows: 6,
   },
 ];

@@ -1,6 +1,7 @@
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import * as motion from "motion/react-client";
+import { Toaster } from "sonner";
 
 export default function MainLayout({
   children,
@@ -20,6 +21,7 @@ export default function MainLayout({
       >
         <Footer />
       </motion.div>
+      <Toaster position="bottom-center" />
     </>
   );
 }
