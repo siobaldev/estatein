@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import AnimatedSection from "@/components/animated-section";
 import ContactHero from "./_components/hero-section";
 import ContactForm from "./_components/contact-form/contact-form";
+import OurOffices from "./_components/office";
 
 export const metadata: Metadata = {
   title: "Estatein - Contact",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function Contact() {
-  const sections = [ContactHero, ContactForm];
+  const sections = [ContactHero, ContactForm, OurOffices];
 
   return (
     <main className="space-y-20 md:space-y-25 lg:space-y-30 xl:space-y-37.5">
