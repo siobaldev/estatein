@@ -3,7 +3,7 @@ export default function PropertiesHero() {
     // Main hero container with gradient background styling
     <section className="from-border/70 border-border scroll-mt-32.5 border-b bg-linear-to-br to-30%">
       {/* Header: Title and description */}
-      <div className="wrapper space-y-2.5 py-12.5 lg:py-25 xl:space-y-3.5 xl:pt-37.5 xl:pb-25">
+      <div className="wrapper space-y-2.5 pt-12.5 pb-20 xl:space-y-3.5">
         <h1 className="text-sub-title font-semibold">
           Find Your Dream Property
         </h1>
