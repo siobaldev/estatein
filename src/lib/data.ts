@@ -79,6 +79,10 @@ export const Properties = [
     bathrooms: 3,
     propertyType: "Villa",
     price: "$2,850,000",
+    priceValue: 2850000,
+    location: "Malibu, California",
+    propertySize: "325",
+    buildYear: 2019,
   },
   {
     id: 2,
@@ -90,6 +94,10 @@ export const Properties = [
     bathrooms: 2,
     propertyType: "Condominium",
     price: "$725,000",
+    priceValue: 725000,
+    location: "New York, New York",
+    propertySize: "111",
+    buildYear: 2021,
   },
   {
     id: 3,
@@ -101,6 +109,10 @@ export const Properties = [
     bathrooms: 4,
     propertyType: "Family Home",
     price: "$1,450,000",
+    priceValue: 1450000,
+    location: "Portland, Oregon",
+    propertySize: "390",
+    buildYear: 2015,
   },
   {
     id: 4,
@@ -112,6 +124,10 @@ export const Properties = [
     bathrooms: 2,
     propertyType: "Apartment",
     price: "$890,000",
+    priceValue: 890000,
+    location: "Miami, Florida",
+    propertySize: "167",
+    buildYear: 2020,
   },
   {
     id: 5,
@@ -123,6 +139,10 @@ export const Properties = [
     bathrooms: 2,
     propertyType: "Cabin",
     price: "$575,000",
+    priceValue: 575000,
+    location: "Aspen, Colorado",
+    propertySize: "195",
+    buildYear: 2010,
   },
   {
     id: 6,
@@ -134,6 +154,10 @@ export const Properties = [
     bathrooms: 3,
     propertyType: "Penthouse",
     price: "$3,200,000",
+    priceValue: 3200000,
+    location: "San Francisco, California",
+    propertySize: "260",
+    buildYear: 2022,
   },
 ];
 
@@ -278,8 +302,7 @@ export const FooterItems = [
     id: 3,
     title: "Properties",
     links: [
-      { id: 1, name: "Portfolio", href: "/properties#portfolio" },
-      { id: 2, name: "Categories", href: "/properties#categories" },
+      { id: 1, name: "Browse Properties", href: "/properties#property-list" },
     ],
   },
   {
