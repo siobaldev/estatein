@@ -1,6 +1,7 @@
 import AnimatedLink from "@/components/ui/animated-link";
 import Image from "next/image";
 import { BedIcon, BathtubIcon } from "@phosphor-icons/react/ssr";
+import { slugify } from "@/lib/utils";
 
 interface PropertyCardProps {
   property: {
@@ -19,6 +20,9 @@ interface PropertyCardProps {
 }
 
 export function PropertyCard({ property }: PropertyCardProps) {
+  // Generate URL-friendly slug from property name
+  const propertySlug = slugify(property.name);
+
   return (
     <div className="ring-border hover:ring-purple-60 my-px rounded-xl p-6 ring select-none">
       {/* Property Image with Type Badge */}
@@ -82,9 +86,9 @@ export function PropertyCard({ property }: PropertyCardProps) {
             </p>
           </div>
 
-          {/* TODO: add individual property links */}
+          {/* Link to individual property */}
           <AnimatedLink
-            href={"/properties"}
+            href={`/properties/${propertySlug}`}
             className="bg-purple-60 text-white-99 text-body size-fit px-5 py-3.5 font-medium text-nowrap max-[366px]:w-full lg:block"
           >
             View Details
