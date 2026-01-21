@@ -12,7 +12,7 @@ export default function ContactButton() {
     <AnimatedLink
       href={"/contact"}
       tabIndex={isContactActive ? -1 : 0}
-      className={`bg-background ring-border shadow-border hover:ring-purple-60 text-body hidden shadow ring md:px-4 md:py-3 lg:block lg:px-5 ${
+      className={`bg-background ring-border shadow-border hover:ring-purple-60 text-body hidden font-medium shadow ring md:px-4 md:py-3 lg:block lg:px-5 ${
         isContactActive ? "ring-purple-60" : ""
       }`}
     >
