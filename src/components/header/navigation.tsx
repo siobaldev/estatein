@@ -11,7 +11,12 @@ export default function Navigation() {
   // Helper function to determine the active navigation section based on current URL
   // Searches NavItems to find a matching href, defaults to "Home" if no match found
   const getActiveSection = () => {
-    const currentItem = NavItems.find((item) => item.href === pathname);
+    const currentItem = NavItems.find((item) => {
+      // Exact match for home page
+      if (item.href === "/" && pathname === "/") return true;
+      // For other pages, check if pathname starts with the href
+      if (item.href !== "/" && pathname.startsWith(item.href)) return true;
+    });
     return currentItem ? currentItem.label : "Home";
   };
 
@@ -47,7 +52,7 @@ export default function Navigation() {
             // Remove from tab order when link is already active (prevents redundant tab stops)
             tabIndex={activeSection === item.label ? -1 : 0}
             onClick={() => handleLinkClick(item.label)}
-            className={`text-body inline-block md:px-4 md:py-3 lg:px-5 ${
+            className={`text-body inline-block font-medium md:px-4 md:py-3 lg:px-5 ${
               activeSection === item.label
                 ? // // Active state: highlighted with ring, background, and shadow
                   "ring-purple-60 bg-background shadow-purple-60/40 shadow ring"
