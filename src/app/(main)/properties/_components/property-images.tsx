@@ -58,7 +58,7 @@ export default function PropertyImageGallery({
     if (isMobile && currentPosition === images.length - 2) {
       // Mobile shows 1 image at a time, so move from second-to-last to last
       targetPosition = images.length - 1;
-    } else {
+    } else if (!isMobile && currentPosition === images.length - 1) {
       // Desktop shows 2 images at once, so move from last image to second-to-last
       targetPosition = images.length - 2;
     }
@@ -204,7 +204,7 @@ export default function PropertyImageGallery({
           <AnimatedButton
             onClick={scrollPrev}
             disabled={!canScrollPrev}
-            className="ring-border hover:ring-purple-60 bg-sub-background disabled:hover:ring-border rounded-full p-2.5 ring disabled:opacity-50"
+            className="ring-border hover:ring-purple-60 bg-sub-background disabled:hover:ring-border rounded-full p-2.5 ring disabled:cursor-default disabled:opacity-50"
             aria-label={isMobile ? "Previous image" : "Previous images"}
           >
             <ArrowLeftIcon aria-hidden className="size-6" />
