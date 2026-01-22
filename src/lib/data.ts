@@ -26,6 +26,7 @@ import {
   AtIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { type ClientFormData } from "@/schemas/contactSchema";
+import { type InquiryFormData } from "@/schemas/inquirySchema";
 
 export const NavItems = [
   { label: "Home", href: "/" },
@@ -774,7 +775,7 @@ export const ContactInfoCards = [
 
 type MappedFieldName = Exclude<keyof ClientFormData, "terms">;
 
-type FormField = {
+type ContactFormField = {
   id: number;
   name: MappedFieldName;
   label: string;
@@ -785,7 +786,7 @@ type FormField = {
   options?: Array<{ value: string; label: string }>;
 };
 
-export const ContactFormFields: FormField[] = [
+export const ContactFormFields: ContactFormField[] = [
   {
     id: 1,
     name: "firstName",
@@ -878,5 +879,70 @@ export const OurOfficesCards = [
     email: "info@estatein.com",
     phone: "+1 (123) 456-7890",
     location: "Metropolis",
+  },
+];
+type InquiryMappedFieldName = Exclude<keyof InquiryFormData, "terms">;
+
+type InquiryFormField = {
+  id: number;
+  name: InquiryMappedFieldName;
+  label: string;
+  type: string;
+  placeholder: string;
+  required: boolean;
+  readOnly?: boolean;
+  rows?: number;
+};
+
+export const InquiryFormFields: InquiryFormField[] = [
+  {
+    id: 1,
+    name: "firstName",
+    label: "First Name",
+    type: "text",
+    placeholder: "Enter First Name",
+    required: true,
+  },
+  {
+    id: 2,
+    name: "lastName",
+    label: "Last Name",
+    type: "text",
+    placeholder: "Enter Last Name",
+    required: true,
+  },
+  {
+    id: 3,
+    name: "email",
+    label: "Email",
+    type: "email",
+    placeholder: "Enter your Email",
+    required: true,
+  },
+  {
+    id: 4,
+    name: "phone",
+    label: "Phone",
+    type: "tel",
+    placeholder: "Enter Phone Number",
+    required: true,
+  },
+  {
+    id: 5,
+    name: "selectedProperty",
+    label: "Selected Property",
+    type: "text",
+    placeholder: "Enter your Message here..",
+    required: true,
+    readOnly: true,
+  },
+  {
+    id: 6,
+    name: "message",
+    label: "Message",
+    type: "textarea",
+    placeholder: "Enter your Message here..",
+    required: true,
+    rows: 6,
   },
 ];

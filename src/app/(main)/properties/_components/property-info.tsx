@@ -25,7 +25,7 @@ interface PropertyProps {
 
 export default function PropertyInfo({ property }: PropertyProps) {
   return (
-    <>
+    <div className="space-y-7.5">
       {/* Property header with name, location, and price */}
       <div className="flex items-center justify-between">
         <div className="space-y-2.5">
@@ -137,6 +137,6 @@ export default function PropertyInfo({ property }: PropertyProps) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
