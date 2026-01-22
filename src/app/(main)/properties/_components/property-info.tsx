@@ -6,24 +6,21 @@ import {
   MapPinIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import PropertyImageGallery from "./property-images";
+import { Property } from "@/lib/types";
 
 interface PropertyProps {
-  property: {
-    id: number;
-    name: string;
-    description: string;
-    image: string;
-    images: string[];
-    bedrooms: number;
-    bathrooms: number;
-    propertyType: string;
-    price: string;
-    priceValue: number;
-    location: string;
-    propertySize: string;
-    buildYear: number;
-    keyFeatures: string[];
-  };
+  property: Pick<
+    Property,
+    | "name"
+    | "location"
+    | "price"
+    | "images"
+    | "description"
+    | "bedrooms"
+    | "bathrooms"
+    | "propertySize"
+    | "keyFeatures"
+  >;
 }
 
 export default function PropertyInfo({ property }: PropertyProps) {

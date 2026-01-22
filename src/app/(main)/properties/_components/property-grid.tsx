@@ -1,4 +1,4 @@
-import { PropertyCard } from "./property-card";
+import { PropertyCard } from "@/components/property-card";
 import { ArrowRightIcon, ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   Pagination,
@@ -8,23 +8,11 @@ import {
 } from "@/components/ui/pagination";
 import AnimatedLink from "@/components/ui/animated-link";
 import { pageBuilder } from "@/lib/page-builder";
+import { Property } from "@/lib/types";
 
 // Type definition for the page props
 interface PropertyGridProps {
-  properties: Array<{
-    id: number;
-    name: string;
-    description: string;
-    image: string;
-    bedrooms: number;
-    bathrooms: number;
-    propertyType: string;
-    price: string;
-    priceValue: number;
-    location: string;
-    propertySize: string;
-    buildYear: number;
-  }>;
+  properties: Property[];
   currentPage: number;
   itemsPerPage: number;
   searchParams: {
@@ -152,7 +140,7 @@ export default function PropertyGrid({
                 // Disable tab navigation if on first page
                 tabIndex={currentPage === 1 ? -1 : 0}
                 // Accessibility label for screen readers
-                aria-label="Go to next page"
+                aria-label="Go to previous page"
                 // Disable pointer events and style if on first page
                 className={`ring-border hover:ring-purple-60 flex items-center gap-x-2 rounded-full p-2.5 ring lg:rounded-lg ${
                   currentPage === 1
@@ -211,7 +199,7 @@ export default function PropertyGrid({
                 // Disable tab navigation if on last page
                 tabIndex={currentPage === totalPages ? -1 : 0}
                 // Accessibility label for screen readers
-                aria-label="Go to previous page"
+                aria-label="Go to next page"
                 // Disable pointer events and style if on last page
                 className={`ring-border hover:ring-purple-60 flex items-center gap-x-2 rounded-full p-2.5 ring lg:rounded-lg ${
                   currentPage === totalPages
