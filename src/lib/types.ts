@@ -1,3 +1,17 @@
+export type PriceDetail = {
+  id: number;
+  label: string;
+  amount: string;
+  description: string;
+};
+
+export type PricingDetails = {
+  additionalFees: PriceDetail[];
+  monthlyCosts: PriceDetail[];
+  totalInitialCosts: PriceDetail[];
+  monthlyExpenses: PriceDetail[];
+};
+
 export interface Property {
   id: number;
   name: string;
@@ -13,4 +27,5 @@ export interface Property {
   propertySize: string;
   buildYear: number;
   keyFeatures: string[];
+  pricingDetails: PricingDetails;
 }
