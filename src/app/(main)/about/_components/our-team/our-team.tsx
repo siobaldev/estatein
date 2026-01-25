@@ -49,12 +49,15 @@ export default function OurTeam() {
                 />
                 <div className="relative flex flex-col items-center space-y-4 text-center md:space-y-5 @xl:space-y-6">
                   <AnimatedLink
-                    href={"/about"}
+                    href="https://x.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="ring-border group bg-sub-background absolute -top-15 w-fit rounded-full px-5 py-2.5 ring @lg:-top-17.5"
+                    aria-label="Visit my Twitter profile"
                   >
                     <TwitterLogoIcon
                       weight="fill"
-                      aria-hidden={true}
+                      aria-hidden
                       className="group-hover:fill-purple-60 size-5 @lg:size-6"
                     />
                   </AnimatedLink>
