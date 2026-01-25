@@ -5,6 +5,8 @@ import { slugify } from "@/lib/utils";
 import AnimatedSection from "@/components/animated-section";
 import PropertyInfo from "../_components/property-info";
 import PropertyInquiry from "../_components/property-inquiry";
+import PropertyPricing from "../_components/property-pricing";
+import FAQs from "@/components/faqs/faqs";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -14,7 +16,7 @@ export default async function PropertyDetails({ params }: Props) {
   const { slug } = await params;
 
   // Section list
-  const sections = [PropertyInfo, PropertyInquiry];
+  const sections = [PropertyInfo, PropertyInquiry, PropertyPricing, FAQs];
 
   // Find the property by matching the slug
   const property = Properties.find((p) => slugify(p.name) === slug);

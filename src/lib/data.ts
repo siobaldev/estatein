@@ -27,6 +27,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { type ClientFormData } from "@/schemas/contactSchema";
 import { type InquiryFormData } from "@/schemas/inquirySchema";
+import { PricingDetails } from "./types";
 
 export const NavItems = [
   { label: "Home", href: "/" },
@@ -69,6 +70,137 @@ export const FeatureCards = [
   },
 ];
 
+// Helper function to generate pricing details
+export const generatePricingDetails = (fees: {
+  additionalFees: {
+    propertyTransferTax: string;
+    legalFees: string;
+    homeInspection: string;
+    propertyInsurance: string;
+    mortgageFees: string;
+  };
+  monthlyCosts: {
+    propertyTaxes: string;
+    hoaFee: string;
+  };
+  totalInitialCosts: {
+    listingPrice: string;
+    additionalFeesTotal: string;
+    downPayment: string;
+    mortgageAmount: string;
+  };
+  monthlyExpenses: {
+    propertyTaxes: string;
+    hoaFee: string;
+    mortgagePayment: string;
+    propertyInsurance: string;
+  };
+}): PricingDetails => {
+  return {
+    additionalFees: [
+      {
+        id: 1,
+        label: "Property Transfer Tax",
+        amount: fees.additionalFees.propertyTransferTax,
+        description: "Based on the sale price and local regulations",
+      },
+      {
+        id: 2,
+        label: "Legal Fees",
+        amount: fees.additionalFees.legalFees,
+        description:
+          "Approximate cost for legal services, including title transfer",
+      },
+      {
+        id: 3,
+        label: "Home Inspection",
+        amount: fees.additionalFees.homeInspection,
+        description: "Recommended for due diligence",
+      },
+      {
+        id: 4,
+        label: "Property Insurance",
+        amount: fees.additionalFees.propertyInsurance,
+        description: "Annual cost for comprehensive property insurance",
+      },
+      {
+        id: 5,
+        label: "Mortgage Fees",
+        amount: fees.additionalFees.mortgageFees,
+        description:
+          "If applicable, consult with your lender for specific details",
+      },
+    ],
+    monthlyCosts: [
+      {
+        id: 1,
+        label: "Property Taxes",
+        amount: fees.monthlyCosts.propertyTaxes,
+        description:
+          "Approximate monthly property tax based on the sale price and local rates",
+      },
+      {
+        id: 2,
+        label: "Homeowners' Association Fee",
+        amount: fees.monthlyCosts.hoaFee,
+        description: "Monthly fee for common area maintenance and security",
+      },
+    ],
+    totalInitialCosts: [
+      {
+        id: 1,
+        label: "Listing Price",
+        amount: fees.totalInitialCosts.listingPrice,
+        description: "",
+      },
+      {
+        id: 2,
+        label: "Additional Fees",
+        amount: fees.totalInitialCosts.additionalFeesTotal,
+        description: "Property transfer tax, legal fees, inspection, insurance",
+      },
+      {
+        id: 3,
+        label: "Down Payment",
+        amount: fees.totalInitialCosts.downPayment,
+        description: "20%",
+      },
+      {
+        id: 4,
+        label: "Mortgage Amount",
+        amount: fees.totalInitialCosts.mortgageAmount,
+        description: "If applicable",
+      },
+    ],
+    monthlyExpenses: [
+      {
+        id: 1,
+        label: "Property Taxes",
+        amount: fees.monthlyExpenses.propertyTaxes,
+        description: "",
+      },
+      {
+        id: 2,
+        label: "Homeowners' Association Fee",
+        amount: fees.monthlyExpenses.hoaFee,
+        description: "",
+      },
+      {
+        id: 3,
+        label: "Mortgage Payment",
+        amount: fees.monthlyExpenses.mortgagePayment,
+        description: "If applicable",
+      },
+      {
+        id: 4,
+        label: "Property Insurance",
+        amount: fees.monthlyExpenses.propertyInsurance,
+        description: "Approximate monthly cost",
+      },
+    ],
+  };
+};
+
 export const Properties = [
   {
     id: 1,
@@ -100,6 +232,31 @@ export const Properties = [
       "Gourmet kitchen with premium appliances",
       "Three-car garage with storage",
     ],
+    pricingDetails: generatePricingDetails({
+      additionalFees: {
+        propertyTransferTax: "$28,500",
+        legalFees: "$3,500",
+        homeInspection: "$600",
+        propertyInsurance: "$3,200",
+        mortgageFees: "Varies",
+      },
+      monthlyCosts: {
+        propertyTaxes: "$2,375",
+        hoaFee: "$450",
+      },
+      totalInitialCosts: {
+        listingPrice: "$2,850,000",
+        additionalFeesTotal: "$35,800",
+        downPayment: "$570,000",
+        mortgageAmount: "$2,280,000",
+      },
+      monthlyExpenses: {
+        propertyTaxes: "$2,375",
+        hoaFee: "$450",
+        mortgagePayment: "$10,260",
+        propertyInsurance: "$267",
+      },
+    }),
   },
   {
     id: 2,
@@ -132,6 +289,31 @@ export const Properties = [
       "Concierge service and secure parking",
       "Walking distance to subway and restaurants",
     ],
+    pricingDetails: generatePricingDetails({
+      additionalFees: {
+        propertyTransferTax: "$7,250",
+        legalFees: "$2,500",
+        homeInspection: "$450",
+        propertyInsurance: "$1,800",
+        mortgageFees: "Varies",
+      },
+      monthlyCosts: {
+        propertyTaxes: "$604",
+        hoaFee: "$650",
+      },
+      totalInitialCosts: {
+        listingPrice: "$725,000",
+        additionalFeesTotal: "$12,000",
+        downPayment: "$145,000",
+        mortgageAmount: "$580,000",
+      },
+      monthlyExpenses: {
+        propertyTaxes: "$604",
+        hoaFee: "$650",
+        mortgagePayment: "$2,610",
+        propertyInsurance: "$150",
+      },
+    }),
   },
   {
     id: 3,
@@ -163,6 +345,31 @@ export const Properties = [
       "Covered patio for year-round outdoor dining",
       "Two-car garage and ample driveway parking",
     ],
+    pricingDetails: generatePricingDetails({
+      additionalFees: {
+        propertyTransferTax: "$14,500",
+        legalFees: "$3,000",
+        homeInspection: "$550",
+        propertyInsurance: "$2,600",
+        mortgageFees: "Varies",
+      },
+      monthlyCosts: {
+        propertyTaxes: "$1,208",
+        hoaFee: "$200",
+      },
+      totalInitialCosts: {
+        listingPrice: "$1,450,000",
+        additionalFeesTotal: "$20,650",
+        downPayment: "$290,000",
+        mortgageAmount: "$1,160,000",
+      },
+      monthlyExpenses: {
+        propertyTaxes: "$1,208",
+        hoaFee: "$200",
+        mortgagePayment: "$5,220",
+        propertyInsurance: "$217",
+      },
+    }),
   },
   {
     id: 4,
@@ -194,6 +401,31 @@ export const Properties = [
       "Resort-style pool and fitness center",
       "Secure parking and 24/7 security",
     ],
+    pricingDetails: generatePricingDetails({
+      additionalFees: {
+        propertyTransferTax: "$8,900",
+        legalFees: "$2,800",
+        homeInspection: "$500",
+        propertyInsurance: "$2,100",
+        mortgageFees: "Varies",
+      },
+      monthlyCosts: {
+        propertyTaxes: "$742",
+        hoaFee: "$550",
+      },
+      totalInitialCosts: {
+        listingPrice: "$890,000",
+        additionalFeesTotal: "$14,300",
+        downPayment: "$178,000",
+        mortgageAmount: "$712,000",
+      },
+      monthlyExpenses: {
+        propertyTaxes: "$742",
+        hoaFee: "$550",
+        mortgagePayment: "$3,205",
+        propertyInsurance: "$175",
+      },
+    }),
   },
   {
     id: 5,
@@ -225,6 +457,31 @@ export const Properties = [
       "Hot tub on private deck",
       "Minutes from ski slopes and hiking trails",
     ],
+    pricingDetails: generatePricingDetails({
+      additionalFees: {
+        propertyTransferTax: "$5,750",
+        legalFees: "$2,500",
+        homeInspection: "$450",
+        propertyInsurance: "$1,600",
+        mortgageFees: "Varies",
+      },
+      monthlyCosts: {
+        propertyTaxes: "$479",
+        hoaFee: "$150",
+      },
+      totalInitialCosts: {
+        listingPrice: "$575,000",
+        additionalFeesTotal: "$10,300",
+        downPayment: "$115,000",
+        mortgageAmount: "$460,000",
+      },
+      monthlyExpenses: {
+        propertyTaxes: "$479",
+        hoaFee: "$150",
+        mortgagePayment: "$2,070",
+        propertyInsurance: "$133",
+      },
+    }),
   },
   {
     id: 6,
@@ -257,6 +514,31 @@ export const Properties = [
       "Wine cellar and wet bar",
       "Private elevator access and two parking spaces",
     ],
+    pricingDetails: generatePricingDetails({
+      additionalFees: {
+        propertyTransferTax: "$32,000",
+        legalFees: "$4,000",
+        homeInspection: "$700",
+        propertyInsurance: "$3,800",
+        mortgageFees: "Varies",
+      },
+      monthlyCosts: {
+        propertyTaxes: "$2,667",
+        hoaFee: "$800",
+      },
+      totalInitialCosts: {
+        listingPrice: "$3,200,000",
+        additionalFeesTotal: "$40,500",
+        downPayment: "$640,000",
+        mortgageAmount: "$2,560,000",
+      },
+      monthlyExpenses: {
+        propertyTaxes: "$2,667",
+        hoaFee: "$800",
+        mortgagePayment: "$11,525",
+        propertyInsurance: "$317",
+      },
+    }),
   },
 ];
 
