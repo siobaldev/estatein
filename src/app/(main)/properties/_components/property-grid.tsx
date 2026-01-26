@@ -155,21 +155,21 @@ export default function PropertyGrid({
             </PaginationItem>
 
             {/* Page Numbers and Ellipsis */}
-            <div className="col-span-2 flex items-center justify-center gap-x-1 max-[450px]:order-1">
+            <PaginationItem className="col-span-2 flex items-center justify-center gap-x-1 max-[450px]:order-1">
               {pageNumbers.map((page, index) => {
                 // If it's a string (ellipsis marker), render ellipsis dots
                 if (typeof page === "string") {
                   return (
-                    <PaginationItem key={`${page}-${index}`}>
+                    <div key={`${page}-${index}`}>
                       {/* Renders "..." */}
                       <PaginationEllipsis />
-                    </PaginationItem>
+                    </div>
                   );
                 }
 
                 // If it's a number, render a clickable page button
                 return (
-                  <PaginationItem key={page}>
+                  <div key={page}>
                     <AnimatedLink
                       // Build URL with all filters + this page number
                       href={pageBuilder(searchParams, page)}
@@ -186,10 +186,10 @@ export default function PropertyGrid({
                     >
                       {page}
                     </AnimatedLink>
-                  </PaginationItem>
+                  </div>
                 );
               })}
-            </div>
+            </PaginationItem>
 
             {/* Next Button */}
             <PaginationItem className="order-3 w-fit">

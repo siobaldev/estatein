@@ -59,7 +59,7 @@ export const PropertyFilters = [
     icon: MapPinIcon,
     name: "Location",
     queryKey: "location",
-    placeholder: "Location",
+    placeholder: "Select Location",
     options: getUniqueOptions("location"),
   },
   {
@@ -67,7 +67,7 @@ export const PropertyFilters = [
     icon: BuildingsIcon,
     name: "Property Type",
     queryKey: "type",
-    placeholder: "Property Type",
+    placeholder: "Select Property Type",
     options: getUniqueOptions("propertyType"),
   },
   {
@@ -75,7 +75,7 @@ export const PropertyFilters = [
     icon: MoneyIcon,
     name: "Price Range",
     queryKey: "price",
-    placeholder: "Price Range",
+    placeholder: "Select Price Range",
     options: getPriceRanges(),
   },
   {
@@ -83,7 +83,7 @@ export const PropertyFilters = [
     icon: CubeIcon,
     name: "Property Size",
     queryKey: "size",
-    placeholder: "Property Size",
+    placeholder: "Select Property Size",
     options: getPropertySizeRanges(),
   },
   {
@@ -91,7 +91,7 @@ export const PropertyFilters = [
     icon: CalendarBlankIcon,
     name: "Build Year",
     queryKey: "year",
-    placeholder: "Build Year",
+    placeholder: "Select Build Year",
     options: getBuildYearRanges(),
   },
 ];
