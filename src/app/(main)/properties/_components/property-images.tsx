@@ -218,18 +218,15 @@ export default function PropertyImageGallery({
                 const shouldHide = !isMobile && index === images.length - 1;
 
                 return (
-                  <button
+                  <div
                     key={index}
-                    onClick={() => mainApi?.scrollTo(index)}
-                    tabIndex={index === current ? -1 : 0}
-                    className={`ring-purple-60 h-2 rounded-full transition-all outline-none focus-visible:ring ${
+                    className={`ring-purple-60 size-2 rounded-full transition-all ${
                       shouldHide ? "hidden" : "block"
                     } ${
                       index === current
                         ? "bg-purple-60 w-8"
-                        : "bg-sub-foreground w-2"
+                        : "bg-sub-foreground"
                     }`}
-                    aria-label={`Go to image ${index + 1}`}
                   />
                 );
               })}

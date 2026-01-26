@@ -388,7 +388,7 @@ export const Properties = [
     images: [
       "/assets/beachfront-apartment/Main.webp",
       "/assets/beachfront-apartment/Living-Room.webp",
-      "/assets/beachfront-apartment/Backyard.webp",
+      "/assets/beachfront-apartment/Balcony.webp",
       "/assets/beachfront-apartment/Kitchen.webp",
       "/assets/beachfront-apartment/Bedroom.webp",
       "/assets/beachfront-apartment/Bathroom.webp",
