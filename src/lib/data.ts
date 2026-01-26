@@ -1120,7 +1120,7 @@ export const ContactFormFields: ContactFormField[] = [
     name: "howDidYouHear",
     label: "How Did You Hear About Us?",
     type: "select",
-    placeholder: "Select",
+    placeholder: "Select an option",
     required: false,
     options: [
       { value: "search", label: "Search Engine" },
