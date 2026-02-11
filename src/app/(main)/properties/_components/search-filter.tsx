@@ -114,7 +114,10 @@ export default function SearchFilter() {
             >
               <div className="relative flex items-center">
                 {/* Dropdown trigger button */}
-                <SelectTrigger className="border-border text-body data-placeholder:text-sub-foreground bg-background focus-visible:ring-purple-60 w-full rounded-lg px-4 py-7 shadow-none focus-visible:ring-1">
+                <SelectTrigger
+                  aria-label={filter.placeholder}
+                  className="border-border text-body data-placeholder:text-sub-foreground bg-background focus-visible:ring-purple-60 w-full rounded-lg px-4 py-7 shadow-none focus-visible:ring-1"
+                >
                   <div className="flex items-center gap-x-2">
                     {/* Filter icon */}
                     <filter.icon

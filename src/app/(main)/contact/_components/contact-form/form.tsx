@@ -119,6 +119,7 @@ export default function Form() {
                       value={controllerField.value}
                     >
                       <SelectTrigger
+                        aria-label={field.placeholder}
                         className={`border-border text-body data-placeholder:text-sub-foreground bg-sub-background focus-visible:ring-purple-60 w-full rounded px-4 py-6 focus-visible:shadow-none focus-visible:ring-1 ${errors[field.name] ? "border-red-400" : ""}`}
                       >
                         <SelectValue placeholder={field.placeholder} />

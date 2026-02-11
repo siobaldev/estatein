@@ -24,9 +24,9 @@ export function PropertyCard({ property }: PropertyCardProps) {
   return (
     <div className="ring-border hover:ring-purple-60 my-px rounded-xl p-6 ring select-none">
       {/* Property Image with Type Badge */}
-      <div className="relative mb-4 flex items-center justify-center">
+      <div className="relative mb-4 flex h-75 w-full items-center justify-center overflow-hidden">
         {/* Property type badge overlay */}
-        <span className="bg-sub-background ring-border text-body shadow-border absolute top-2 left-2 flex w-fit rounded-full px-3 py-1.5 font-semibold shadow ring">
+        <span className="bg-sub-background ring-border text-body shadow-border absolute top-2 left-2 z-50 flex w-fit rounded-full px-3 py-1.5 font-semibold shadow ring">
           {property.propertyType}
         </span>
 
@@ -34,10 +34,9 @@ export function PropertyCard({ property }: PropertyCardProps) {
         <Image
           src={property.image}
           alt={property.name}
-          width={400}
-          height={300}
-          unoptimized
-          className="size-full rounded-lg"
+          fill
+          sizes="(max-width: 768px) 100vw, 553px"
+          className="rounded-lg object-cover"
         />
       </div>
 
@@ -57,7 +56,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
         <div className="flex flex-wrap gap-2 text-sm font-medium">
           {/* Bedrooms badge */}
           <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
-            <BedIcon aria-hidden="true" className="size-5" />
+            <BedIcon aria-hidden className="size-5" />
             <p>
               {property.bedrooms}
               <span className="max-[366px]:hidden"> - Bedrooms</span>
@@ -66,7 +65,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
 
           {/* Bathrooms badge */}
           <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
-            <BathtubIcon aria-hidden="true" className="size-5" />
+            <BathtubIcon aria-hidden className="size-5" />
             <p>
               {property.bathrooms}
               <span className="max-[366px]:hidden"> - Bathrooms</span>
