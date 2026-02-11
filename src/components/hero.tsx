@@ -102,10 +102,11 @@ export default function Hero() {
             src={"/assets/Building.webp"}
             alt="building-image"
             loading="eager"
-            className="z-10 size-full min-[408px]:w-90 lg:size-full"
-            width={100}
-            height={100}
-            unoptimized={true}
+            fetchPriority="high"
+            className="z-10 min-[408px]:w-90 lg:size-full"
+            width={390}
+            height={322}
+            sizes="(max-width: 768px) 100vw, 630px"
           />
           {/* Decorative abstract line pattern background */}
           <AbstractLines className="stroke-border absolute h-160 stroke-1 xl:h-full" />
