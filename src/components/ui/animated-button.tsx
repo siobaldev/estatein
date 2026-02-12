@@ -1,8 +1,14 @@
-// components/animated-button.tsx
 "use client";
 
-import { motion } from "motion/react";
-import { ComponentProps } from "react";
+import { motion, type MotionProps } from "motion/react";
+import type { ComponentPropsWithoutRef } from "react";
+
+/*
+ * Props for AnimatedButton
+ * - All normal <button> props (onClick, disabled, etc.)
+ * - Plus Framer Motion animation props (whileTap, transition, etc.)
+ */
+type AnimatedButtonProps = ComponentPropsWithoutRef<"button"> & MotionProps;
 
 /*
  * Animation configuration for the button
@@ -14,11 +20,13 @@ const animation = {
   transition: { type: "spring", stiffness: 300, damping: 15 },
 } as const;
 
-export default function AnimatedButton(props: ComponentProps<"button">) {
+export default function AnimatedButton({
+  children,
+  ...props
+}: AnimatedButtonProps) {
   return (
-    <motion.button
-      {...animation}
-      {...(props as unknown as ComponentProps<typeof motion.button>)}
-    />
+    <motion.button {...animation} {...props}>
+      {children}
+    </motion.button>
   );
 }
