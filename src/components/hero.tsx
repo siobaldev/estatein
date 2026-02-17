@@ -98,16 +98,18 @@ export default function Hero() {
       <div className="order-1 flex size-full items-center lg:order-2">
         <div className="bg-sub-background ring-border relative flex size-full items-center justify-center overflow-hidden rounded-xl ring">
           {/* Building image */}
-          <Image
-            src={"/assets/Building.webp"}
-            alt="building-image"
-            loading="eager"
-            fetchPriority="high"
-            className="z-10 min-[408px]:w-90 lg:size-full"
-            width={390}
-            height={322}
-            sizes="(max-width: 768px) 100vw, 630px"
-          />
+          <div className="relative z-10 h-full w-80 max-[1024px]:aspect-690/622 min-[408px]:w-105 lg:w-full">
+            <Image
+              src={"/assets/Building.webp"}
+              alt="building-image"
+              loading="eager"
+              fetchPriority="high"
+              className="object-cover"
+              fill
+              sizes="(max-width: 1024px) 100vw, 360px"
+            />
+          </div>
+
           {/* Decorative abstract line pattern background */}
           <AbstractLines className="stroke-border absolute h-160 stroke-1 xl:h-full" />
           {/* Gradient overlay for visual depth */}

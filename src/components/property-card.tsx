@@ -35,8 +35,9 @@ export function PropertyCard({ property }: PropertyCardProps) {
           src={property.image}
           alt={property.name}
           fill
-          sizes="(max-width: 768px) 100vw, 553px"
+          sizes="(max-width: 768px) 100vw, 375px"
           className="rounded-lg object-cover"
+          loading="lazy"
         />
       </div>
 
