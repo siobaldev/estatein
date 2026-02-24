@@ -1,24 +1,33 @@
 import AnimatedButton from "@/components/ui/animated-button";
 import { Property } from "@/lib/types";
+import { formatCurrency } from "@/lib/utils";
+import {
+  additionalFeesConfig,
+  monthlyCostsConfig,
+  totalInitialCostsConfig,
+  monthlyExpensesConfig,
+} from "@/lib/pricing-config";
 
-interface PricingDetailsProps {
-  propertyDetails: Property["pricingDetails"];
-}
+type PricingDetailsProps = {
+  propertyDetails: Pick<
+    Property,
+    "additionalFees" | "monthlyCosts" | "totalInitialCosts" | "monthlyExpenses"
+  >;
+};
 
 export default function PricingDetails({
   propertyDetails,
 }: PricingDetailsProps) {
+  const { additionalFees, monthlyCosts, totalInitialCosts, monthlyExpenses } =
+    propertyDetails;
+
   return (
     <div className="flex flex-col gap-y-5 xl:flex-row xl:gap-x-10">
       {/* Listing Price */}
       <div>
         <h1 className="text-sub-foreground text-body">Listing Price</h1>
         <p className="text-stats font-semibold">
-          {
-            propertyDetails.totalInitialCosts.find(
-              (item) => item.label === "Listing Price",
-            )?.amount
-          }
+          {formatCurrency(totalInitialCosts!.listingPrice)}
         </p>
       </div>
 
@@ -34,25 +43,31 @@ export default function PricingDetails({
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {propertyDetails.additionalFees.map((fee) => (
-              <div
-                key={fee.id}
-                // Mortgage Fees spans full width on medium+ screens
-                className={`ring-border rounded-lg p-5 ring ${
-                  fee.label === "Mortgage Fees" ? "md:col-span-2" : ""
-                }`}
-              >
-                <h3 className="text-sub-foreground text-body">{fee.label}</h3>
-                <div className="mt-2.5 flex items-center gap-x-3 lg:mt-3 xl:mt-4 xl:gap-x-4">
-                  <span className="text-lg font-semibold lg:text-xl xl:text-2xl">
-                    {fee.amount}
-                  </span>
-                  <p className="text-sub-foreground bg-sub-background ring-border text-body rounded-lg px-3.5 py-2 text-sm ring">
-                    {fee.description}
-                  </p>
+            {additionalFeesConfig.map((fee) => {
+              const value = additionalFees![fee.key];
+              return (
+                <div
+                  key={fee.key}
+                  className={`ring-border rounded-lg p-5 ring ${
+                    fee.gridClass || ""
+                  }`}
+                >
+                  <h3 className="text-sub-foreground text-body">{fee.label}</h3>
+                  <div className="mt-2.5 flex items-center gap-x-3 lg:mt-3 xl:mt-4 xl:gap-x-4">
+                    <span className="text-lg font-semibold lg:text-xl xl:text-2xl">
+                      {typeof value === "number"
+                        ? formatCurrency(value)
+                        : value}
+                    </span>
+                    {fee.description && (
+                      <p className="text-sub-foreground bg-sub-background ring-border text-body rounded-lg px-3.5 py-2 text-sm ring">
+                        {fee.description}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -67,16 +82,18 @@ export default function PricingDetails({
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-2">
-            {propertyDetails.monthlyCosts.map((cost) => (
-              <div key={cost.id} className="ring-border rounded-lg p-5 ring">
+            {monthlyCostsConfig.map((cost) => (
+              <div key={cost.key} className="ring-border rounded-lg p-5 ring">
                 <h3 className="text-sub-foreground text-body">{cost.label}</h3>
                 <div className="mt-2.5 flex items-center gap-x-3 lg:mt-3 xl:mt-4 xl:gap-x-4">
                   <span className="text-lg font-semibold lg:text-xl xl:text-2xl">
-                    {cost.amount}
+                    {formatCurrency(monthlyCosts![cost.key] as number)}
                   </span>
-                  <p className="text-sub-foreground bg-sub-background ring-border text-body rounded-lg px-3.5 py-2 text-sm ring">
-                    {cost.description}
-                  </p>
+                  {cost.description && (
+                    <p className="text-sub-foreground bg-sub-background ring-border text-body rounded-lg px-3.5 py-2 text-sm ring">
+                      {cost.description}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
@@ -96,12 +113,12 @@ export default function PricingDetails({
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {propertyDetails.totalInitialCosts.map((cost) => (
-              <div key={cost.id} className="ring-border rounded-lg p-5 ring">
+            {totalInitialCostsConfig.map((cost) => (
+              <div key={cost.key} className="ring-border rounded-lg p-5 ring">
                 <h3 className="text-sub-foreground text-body">{cost.label}</h3>
                 <div className="mt-2.5 flex items-center gap-x-3 lg:mt-3 xl:mt-4 xl:gap-x-4">
                   <span className="text-lg font-semibold lg:text-xl xl:text-2xl">
-                    {cost.amount}
+                    {formatCurrency(totalInitialCosts![cost.key] as number)}
                   </span>
 
                   {/* Only show description if it exists */}
@@ -127,14 +144,17 @@ export default function PricingDetails({
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {propertyDetails.monthlyExpenses.map((expense) => (
-              <div key={expense.id} className="ring-border rounded-lg p-5 ring">
+            {monthlyExpensesConfig.map((expense) => (
+              <div
+                key={expense.key}
+                className="ring-border rounded-lg p-5 ring"
+              >
                 <h3 className="text-sub-foreground text-body">
                   {expense.label}
                 </h3>
                 <div className="mt-2.5 flex items-center gap-x-3 lg:mt-3 xl:mt-4 xl:gap-x-4">
                   <span className="text-lg font-semibold lg:text-xl xl:text-2xl">
-                    {expense.amount}
+                    {formatCurrency(monthlyExpenses![expense.key] as number)}
                   </span>
 
                   {/* Only show description if it exists */}

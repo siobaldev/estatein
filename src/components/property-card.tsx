@@ -1,42 +1,47 @@
 import AnimatedLink from "@/components/ui/animated-link";
 import Image from "next/image";
-import { BedIcon, BathtubIcon } from "@phosphor-icons/react/ssr";
+import {
+  BedIcon,
+  BathtubIcon,
+  BuildingIcon,
+  MapPinIcon,
+  BoundingBoxIcon,
+} from "@phosphor-icons/react/ssr";
 import { slugify } from "@/lib/utils";
 import { Property } from "@/lib/types";
+import { formatCurrency } from "@/lib/utils";
 
-interface PropertyCardProps {
+type PropertyCardProps = {
   property: Pick<
     Property,
+    | "id"
     | "name"
     | "description"
     | "image"
+    | "location"
     | "bedrooms"
     | "bathrooms"
     | "propertyType"
+    | "propertySize"
     | "price"
   >;
-}
+};
 
 export function PropertyCard({ property }: PropertyCardProps) {
   // Generate URL-friendly slug from property name
   const propertySlug = slugify(property.name);
 
   return (
-    <div className="ring-border hover:ring-purple-60 my-px rounded-xl p-6 ring select-none">
-      {/* Property Image with Type Badge */}
-      <div className="relative mb-4 flex h-75 w-full items-center justify-center overflow-hidden">
-        {/* Property type badge overlay */}
-        <span className="bg-sub-background ring-border text-body shadow-border absolute top-2 left-2 z-50 flex w-fit rounded-full px-3 py-1.5 font-semibold shadow ring">
-          {property.propertyType}
-        </span>
-
-        {/* Property image */}
+    <div className="border-border hover:border-purple-60 my-px rounded-xl border p-6 select-none">
+      {/* Property Image */}
+      <div className="relative mb-4 aspect-video items-center justify-center overflow-hidden">
         <Image
           src={property.image}
           alt={property.name}
-          fill
+          height={768}
+          width={1366}
           sizes="(max-width: 768px) 100vw, 375px"
-          className="rounded-lg object-cover"
+          className="rounded-lg"
           loading="lazy"
         />
       </div>
@@ -44,33 +49,63 @@ export function PropertyCard({ property }: PropertyCardProps) {
       {/* Property Details */}
       <div className="flex flex-col gap-y-5">
         {/* Property Name and Description */}
-        <div>
+        <div className="flex flex-col gap-y-2.5">
           <h1 className="text-lg font-semibold md:text-xl lg:text-2xl">
             {property.name}
           </h1>
+          <p className="text-body text-sub-foreground flex items-center gap-x-1">
+            <MapPinIcon weight="fill" aria-hidden className="size-5" />
+            <span>{property.location}</span>
+          </p>
           <p className="text-sub-foreground text-body line-clamp-2 font-medium">
             {property.description}
           </p>
         </div>
 
-        {/* Property Features (Bedrooms and Bathrooms) */}
+        {/* Property Features */}
         <div className="flex flex-wrap gap-2 text-sm font-medium">
+          {/* Property Type badge */}
+          <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
+            <BuildingIcon
+              weight="fill"
+              aria-hidden
+              className="text-sub-foreground size-5"
+            />
+            <p>{property.propertyType}</p>
+          </div>
+
           {/* Bedrooms badge */}
           <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
-            <BedIcon aria-hidden className="size-5" />
+            <BedIcon
+              weight="fill"
+              aria-hidden
+              className="text-sub-foreground size-5"
+            />
             <p>
-              {property.bedrooms}
-              <span className="max-[366px]:hidden"> - Bedrooms</span>
+              {property.bedrooms} Bed{property.bedrooms > 1 && "s"}
             </p>
           </div>
 
           {/* Bathrooms badge */}
           <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
-            <BathtubIcon aria-hidden className="size-5" />
+            <BathtubIcon
+              weight="fill"
+              aria-hidden
+              className="text-sub-foreground size-5"
+            />
             <p>
-              {property.bathrooms}
-              <span className="max-[366px]:hidden"> - Bathrooms</span>
+              {property.bathrooms} Bath{property.bathrooms > 1 && "s"}
             </p>
+          </div>
+
+          {/* Property Size badge */}
+          <div className="ring-border bg-sub-background flex w-fit gap-x-2 rounded-full px-3 py-1.5 ring">
+            <BoundingBoxIcon
+              weight="fill"
+              aria-hidden
+              className="text-sub-foreground size-5"
+            />
+            <p>{property.propertySize} sqm</p>
           </div>
         </div>
 
@@ -80,13 +115,13 @@ export function PropertyCard({ property }: PropertyCardProps) {
           <div>
             <p className="text-sub-foreground text-body">Price</p>
             <p className="text-lg font-semibold md:text-xl lg:text-2xl">
-              {property.price}
+              {formatCurrency(property.price)}
             </p>
           </div>
 
           {/* Link to individual property */}
           <AnimatedLink
-            href={`/properties/${propertySlug}`}
+            href={`/properties/${property.id}-${propertySlug}`}
             className="bg-purple-60 text-white-99 text-body size-fit px-5 py-3.5 font-medium text-nowrap max-[366px]:w-full lg:block"
           >
             View Details

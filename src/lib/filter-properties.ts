@@ -1,7 +1,8 @@
-import { Properties } from "@/lib/data";
-import { slugify } from "./utils";
+import { supabase } from "./supabase/client";
+import type { Property } from "./types";
+import { type FilterOptionsMap } from "./property-filters";
 
-export const filterProperties = (
+export async function filterProperties(
   searchParams: {
     search?: string;
     location?: string;
@@ -9,101 +10,112 @@ export const filterProperties = (
     price?: string;
     size?: string;
     year?: string;
+    page?: string;
   } = {},
-) => {
-  let results = [...Properties];
+  itemsPerPage: number,
+  filterOptions?: FilterOptionsMap,
+): Promise<{ properties: Property[]; totalCount: number }> {
+  let query = supabase
+    .from("Property")
+    .select(`*, images:PropertyImage(*)`, { count: "exact" });
 
   // Search
   if (searchParams.search) {
-    const q = searchParams.search.toLowerCase();
-    results = results.filter(
-      (p) =>
-        p.name.toLowerCase().includes(q) ||
-        p.description.toLowerCase().includes(q) ||
-        p.location.toLowerCase().includes(q) ||
-        p.propertyType.toLowerCase().includes(q),
+    const searchTerm = `%${searchParams.search}%`;
+    query = query.or(
+      `name.ilike.${searchTerm},description.ilike.${searchTerm}`,
     );
   }
 
   // Location
-  if (searchParams.location) {
-    results = results.filter(
-      (p) => slugify(p.location) === searchParams.location,
-    );
+  if (searchParams.location && filterOptions) {
+    const originalLocation = filterOptions.location.find(
+      (opt) => opt.value === searchParams.location,
+    )?.label;
+
+    query = query.ilike("location", originalLocation as string);
   }
 
   // Property Type
   if (searchParams.type) {
-    results = results.filter(
-      (p) => slugify(p.propertyType) === searchParams.type,
-    );
+    query = query.ilike("propertyType", searchParams.type);
   }
 
   // Price
   if (searchParams.price) {
-    results = results.filter((p) => {
-      const price = p.priceValue;
-
-      switch (searchParams.price) {
-        case "under-500":
-          return price < 500_000;
-        case "500-1m":
-          return price >= 500_000 && price <= 1_000_000;
-        case "1m-2m":
-          return price >= 1_000_000 && price <= 2_000_000;
-        case "2m-3m":
-          return price >= 2_000_000 && price <= 3_000_000;
-        case "over-3m":
-          return price > 3_000_000;
-        default:
-          return false;
-      }
-    });
+    switch (searchParams.price) {
+      case "under-500":
+        query = query.lt("price", 500000);
+        break;
+      case "500-1m":
+        query = query.gte("price", 500000).lte("price", 1000000);
+        break;
+      case "1m-2m":
+        query = query.gte("price", 1000000).lte("price", 2000000);
+        break;
+      case "2m-3m":
+        query = query.gte("price", 2000000).lte("price", 3000000);
+        break;
+      case "over-3m":
+        query = query.gt("price", 3000000);
+        break;
+    }
   }
 
-  // Property Size
   if (searchParams.size) {
-    results = results.filter((p) => {
-      const size = Number(p.propertySize);
-
-      switch (searchParams.size) {
-        case "under-100":
-          return size < 100;
-        case "100-200":
-          return size >= 100 && size <= 200;
-        case "200-300":
-          return size >= 200 && size <= 300;
-        case "300-400":
-          return size >= 300 && size <= 400;
-        case "over-400":
-          return size > 400;
-        default:
-          return false;
-      }
-    });
+    switch (searchParams.size) {
+      case "under-100":
+        query = query.lt("propertySize", 100);
+        break;
+      case "100-200":
+        query = query.gte("propertySize", 100).lte("propertySize", 200);
+        break;
+      case "200-300":
+        query = query.gte("propertySize", 200).lte("propertySize", 300);
+        break;
+      case "300-400":
+        query = query.gte("propertySize", 300).lte("propertySize", 400);
+        break;
+      case "over-400":
+        query = query.gt("propertySize", 400);
+        break;
+    }
   }
 
-  // Build Year
   if (searchParams.year) {
-    results = results.filter((p) => {
-      const year = p.buildYear;
-
-      switch (searchParams.year) {
-        case "before-2010":
-          return year < 2010;
-        case "2010-2015":
-          return year >= 2010 && year <= 2015;
-        case "2015-2020":
-          return year >= 2015 && year <= 2020;
-        case "2020-2025":
-          return year >= 2020 && year <= 2025;
-        case "after-2025":
-          return year > 2025;
-        default:
-          return false;
-      }
-    });
+    switch (searchParams.year) {
+      case "before-2010":
+        query = query.lt("buildYear", 2010);
+        break;
+      case "2010-2015":
+        query = query.gte("buildYear", 2010).lte("buildYear", 2015);
+        break;
+      case "2015-2020":
+        query = query.gte("buildYear", 2015).lte("buildYear", 2020);
+        break;
+      case "2020-2025":
+        query = query.gte("buildYear", 2020).lte("buildYear", 2025);
+        break;
+      case "after-2025":
+        query = query.gt("buildYear", 2025);
+        break;
+    }
   }
 
-  return results;
-};
+  console.log("Items per page: ", itemsPerPage);
+  const page = Number(searchParams.page ?? 1);
+  const from = (page - 1) * itemsPerPage;
+  const to = from + itemsPerPage - 1;
+
+  query = query.range(from, to);
+
+  const { data, error, count } = await query;
+
+  if (error) {
+    return { properties: [], totalCount: 0 };
+  }
+  return {
+    properties: data as Property[],
+    totalCount: count || 0,
+  };
+}

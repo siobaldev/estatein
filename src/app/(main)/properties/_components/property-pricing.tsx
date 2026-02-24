@@ -2,9 +2,17 @@ import TripleStar from "@/components/ui/triple-star";
 import PricingDetails from "./pricing-details";
 import { Property } from "@/lib/types";
 
-interface PropertyProps {
-  property: Pick<Property, "name" | "pricingDetails">;
-}
+type PropertyProps = {
+  property: Pick<
+    Property,
+    | "id"
+    | "name"
+    | "additionalFees"
+    | "monthlyCosts"
+    | "totalInitialCosts"
+    | "monthlyExpenses"
+  >;
+};
 
 export default function PropertyPricing({ property }: PropertyProps) {
   return (
@@ -41,7 +49,7 @@ export default function PropertyPricing({ property }: PropertyProps) {
         </div>
 
         {/* Pricing Details */}
-        <PricingDetails propertyDetails={property.pricingDetails} />
+        <PricingDetails propertyDetails={property} />
       </div>
     </section>
   );

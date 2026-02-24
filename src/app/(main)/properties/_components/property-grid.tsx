@@ -11,8 +11,9 @@ import { pageBuilder } from "@/lib/page-builder";
 import { Property } from "@/lib/types";
 
 // Type definition for the page props
-interface PropertyGridProps {
+type PropertyGridProps = {
   properties: Property[];
+  totalCount: number;
   currentPage: number;
   itemsPerPage: number;
   searchParams: {
@@ -24,10 +25,11 @@ interface PropertyGridProps {
     year?: string;
     page?: string;
   };
-}
+};
 
 export default function PropertyGrid({
   properties,
+  totalCount,
   currentPage,
   itemsPerPage,
   searchParams,
@@ -39,9 +41,6 @@ export default function PropertyGrid({
   // Calculate array slice indices for current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
-  // Slice the properties array to get only the items for current page
-  const paginatedProperties = properties.slice(startIndex, endIndex);
 
   // Calculate total number of pages needed
   const totalPages = Math.ceil(properties.length / itemsPerPage);
@@ -113,7 +112,7 @@ export default function PropertyGrid({
       {/* Property Cards Grid */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
         {/* Render only the properties for the current page */}
-        {paginatedProperties.map((property) => (
+        {properties.map((property) => (
           <PropertyCard key={property.id} property={property} />
         ))}
       </div>
@@ -123,12 +122,11 @@ export default function PropertyGrid({
         {/* Results Counter - Shows which items are currently visible */}
         {/* Example: "Showing 7-12 of 20 properties" */}
         <div className="text-sub-foreground text-body text-center font-medium text-nowrap lg:text-start">
-          Showing {startIndex + 1}-{Math.min(endIndex, properties.length)} of{" "}
-          {properties.length} properties
+          Showing {startIndex + 1}-{Math.min(endIndex, totalCount)} of{" "}
+          {totalCount} properties
         </div>
 
         {/* Pagination Controls */}
-
         <Pagination>
           {/* Container for all pagination items */}
           <PaginationContent className="text-body flex w-full grid-cols-2 grid-rows-2 justify-center gap-x-2 gap-y-2 font-medium max-[450px]:grid md:justify-end">

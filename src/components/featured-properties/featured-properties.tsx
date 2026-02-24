@@ -1,8 +1,15 @@
 import AnimatedLink from "../ui/animated-link";
 import TripleStar from "../ui/triple-star";
 import CarouselProperties from "./carousel";
+import { supabase } from "@/lib/supabase/client";
 
-export default function FeaturedProperties() {
+export default async function FeaturedProperties() {
+  const { data: featuredProperties } = await supabase
+    .from("Property")
+    .select("*")
+    .eq("isFeatured", true)
+    .limit(3);
+
   return (
     <section id="features" className="wrapper relative scroll-mt-32.5">
       {/* Decorative triple star */}
@@ -35,7 +42,9 @@ export default function FeaturedProperties() {
         </div>
 
         {/* Properties carousel component */}
-        <CarouselProperties />
+        {featuredProperties && featuredProperties.length > 0 && (
+          <CarouselProperties properties={featuredProperties} />
+        )}
       </div>
     </section>
   );
