@@ -1,4 +1,3 @@
-import { Properties } from "@/lib/data";
 import {
   BuildingsIcon,
   MapPinIcon,
@@ -7,23 +6,74 @@ import {
   CalendarBlankIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { slugify } from "./utils";
+import { supabase } from "./supabase/client";
+import { Icon } from "@phosphor-icons/react";
 
 export type FilterOption = {
   label: string;
   value: string;
 };
 
-// Extracts unique values from property data
-const getUniqueOptions = (key: "location" | "propertyType"): FilterOption[] => {
-  const uniqueValues = Array.from(new Set(Properties.map((p) => p[key])));
-
-  return [
-    ...uniqueValues.map((value) => ({
-      label: value,
-      value: slugify(value),
-    })),
-  ];
+type BaseFilter = {
+  id: number;
+  icon: Icon;
+  name: string;
+  queryKey: string;
+  placeholder: string;
 };
+
+type DynamicFilter = BaseFilter & {
+  isDynamic: true;
+  options?: never;
+};
+
+type StaticFilter = BaseFilter & {
+  isDynamic?: false;
+  options: FilterOption[];
+};
+
+export type FilterConfig = DynamicFilter | StaticFilter;
+
+// Extracts unique values from property data
+export async function getLocationOptions(): Promise<FilterOption[]> {
+  const { data, error } = await supabase.from("Property").select("location");
+
+  if (error || !data) return [];
+
+  const unique = [...new Set(data.map((item) => item.location))];
+
+  return unique.map((value) => ({
+    label: value,
+    value: slugify(value),
+  }));
+}
+
+export async function getPropertyTypeOptions(): Promise<FilterOption[]> {
+  const { data, error } = await supabase
+    .from("Property")
+    .select("propertyType");
+
+  if (error || !data) return [];
+
+  const unique = [...new Set(data.map((item) => item.propertyType))];
+
+  return unique.map((value) => ({
+    label: value,
+    value: slugify(value),
+  }));
+}
+
+export type FilterOptionsMap = {
+  location: FilterOption[];
+  type: FilterOption[];
+};
+
+export async function getFilterOptions(): Promise<FilterOptionsMap> {
+  return {
+    location: await getLocationOptions(),
+    type: await getPropertyTypeOptions(),
+  };
+}
 
 // Price ranges used for filtering
 export const getPriceRanges = (): FilterOption[] => [
@@ -53,14 +103,14 @@ export const getBuildYearRanges = (): FilterOption[] => [
 ];
 
 // Property filters data
-export const PropertyFilters = [
+export const getPropertyFilters: FilterConfig[] = [
   {
     id: 1,
     icon: MapPinIcon,
     name: "Location",
     queryKey: "location",
     placeholder: "Select Location",
-    options: getUniqueOptions("location"),
+    isDynamic: true,
   },
   {
     id: 2,
@@ -68,7 +118,7 @@ export const PropertyFilters = [
     name: "Property Type",
     queryKey: "type",
     placeholder: "Select Property Type",
-    options: getUniqueOptions("propertyType"),
+    isDynamic: true,
   },
   {
     id: 3,

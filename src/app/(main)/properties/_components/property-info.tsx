@@ -7,10 +7,12 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import PropertyImageGallery from "./property-images";
 import { Property } from "@/lib/types";
+import { formatCurrency } from "@/lib/utils";
 
-interface PropertyProps {
+type PropertyProps = {
   property: Pick<
     Property,
+    | "id"
     | "name"
     | "location"
     | "price"
@@ -21,7 +23,7 @@ interface PropertyProps {
     | "propertySize"
     | "keyFeatures"
   >;
-}
+};
 
 export default function PropertyInfo({ property }: PropertyProps) {
   return (
@@ -42,7 +44,7 @@ export default function PropertyInfo({ property }: PropertyProps) {
         <div>
           <p className="text-sub-foreground">Price</p>
           <p className="text-xl font-semibold md:text-2xl xl:text-3xl">
-            {property.price}
+            {formatCurrency(property.price)}
           </p>
         </div>
       </div>
@@ -121,9 +123,9 @@ export default function PropertyInfo({ property }: PropertyProps) {
           </h2>
           <div className="space-y-4.5 md:space-y-5 lg:space-y-6 xl:space-y-7.5">
             {/* Map through each key feature and display with icon */}
-            {property.keyFeatures.map((feature, index) => (
+            {property.keyFeatures.map((feature) => (
               <div
-                key={index}
+                key={feature.id}
                 className="border-purple-60 from-border/40 flex items-center gap-x-4 border-l bg-linear-to-r to-80% py-2.5 pr-2.5 pl-4 lg:py-3.5 xl:py-4"
               >
                 <SparkleIcon
@@ -131,7 +133,7 @@ export default function PropertyInfo({ property }: PropertyProps) {
                   aria-hidden="true"
                   className="size-6"
                 />
-                <p className="text-sub-foreground">{feature}</p>
+                <p className="text-sub-foreground">{feature.feature}</p>
               </div>
             ))}
           </div>

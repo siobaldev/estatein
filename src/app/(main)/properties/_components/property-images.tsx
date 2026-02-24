@@ -11,9 +11,10 @@ import {
 } from "@/components/ui/carousel";
 import AnimatedButton from "@/components/ui/animated-button";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { PropertyImage } from "@/lib/types";
 
 interface PropertyImageGalleryProps {
-  images: string[];
+  images: PropertyImage[];
   propertyName: string;
 }
 
@@ -146,13 +147,13 @@ export default function PropertyImageGallery({
       >
         <CarouselContent>
           {images.map((image, index) => (
-            <CarouselItem key={index} className="lg:basis-1/2">
+            <CarouselItem key={image.id} className="lg:basis-1/2">
               <div className="flex aspect-video items-center justify-center overflow-hidden rounded-lg">
                 <Image
-                  src={image}
+                  src={image.url}
                   alt={`${propertyName} - Image ${index + 1}`}
-                  height={1300}
-                  width={1625}
+                  height={768}
+                  width={1366}
                 />
               </div>
             </CarouselItem>
@@ -174,7 +175,7 @@ export default function PropertyImageGallery({
             <CarouselContent className="-ml-2">
               {images.map((image, index) => (
                 <CarouselItem
-                  key={index}
+                  key={image.id}
                   className="basis-1/3 pl-2 md:basis-1/4 lg:basis-1/5"
                 >
                   <button
@@ -186,7 +187,7 @@ export default function PropertyImageGallery({
                     }`}
                   >
                     <Image
-                      src={image}
+                      src={image.url}
                       alt={`${propertyName} thumbnail ${index + 1}`}
                       height={1300}
                       width={1625}

@@ -7,13 +7,31 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { Properties } from "@/lib/data";
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
 import AnimatedLink from "../ui/animated-link";
 import AnimatedButton from "../ui/animated-button";
 import { PropertyCard } from "../property-card";
+import { Property } from "@/lib/types";
 
-export default function CarouselProperties() {
+type FeaturedPropertiesProps = {
+  properties: Pick<
+    Property,
+    | "id"
+    | "name"
+    | "description"
+    | "image"
+    | "location"
+    | "bedrooms"
+    | "bathrooms"
+    | "propertyType"
+    | "propertySize"
+    | "price"
+  >[];
+};
+
+export default function CarouselProperties({
+  properties,
+}: FeaturedPropertiesProps) {
   // Carousel API instance for controlling carousel behavior
   const [api, setApi] = useState<CarouselApi>();
 
@@ -75,7 +93,7 @@ export default function CarouselProperties() {
       {/* Carousel Container */}
       <Carousel setApi={setApi}>
         <CarouselContent className="rounded-lg">
-          {Properties.map((prop) => (
+          {properties.map((prop) => (
             <CarouselItem
               key={prop.id}
               className="flex max-w-md rounded-lg pl-4 md:basis-1/2 md:pl-6 xl:basis-1/3"

@@ -9,16 +9,32 @@ import {
 } from "@/components/ui/select";
 import { MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
 import AnimatedButton from "@/components/ui/animated-button";
-import { PropertyFilters } from "@/lib/property-filters";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import {
+  getPropertyFilters,
+  type FilterOptionsMap,
+} from "@/lib/property-filters";
 
-export default function SearchFilter() {
+type SearchFilterProps = {
+  filterOptions: FilterOptionsMap;
+};
+
+export default function SearchFilter({ filterOptions }: SearchFilterProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [searchValue, setSearchValue] = useState<string>(
     searchParams.get("search") ?? "",
   );
+
+  const filters = getPropertyFilters.map((filter) => ({
+    ...filter,
+    options: filter.isDynamic
+      ? filter.queryKey === "location"
+        ? filterOptions.location
+        : filterOptions.type
+      : filter.options || [],
+  }));
 
   // Updates a single query parameter in the URL
   // This function modifies the URL search parameters to reflect filter changes
@@ -59,6 +75,12 @@ export default function SearchFilter() {
     updateParam("search", ""); // Clear URL parameter
   };
 
+  const handleSearchBlur = () => {
+    if (searchValue.trim() === "") {
+      updateParam("search", ""); // Clear URL parameter
+    }
+  };
+
   return (
     <form
       onSubmit={handleSearchSubmit}
@@ -71,6 +93,7 @@ export default function SearchFilter() {
           type="text"
           // Preserve search value from URL when component re-renders
           value={searchValue}
+          onBlur={handleSearchBlur}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Search for a property"
           className="caret-purple-60 text-body placeholder:text-sub-foreground w-full rounded-lg py-3 pr-14 pl-4 outline-none md:pr-16"
@@ -102,9 +125,9 @@ export default function SearchFilter() {
       </div>
 
       {/* Filter dropdowns */}
-      <div className="bg-sub-background grid grid-cols-1 gap-5 rounded-lg rounded-t-none p-5 lg:grid-cols-6">
+      <div className="bg-sub-background grid grid-cols-1 gap-5 rounded-lg rounded-t-none p-5 lg:grid-cols-6 lg:rounded-t-lg">
         {/* Map through all available filters from configuration */}
-        {PropertyFilters.map((filter) => (
+        {filters.map((filter) => (
           <div key={filter.id} className="lg:col-span-2 lg:nth-4:col-start-2">
             <Select
               // Read current filter value from URL (or empty string if not set)
