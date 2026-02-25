@@ -98,10 +98,10 @@ export default function Hero() {
       <div className="order-1 flex size-full items-center lg:order-2">
         <div className="bg-sub-background ring-border relative flex size-full items-center justify-center overflow-hidden rounded-xl ring">
           {/* Building image */}
-          <div className="relative z-10 h-full w-80 max-[1024px]:aspect-690/622 min-[408px]:w-105 lg:w-full">
+          <div className="relative z-10 aspect-360/325 h-full w-80 min-[408px]:w-105 lg:w-full">
             <Image
-              src={"/assets/Building.webp"}
-              alt="building-image"
+              src={"/assets/Rottendam.avif"}
+              alt="Rottendamn image"
               loading="eager"
               fetchPriority="high"
               className="object-cover"

@@ -59,15 +59,17 @@ export default function OurStory() {
       <div className="flex flex-1 items-center">
         <div className="bg-sub-background ring-border relative flex size-full items-center justify-center overflow-hidden rounded-xl ring">
           {/* House model image */}
-          <Image
-            src={"/assets/House-Model.webp"}
-            alt="house-model-image"
-            loading="eager"
-            className="z-10 size-full min-[408px]:w-90 lg:size-full"
-            width={100}
-            height={100}
-            unoptimized={true}
-          />
+          <div className="relative z-10 aspect-5/4 h-full w-80 p-5 min-[408px]:w-105 lg:w-full">
+            <Image
+              src="/assets/Property-Model.avif"
+              alt="Hand holding house real estate and property model"
+              loading="eager"
+              className="object-cover"
+              fill
+              sizes="(max-width: 1024px) 100vw, 360px"
+            />
+          </div>
+
           {/* Decorative abstract line pattern background */}
           <AbstractLines className="stroke-border absolute h-160 stroke-1 xl:h-full" />
         </div>
