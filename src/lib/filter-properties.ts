@@ -1,4 +1,4 @@
-import { supabase } from "./supabase/client";
+import { createClient } from "./supabase/client";
 import type { Property } from "./types";
 import { type FilterOptionsMap } from "./property-filters";
 
@@ -15,6 +15,7 @@ export async function filterProperties(
   itemsPerPage: number,
   filterOptions?: FilterOptionsMap,
 ): Promise<{ properties: Property[]; totalCount: number }> {
+  const supabase = createClient();
   let query = supabase
     .from("Property")
     .select(`*, images:PropertyImage(*)`, { count: "exact" });

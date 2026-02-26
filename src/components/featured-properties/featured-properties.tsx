@@ -1,9 +1,11 @@
 import AnimatedLink from "../ui/animated-link";
 import TripleStar from "../ui/triple-star";
 import CarouselProperties from "./carousel";
-import { supabase } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 
 export default async function FeaturedProperties() {
+  const supabase = createClient();
+
   const { data: featuredProperties } = await supabase
     .from("Property")
     .select("*")
