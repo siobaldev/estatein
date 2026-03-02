@@ -6,13 +6,15 @@ import PropertyInfo from "../_components/property-info";
 import PropertyInquiry from "../_components/property-inquiry";
 import PropertyPricing from "../_components/property-pricing";
 import FAQs from "@/components/faqs/faqs";
-import { supabase } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export default async function PropertyDetails({ params }: Props) {
+  const supabase = createClient();
+
   const { slug } = await params;
 
   const id = slug.split("-")[0];
@@ -52,6 +54,7 @@ export default async function PropertyDetails({ params }: Props) {
 
 // Generate static params for all properties (for static generation)
 export async function generateStaticParams() {
+  const supabase = createClient();
   const { data: properties } = await supabase
     .from("Property")
     .select("id, name");
@@ -65,6 +68,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const supabase = createClient();
+
   const { slug } = await params;
   const id = slug.split("-")[0];
 

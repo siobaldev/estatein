@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { slugify } from "@/lib/utils";
-import { supabase } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 
-const baseUrl = "https://estatein-hub.vercel.app";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const supabase = createClient();
   const { data: properties } = await supabase
     .from("Property")
     .select("id, name, createdAt");

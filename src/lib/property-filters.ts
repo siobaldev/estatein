@@ -6,7 +6,7 @@ import {
   CalendarBlankIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { slugify } from "./utils";
-import { supabase } from "./supabase/client";
+import { createClient } from "./supabase/client";
 import { Icon } from "@phosphor-icons/react";
 
 export type FilterOption = {
@@ -36,6 +36,7 @@ export type FilterConfig = DynamicFilter | StaticFilter;
 
 // Extracts unique values from property data
 export async function getLocationOptions(): Promise<FilterOption[]> {
+  const supabase = createClient();
   const { data, error } = await supabase.from("Property").select("location");
 
   if (error || !data) return [];
@@ -49,6 +50,7 @@ export async function getLocationOptions(): Promise<FilterOption[]> {
 }
 
 export async function getPropertyTypeOptions(): Promise<FilterOption[]> {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("Property")
     .select("propertyType");
