@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { slugify } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 
-const baseUrl = "https://estatein-hub.vercel.app";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createClient();

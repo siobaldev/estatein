@@ -6,8 +6,15 @@ import MobileNav from "./mobile-nav";
 import AnimatedLink from "../ui/animated-link";
 import StickyAnimatedHeader from "./header-wrapper";
 import ContactButton from "./contact-button";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import User from "@/app/_components/user";
+import { UserCircleIcon } from "@phosphor-icons/react/dist/ssr";
 
-export default function Header() {
+export default async function Header() {
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase.auth.getUser();
+  const user = data.user;
+
   return (
     <StickyAnimatedHeader>
       {/* Promotional Banner appears at the very top */}
@@ -46,6 +53,22 @@ export default function Header() {
 
             {/* Contact Button only visible on desktop (md and above) */}
             <ContactButton />
+
+            {user ? (
+              <User />
+            ) : (
+              <AnimatedLink
+                aria-label="Go to login page"
+                href="/login"
+                className="bg-background shadow-border ring-border hover:ring-purple-60 rounded-lg p-3 shadow ring"
+              >
+                <UserCircleIcon
+                  weight="fill"
+                  aria-hidden
+                  className="size-4 cursor-pointer sm:size-5 lg:size-6.5"
+                />
+              </AnimatedLink>
+            )}
 
             {/* Mobile Navigation Drawer only visible on mobile (below md) */}
             <MobileNav />

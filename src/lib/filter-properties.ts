@@ -103,7 +103,6 @@ export async function filterProperties(
     }
   }
 
-  console.log("Items per page: ", itemsPerPage);
   const page = Number(searchParams.page ?? 1);
   const from = (page - 1) * itemsPerPage;
   const to = from + itemsPerPage - 1;

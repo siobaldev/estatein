@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const urbanist = localFont({
   src: [
@@ -57,6 +58,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Toaster position="bottom-center" />
         </ThemeProvider>
       </body>
     </html>
