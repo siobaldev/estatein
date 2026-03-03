@@ -6,7 +6,7 @@ import StrategicMarketing from "./_components/strategic-marketing";
 import NegotiationWizardry from "./_components/negotiation-wizardry";
 
 export const metadata: Metadata = {
-  title: "Estatein - Services",
+  title: "Services - Estatein",
   description:
     "Explore Estatein’s real estate services designed to support buyers, sellers, and investors through every stage of the property journey, from discovery to decision-making.",
 };

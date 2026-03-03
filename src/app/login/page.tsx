@@ -4,7 +4,7 @@ import Form from "./_components/form";
 import AnimatedLink from "@/components/ui/animated-link";
 
 export const metadata: Metadata = {
-  title: "Sign In | Estatein",
+  title: "Sign In - Estatein",
   description: "Sign in to your Estatein account.",
   robots: {
     index: false,

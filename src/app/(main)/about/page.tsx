@@ -8,7 +8,7 @@ import OurTeam from "./_components/our-team/our-team";
 import OurClients from "./_components/our-clients/our-clients";
 
 export const metadata: Metadata = {
-  title: "Estatein - About Us",
+  title: "About Us - Estatein",
   description:
     "Learn more about Estatein, a modern real estate platform focused on clarity, trust, and user-friendly property experiences.",
 };

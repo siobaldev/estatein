@@ -5,7 +5,7 @@ import ContactForm from "./_components/contact-form/contact-form";
 import OurOffices from "./_components/office";
 
 export const metadata: Metadata = {
-  title: "Estatein - Contact",
+  title: "Contact Us - Estatein",
   description:
     "Get in touch with Estatein for all your real estate needs. Contact our team for property inquiries, management services, investment opportunities, or general questions.",
 };

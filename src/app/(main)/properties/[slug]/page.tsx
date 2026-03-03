@@ -7,10 +7,13 @@ import PropertyInquiry from "../_components/property-inquiry";
 import PropertyPricing from "../_components/property-pricing";
 import FAQs from "@/components/faqs/faqs";
 import { createClient } from "@/lib/supabase/client";
+import { formatCurrency } from "@/lib/utils";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL!;
 
 export default async function PropertyDetails({ params }: Props) {
   const supabase = createClient();
@@ -75,18 +78,63 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const { data: property } = await supabase
     .from("Property")
-    .select("name, description")
+    .select(
+      "name, description, location, price, propertyType, image, bedrooms, bathrooms, propertySize",
+    )
     .eq("id", id)
     .single();
 
   if (!property) {
     return {
-      title: "Estatein - Property Not Found",
+      title: "Property Not Found - Estatein",
     };
   }
 
+  const description =
+    `For sale at ${formatCurrency(property.price)} – This ${property.propertyType.toLowerCase()} in ${property.location} features ${property.bedrooms} bedrooms, ${property.bathrooms} bathrooms, and ${property.propertySize} sqm of living space. View photos, amenities, and full details on Estatein.`
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const ogTitle = `Discover this ${property.propertyType.toLowerCase()} in ${property.location} - Estatein`;
+  const ogDescription = `Step into this beautifully designed ${property.propertyType} offering ${property.bedrooms} spacious bedrooms, modern finishes, and exceptional comfort. Don’t miss this opportunity.`;
+
+  const url = `${baseUrl}/properties/${slug}`;
+
   return {
-    title: `Estatein - ${property.name}`,
-    description: property.description,
+    metadataBase: new URL(baseUrl),
+    title: `${property.name} - Estatein`,
+    description: description,
+
+    alternates: {
+      canonical: `/properties/${slug}`,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    openGraph: {
+      title: ogTitle,
+      description: ogDescription,
+      url,
+      siteName: "Estatein",
+      type: "website",
+      images: [
+        {
+          url: `/api/og/${slug}`,
+          width: 1200,
+          height: 630,
+          alt: `${property?.name} property preview`,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: ogDescription,
+      images: [`/api/og/${slug}`],
+    },
   };
 }
