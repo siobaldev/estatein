@@ -22,9 +22,32 @@ const urbanist = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://estatein-hub.vercel.app"),
   title: "Estatein",
   description:
     "Find your perfect property with Estatein, a leading real estate agency offering expert support in home buying, selling, and investment. Explore top listings, personalized service, and market-driven insights.",
+  openGraph: {
+    title: "Estatein - Modern Real Estate Platform",
+    description:
+      "Discover homes, apartments, and investment properties. Buy, sell, and explore real estate with modern tools designed for smarter decisions.",
+    siteName: "Estatein",
+    type: "website",
+    images: [
+      {
+        url: "/assets/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Estatein – Modern Real Estate Platform",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Estatein – Modern Real Estate Platform",
+    description:
+      "Discover homes, apartments, and investment properties. Buy, sell, and explore real estate with modern tools designed for smarter decisions.",
+    images: ["/assets/opengraph-image.png"],
+  },
   verification: {
     google: "Zfuql6i4ntFcw5ESM4-gucPqhmam6CqDLr62PBe_TL4",
   },
