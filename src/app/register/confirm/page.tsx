@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Confirm Email | Estatein",
+  title: "Confirm Email - Estatein",
   robots: {
     index: false,
     follow: false,

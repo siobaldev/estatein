@@ -4,7 +4,7 @@ import PropertiesHero from "./_components/hero-section";
 import PropertiesList from "./_components/property-list";
 
 export const metadata: Metadata = {
-  title: "Estatein - Properties",
+  title: "Properties - Estatein",
   description:
     "Browse Estatein’s curated collection of residential and commercial properties. Find detailed listings, pricing, and insights to help you choose your ideal property.",
 };
