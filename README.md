@@ -9,6 +9,7 @@ Estatein is a modern real estate website concept focused on showcasing propertie
 ## Technology Used
 - Framework: Next.js
 - Language: TypeScript
+- Database: Supabase
 - Styling: Tailwind CSS
 - UI & Components: Shadcn(Radix UI), Vaul
 - Animations: Motion
@@ -21,7 +22,11 @@ Estatein is a modern real estate website concept focused on showcasing propertie
 - Smooth animations and interactive UI elements
 - Reusable and scalable component architecture
 - Theme support with system preference handling
-
+- Advanced property search and filtering
+- Secure user authentication with login and registration
+- Property detail pages with images and descriptions
+- Dynamic property listing with pagination
+- Interactive property cards for browsing listings
 ---
 
 ## Credits & Resources
