@@ -7,7 +7,7 @@ import AnimatedLink from "../ui/animated-link";
 import StickyAnimatedHeader from "./header-wrapper";
 import ContactButton from "./contact-button";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import User from "@/app/_components/user";
+import User from "@/app/admin/_components/user";
 import { UserCircleIcon } from "@phosphor-icons/react/dist/ssr";
 
 export default async function Header() {

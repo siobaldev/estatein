@@ -13,12 +13,14 @@ import {
 import { UserCircleIcon } from "@phosphor-icons/react";
 import SignOutButton from "./signOut-button";
 
+// TODO: on not found page, check if admin - go to dashboard else go to homepage
+
 export default function User() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <AnimatedButton
-          aria-label="user button"
+          aria-label="User drop down button"
           className="bg-background shadow-border ring-border hover:ring-purple-60 rounded-lg p-3 shadow ring"
         >
           <UserCircleIcon
@@ -32,7 +34,6 @@ export default function User() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuGroup>
           <DropdownMenuSeparator />
