@@ -27,9 +27,13 @@ Estatein is a modern real estate website concept focused on showcasing propertie
 - Property detail pages with images and descriptions
 - Dynamic property listing with pagination
 - Interactive property cards for browsing listings
+- Create, edit, and delete property listings (admin functionality)
 ---
 
 ## Credits & Resources
 
 - Original design [Estatein - Real Estate Website Template](https://www.figma.com/community/file/1314076616839640516/real-estate-business-website-ui-template-dark-theme-produce-ui)
 - Design was customized and adapted to create the Estatein concept
+
+
+
