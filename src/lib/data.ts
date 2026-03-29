@@ -24,9 +24,17 @@ import {
   PhoneIcon,
   MapPinIcon,
   AtIcon,
+  SquaresFourIcon,
+  UsersIcon,
+  ArrowsLeftRightIcon,
+  GearSixIcon,
+  ImageIcon,
+  FileTextIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { type ClientFormData } from "@/schemas/contactSchema";
 import { type InquiryFormData } from "@/schemas/inquirySchema";
+import type { Path } from "react-hook-form";
+import type { PropertySchema } from "@/schemas/propertySchema";
 
 export const NavItems = [
   { label: "Home", href: "/" },
@@ -34,6 +42,18 @@ export const NavItems = [
   { label: "Properties", href: "/properties" },
   { label: "Services", href: "/services" },
   { label: "Contact Us", href: "/contact" },
+];
+
+export const adminNavItems = [
+  { label: "Dashboard", href: "/admin/dashboard", icon: SquaresFourIcon },
+  { label: "Properties", href: "/admin/properties", icon: BuildingsIcon },
+  { label: "Clients", href: "/admin/clients", icon: UsersIcon },
+  {
+    label: "Transactions",
+    href: "/admin/transactions",
+    icon: ArrowsLeftRightIcon,
+  },
+  { label: "Settings", href: "/admin/settings", icon: GearSixIcon },
 ];
 
 export const HeroStats = [
@@ -755,3 +775,293 @@ export const InquiryFormFields: InquiryFormField[] = [
     rows: 6,
   },
 ];
+
+export type PropertyFormField = {
+  id: number;
+  name: Path<PropertySchema>;
+  label: string;
+  type: string;
+  placeholder?: string;
+  required: boolean;
+  rows?: number;
+  min?: number;
+  max?: number;
+  options?: Array<{ value: string; label: string }>;
+  colSpan?: "full";
+  section:
+    | "basicInfo"
+    | "images"
+    | "keyFeatures"
+    | "additionalFees"
+    | "monthlyCosts"
+    | "totalInitialCosts"
+    | "monthlyExpenses";
+};
+
+export const PropertyFormFields: PropertyFormField[] = [
+  // Basic Information
+  {
+    id: 1,
+    name: "name",
+    label: "Property Name",
+    type: "text",
+    placeholder: "e.g. The Meridian Penthouse",
+    required: true,
+    colSpan: "full",
+    section: "basicInfo",
+  },
+  {
+    id: 2,
+    name: "description",
+    label: "Description",
+    type: "textarea",
+    placeholder:
+      "e.g. A stunning 3-bedroom penthouse with panoramic city views, floor-to-ceiling windows, and a private rooftop terrace...",
+    required: true,
+    rows: 4,
+    colSpan: "full",
+    section: "basicInfo",
+  },
+  {
+    id: 3,
+    name: "propertyType",
+    label: "Property Type",
+    type: "select",
+    placeholder: "Select type",
+    required: true,
+    section: "basicInfo",
+    options: [
+      { value: "Apartment", label: "Apartment" },
+      { value: "Condo", label: "Condo" },
+      { value: "Villa", label: "Villa" },
+      { value: "Estate", label: "Estate" },
+      { value: "Penthouse", label: "Penthouse" },
+      { value: "Townhouse", label: "Townhouse" },
+      { value: "Studio", label: "Studio" },
+      { value: "House", label: "House" },
+    ],
+  },
+  {
+    id: 4,
+    name: "location",
+    label: "Location",
+    type: "text",
+    placeholder: "e.g. Manhattan, New York",
+    required: true,
+    section: "basicInfo",
+  },
+  {
+    id: 5,
+    name: "bedrooms",
+    label: "Bedrooms",
+    type: "number",
+    placeholder: "e.g. 3",
+    required: true,
+    section: "basicInfo",
+  },
+  {
+    id: 6,
+    name: "bathrooms",
+    label: "Bathrooms",
+    type: "number",
+    placeholder: "e.g. 2",
+    required: true,
+    section: "basicInfo",
+  },
+  {
+    id: 7,
+    name: "propertySize",
+    label: "Size (sqm)",
+    type: "number",
+    placeholder: "e.g. 120",
+    required: true,
+    section: "basicInfo",
+  },
+  {
+    id: 8,
+    name: "buildYear",
+    label: "Build Year",
+    type: "number",
+    placeholder: "e.g. 2018",
+    required: true,
+    min: 1800,
+    max: new Date().getFullYear(),
+    section: "basicInfo",
+  },
+  {
+    id: 9,
+    name: "price",
+    label: "Price (USD)",
+    type: "number",
+    placeholder: "e.g. 850,000",
+    required: true,
+    colSpan: "full",
+    section: "basicInfo",
+  },
+
+  // Additional Fees
+  {
+    id: 10,
+    name: "additionalFees.propertyTransferTax",
+    label: "Property Transfer Tax",
+    type: "number",
+    placeholder: "e.g. 8,500",
+    required: true,
+    section: "additionalFees",
+  },
+  {
+    id: 11,
+    name: "additionalFees.legalFees",
+    label: "Legal Fees",
+    type: "number",
+    placeholder: "e.g. 2,000",
+    required: true,
+    section: "additionalFees",
+  },
+  {
+    id: 12,
+    name: "additionalFees.homeInspection",
+    label: "Home Inspection",
+    type: "number",
+    placeholder: "e.g. 500",
+    required: true,
+    section: "additionalFees",
+  },
+  {
+    id: 13,
+    name: "additionalFees.propertyInsurance",
+    label: "Property Insurance",
+    type: "number",
+    placeholder: "e.g. 1,200",
+    required: true,
+    section: "additionalFees",
+  },
+  {
+    id: 14,
+    name: "additionalFees.mortgageFees",
+    label: "Mortgage Fees",
+    type: "text",
+    placeholder: "e.g. 1.5% of loan amount",
+    required: true,
+    colSpan: "full",
+    section: "additionalFees",
+  },
+
+  // Monthly Costs
+  {
+    id: 15,
+    name: "monthlyCosts.propertyTaxes",
+    label: "Property Taxes",
+    type: "number",
+    placeholder: "e.g. 350",
+    required: true,
+    section: "monthlyCosts",
+  },
+  {
+    id: 16,
+    name: "monthlyCosts.hoaFee",
+    label: "HOA Fee",
+    type: "number",
+    placeholder: "e.g. 250",
+    required: true,
+    section: "monthlyCosts",
+  },
+
+  // Total Initial Costs
+  {
+    id: 17,
+    name: "totalInitialCosts.listingPrice",
+    label: "Listing Price",
+    type: "number",
+    placeholder: "e.g. 850,000",
+    required: true,
+    section: "totalInitialCosts",
+  },
+  {
+    id: 18,
+    name: "totalInitialCosts.additionalFeesTotal",
+    label: "Additional Fees Total",
+    type: "number",
+    placeholder: "e.g. 12,200",
+    required: true,
+    section: "totalInitialCosts",
+  },
+  {
+    id: 19,
+    name: "totalInitialCosts.downPayment",
+    label: "Down Payment",
+    type: "number",
+    placeholder: "e.g. 170,000",
+    required: true,
+    section: "totalInitialCosts",
+  },
+  {
+    id: 20,
+    name: "totalInitialCosts.mortgageAmount",
+    label: "Mortgage Amount",
+    type: "number",
+    placeholder: "e.g. 680,000",
+    required: true,
+    section: "totalInitialCosts",
+  },
+
+  // Monthly Expenses
+  {
+    id: 21,
+    name: "monthlyExpenses.propertyTaxes",
+    label: "Property Taxes",
+    type: "number",
+    placeholder: "e.g. 350",
+    required: true,
+    section: "monthlyExpenses",
+  },
+  {
+    id: 22,
+    name: "monthlyExpenses.hoaFee",
+    label: "HOA Fee",
+    type: "number",
+    placeholder: "e.g. 250",
+    required: true,
+    section: "monthlyExpenses",
+  },
+  {
+    id: 23,
+    name: "monthlyExpenses.mortgagePayment",
+    label: "Mortgage Payment",
+    type: "number",
+    placeholder: "e.g. 3,400",
+    required: true,
+    section: "monthlyExpenses",
+  },
+  {
+    id: 24,
+    name: "monthlyExpenses.propertyInsurance",
+    label: "Property Insurance",
+    type: "number",
+    placeholder: "e.g. 100",
+    required: true,
+    section: "monthlyExpenses",
+  },
+];
+
+export const formSteps = [
+  { icon: BuildingsIcon, label: "Basic Information", step: 1 },
+  { icon: ImageIcon, label: "Images", step: 2 },
+  { icon: SparkleIcon, label: "Key Features", step: 3 },
+  { icon: CurrencyDollarIcon, label: "Pricing", step: 4 },
+  { icon: FileTextIcon, label: "Review", step: 5 },
+];
+
+export const errorMessages: Record<string, string> = {
+  validation_error: "Please check your inputs and try again.",
+  image_upload_failed: "One or more images failed to upload. Please try again.",
+  invalid_image_type: "Only PNG, JPG, and WEBP images are supported.",
+  image_too_large: "One or more images exceed the maximum file size.",
+  property_create_failed: "Failed to create the property. Please try again.",
+  property_update_failed: "Failed to update the property. Please try again.",
+  duplicate_property: "A property with this name already exists.",
+  related_data_failed:
+    "Property was created but some details failed to save. Please edit the property to fix this.",
+  unauthorized: "You do not have permission to create properties.",
+  unknown_error: "Something went wrong. Please try again.",
+};

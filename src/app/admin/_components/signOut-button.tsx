@@ -1,5 +1,5 @@
 import { signOut } from "@/actions/auth";
-import AnimatedButton from "../../components/ui/animated-button";
+import AnimatedButton from "../../../components/ui/animated-button";
 import { SignOutIcon } from "@phosphor-icons/react/dist/ssr";
 
 export default function SignOutButton() {

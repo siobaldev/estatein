@@ -68,3 +68,10 @@ export type Property = {
   totalInitialCosts?: TotalInitialCosts;
   monthlyExpenses?: MonthlyExpenses;
 };
+
+export type ImageItem = {
+  file?: File;
+  preview: string;
+  order: number;
+  existingUrl?: string;
+};

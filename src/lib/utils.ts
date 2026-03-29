@@ -14,6 +14,7 @@ export const slugify = (text: string | null | undefined): string => {
     .replace(/\s+/g, "-");
 };
 
+// format currency for display
 export function formatCurrency(amount: number): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -21,4 +22,12 @@ export function formatCurrency(amount: number): string {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(amount);
+}
+
+// format price for inputs
+export function formatPrice(value: string | number) {
+  const num =
+    typeof value === "string" ? Number(value.replace(/,/g, "")) : value;
+  if (isNaN(num)) return "";
+  return num.toLocaleString();
 }
