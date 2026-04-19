@@ -41,17 +41,100 @@ export default async function PropertyDetails({ params }: Props) {
     notFound();
   }
 
+  const propertyUrl = `${baseUrl}/properties/${slug}`;
+
+  // JSON-LD structured data for Google's RealEstateListing schema
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    name: property.name,
+    description: property.description,
+    url: propertyUrl,
+
+    // Primary listing image
+    image: property.image
+      ? [`${baseUrl}${property.image}`]
+      : (property.images?.map(
+          (image: { url: string }) => `${baseUrl}${image.url}`,
+        ) ?? []),
+
+    // Price
+    offers: {
+      "@type": "Offer",
+      price: property.price,
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: propertyUrl,
+    },
+
+    // The actual property being listed
+    about: {
+      "@type": "Accommodation",
+      name: property.name,
+      description: property.description,
+      numberOfRooms: property.bedrooms,
+      numberOfBathroomsTotal: property.bathrooms,
+      floorSize: {
+        "@type": "QuantitativeValue",
+        value: property.propertySize,
+        unitCode: "MTK", // square meters
+      },
+      accommodationCategory: property.propertyType,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: property.location,
+      },
+      photo:
+        property.images?.map((img: { url: string }) => ({
+          "@type": "ImageObject",
+          url: `${baseUrl}${img.url}`,
+        })) ?? [],
+    },
+
+    // Breadcrumb so Google understands site hierarchy
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: baseUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Properties",
+          item: `${baseUrl}/properties`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: property.name,
+          item: propertyUrl,
+        },
+      ],
+    },
+  };
+
   // Section list
   const sections = [PropertyInfo, PropertyInquiry, PropertyPricing, FAQs];
 
   return (
-    <section className="wrapper text-body mt-10 space-y-20 font-medium md:space-y-25 lg:space-y-30 xl:space-y-37.5">
-      {sections.map((Component, index) => (
-        <AnimatedSection key={index}>
-          <Component property={property} />
-        </AnimatedSection>
-      ))}
-    </section>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <section className="wrapper text-body mt-10 space-y-20 font-medium md:space-y-25 lg:space-y-30 xl:space-y-37.5">
+        {sections.map((Component, index) => (
+          <AnimatedSection key={index}>
+            <Component property={property} />
+          </AnimatedSection>
+        ))}
+      </section>
+    </>
   );
 }
 
