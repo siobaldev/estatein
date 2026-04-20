@@ -5,24 +5,59 @@ import {
   ArrowsLeftRightIcon,
   PencilSimpleIcon,
   StarIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import DeletePropertyButton from "./_components/delete-property-button";
 import { formatCurrency } from "@/lib/utils";
 import AnimatedLink from "@/components/ui/animated-link";
 import { Property } from "@/lib/types";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+} from "@/components/ui/pagination";
+import { pageBuilder } from "@/lib/page-builder";
+import { generatePageNumbers } from "@/lib/utils";
 
 type PropertyTypes = Pick<
   Property,
   "id" | "name" | "image" | "location" | "propertyType" | "price" | "isFeatured"
 >;
 
-export default async function PropertiesPage() {
+const pageSize = 1;
+
+type Props = {
+  searchParams: Promise<{ page?: string }>;
+};
+
+export default async function PropertiesPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const currentPage = Math.max(1, Number(params.page ?? 1));
+  const from = (currentPage - 1) * pageSize;
+  const to = from + pageSize - 1;
+
   const supabase = await createSupabaseServerClient();
 
-  const { data: properties, error } = await supabase
+  const {
+    data: properties,
+    count,
+    error,
+  } = await supabase
     .from("Property")
-    .select("id, name, image, location, propertyType, price, isFeatured")
-    .order("createdAt", { ascending: false });
+    .select("id, name, image, location, propertyType, price, isFeatured", {
+      count: "exact",
+    })
+    .order("createdAt", { ascending: false })
+    .range(from, to);
+
+  const totalCount = count ?? 0;
+  const totalPages = Math.ceil(totalCount / pageSize);
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+
+  const pageNumbers = generatePageNumbers(currentPage, totalPages);
 
   if (error) {
     return (
@@ -108,14 +143,14 @@ export default async function PropertiesPage() {
                     {/* Property */}
                     <td className="px-5 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="border-border bg-background h-10 w-14 shrink-0 overflow-hidden rounded-lg border">
+                        <div className="h-auto w-20">
                           <Image
                             src={property.image}
                             alt={`${property.name} image`}
                             height={768}
                             width={1366}
                             sizes="(max-width: 768px) 100vw, 375px"
-                            className="rounded-lg"
+                            className="size aspect-video rounded-sm"
                             loading="lazy"
                           />
                         </div>
@@ -239,7 +274,89 @@ export default async function PropertiesPage() {
               </div>
             ))}
           </div>
+
+          {totalPages > 0 && (
+            <div className="mt-4 flex flex-col items-center justify-between gap-y-4 pt-4 md:flex-row">
+              {/* Results counter */}
+              <div className="text-sub-foreground text-body text-center font-medium text-nowrap lg:text-start">
+                Showing {startIndex + 1}-{Math.min(endIndex, totalCount)} of{" "}
+                {totalCount} properties
+              </div>
+
+              {/* Pagination controls */}
+              <Pagination>
+                <PaginationContent className="text-body flex w-full grid-cols-2 grid-rows-2 justify-center gap-x-2 gap-y-2 font-medium max-[450px]:grid md:justify-end">
+                  {/* Previous button */}
+                  <PaginationItem className="w-fit justify-self-end max-[450px]:order-2">
+                    <AnimatedLink
+                      href={pageBuilder(params, currentPage - 1)}
+                      tabIndex={currentPage === 1 ? -1 : 0}
+                      aria-label="Go to previous page"
+                      className={`ring-border hover:ring-purple-60 flex items-center gap-x-2 rounded-full p-2.5 ring lg:rounded-lg ${
+                        currentPage === 1
+                          ? "pointer-events-none cursor-not-allowed opacity-50"
+                          : "cursor-pointer"
+                      }`}
+                    >
+                      <ArrowLeftIcon aria-hidden="true" className="size-6" />
+                      <span className="hidden lg:block">Previous</span>
+                    </AnimatedLink>
+                  </PaginationItem>
+
+                  {/* Page numbers */}
+                  <PaginationItem className="col-span-2 flex items-center justify-center gap-x-1 max-[450px]:order-1">
+                    {pageNumbers.map((page, index) => {
+                      if (typeof page === "string") {
+                        return (
+                          <div key={`${page}-${index}`}>
+                            <PaginationEllipsis />
+                          </div>
+                        );
+                      }
+                      return (
+                        <div key={page}>
+                          <AnimatedLink
+                            href={pageBuilder(params, page)}
+                            tabIndex={currentPage === page ? -1 : 0}
+                            aria-current={
+                              currentPage === page ? "page" : undefined
+                            }
+                            className={`rounded-full px-4 py-2 lg:rounded-lg ${
+                              currentPage === page
+                                ? "bg-purple-60 ring-none text-white-99"
+                                : "ring-purple-60 hover:ring"
+                            }`}
+                          >
+                            {page}
+                          </AnimatedLink>
+                        </div>
+                      );
+                    })}
+                  </PaginationItem>
+
+                  {/* Next button */}
+                  <PaginationItem className="order-3 w-fit">
+                    <AnimatedLink
+                      href={pageBuilder(params, currentPage + 1)}
+                      tabIndex={currentPage === totalPages ? -1 : 0}
+                      aria-label="Go to next page"
+                      className={`ring-border hover:ring-purple-60 flex items-center gap-x-2 rounded-full p-2.5 ring lg:rounded-lg ${
+                        currentPage === totalPages
+                          ? "pointer-events-none cursor-not-allowed opacity-50"
+                          : "cursor-pointer"
+                      }`}
+                    >
+                      <span className="hidden lg:block">Next</span>
+                      <ArrowRightIcon aria-hidden="true" className="size-6" />
+                    </AnimatedLink>
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+            </div>
+          )}
         </>
+        // Pagination here
+        //
       )}
     </section>
   );
