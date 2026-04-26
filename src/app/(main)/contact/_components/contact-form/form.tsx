@@ -14,14 +14,17 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { clientSchema, type ClientFormData } from "@/schemas/contactSchema";
 import { showCustomToast } from "@/components/customToast";
+import { useTransition } from "react";
+import { submitContactForm } from "@/actions/inquiry";
+import { getErrorMessage } from "@/lib/utils";
 
 export default function Form() {
-  // Initialize React Hook Form with Zod validation
+  const [isPending, startTransition] = useTransition();
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset,
   } = useForm<ClientFormData>({
     resolver: zodResolver(clientSchema),
@@ -33,53 +36,51 @@ export default function Form() {
     },
   });
 
-  const onSubmit = async (data: ClientFormData) => {
+  const onSubmit = async (formData: ClientFormData) => {
     // Store the loading toast ID so we can update it later
     const loadingId = showCustomToast.loading("Sending your message...");
 
-    try {
-      // Log form data for debugging (remove in production)
-      console.log("Form data:", data);
+    startTransition(async () => {
+      try {
+        const result = await submitContactForm(formData);
 
-      // Simulate API call (replace with actual API request)
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+        if (result?.error) {
+          showCustomToast.error(getErrorMessage(result.error), "", {
+            id: loadingId,
+            duration: 5000,
+          });
+          return;
+        }
 
-      // Update the same toast to show success (using the stored ID)
-      showCustomToast.success(
-        "Message sent successfully!",
-        "We'll get back to you soon.",
-        {
+        showCustomToast.success(
+          "Message sent successfully!",
+          "We'll get back to you soon.",
+          {
+            id: loadingId,
+            duration: 5000,
+          },
+        );
+
+        // Clear form fields after successful submission
+        // Must explicitly pass all values to properly reset Controller components
+        reset({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          inquiryType: "",
+          message: "",
+          howDidYouHear: "",
+          terms: false,
+        });
+      } catch (err) {
+        console.error(err);
+        showCustomToast.error("Something went wrong. Please try again.", "", {
           id: loadingId,
           duration: 5000,
-        },
-      );
-
-      // Clear form fields after successful submission
-      // Must explicitly pass all values to properly reset Controller components
-      reset({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        inquiryType: "",
-        message: "",
-        howDidYouHear: "",
-        terms: false,
-      });
-    } catch (error) {
-      // Log error for debugging
-      console.log(error);
-
-      // Update the same toast to show error (using the stored ID)
-      showCustomToast.error(
-        "Error",
-        "Something went wrong. Please try again.",
-        {
-          duration: 5000,
-          id: loadingId,
-        },
-      );
-    }
+        });
+      }
+    });
   };
 
   return (
@@ -204,10 +205,10 @@ export default function Form() {
           {/* Submit button */}
           <AnimatedButton
             type="submit"
-            disabled={isSubmitting}
+            disabled={isPending}
             className="bg-purple-60 text-white-99 rounded px-6 py-3"
           >
-            {isSubmitting ? "Sending..." : "Send Your Message"}
+            {isPending ? "Sending..." : "Send Your Message"}
           </AnimatedButton>
         </div>
       </form>

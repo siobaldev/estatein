@@ -1060,8 +1060,11 @@ export const errorMessages: Record<string, string> = {
   property_create_failed: "Failed to create the property. Please try again.",
   property_update_failed: "Failed to update the property. Please try again.",
   duplicate_property: "A property with this name already exists.",
-  related_data_failed:
-    "Property was created but some details failed to save. Please edit the property to fix this.",
   unauthorized: "You do not have permission to create properties.",
   unknown_error: "Something went wrong. Please try again.",
+
+  inquiry_create_failed: "Failed to submit your inquiry. Please try again.",
+  inquiry_update_failed: "Failed to update the inquiry. Please try again.",
+  inquiry_delete_failed: "Failed to delete the inquiry. Please try again.",
+  duplicate_inquiry: "You have already submitted an inquiry for this property.",
 };

@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { errorMessages } from "./data";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -79,3 +80,7 @@ export const generatePageNumbers = (
 
   return pages;
 };
+
+export function getErrorMessage(key: string): string {
+  return errorMessages[key] ?? errorMessages["unknown_error"];
+}
