@@ -7,6 +7,7 @@ import PropertyInquiry from "../_components/property-inquiry";
 import PropertyPricing from "../_components/property-pricing";
 import FAQs from "@/components/faqs/faqs";
 import { createClient } from "@/lib/supabase/client";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { formatCurrency } from "@/lib/utils";
 
 interface Props {
@@ -16,7 +17,7 @@ interface Props {
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL!;
 
 export default async function PropertyDetails({ params }: Props) {
-  const supabase = createClient();
+  const supabase = await createSupabaseServerClient();
 
   const { slug } = await params;
 
@@ -40,6 +41,10 @@ export default async function PropertyDetails({ params }: Props) {
   if (!property) {
     notFound();
   }
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   const propertyUrl = `${baseUrl}/properties/${slug}`;
 
@@ -130,7 +135,7 @@ export default async function PropertyDetails({ params }: Props) {
       <section className="wrapper text-body mt-10 space-y-20 font-medium md:space-y-25 lg:space-y-30 xl:space-y-37.5">
         {sections.map((Component, index) => (
           <AnimatedSection key={index}>
-            <Component property={property} />
+            <Component property={property} user={user} />
           </AnimatedSection>
         ))}
       </section>

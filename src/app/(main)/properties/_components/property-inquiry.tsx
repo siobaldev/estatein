@@ -1,12 +1,14 @@
 import TripleStar from "@/components/ui/triple-star";
 import InqueryForm from "./inquiry-form";
 import { Property } from "@/lib/types";
+import { User } from "@supabase/supabase-js";
 
-interface PropertyProps {
-  property: Pick<Property, "name" | "location">;
+interface Props {
+  property: Pick<Property, "id" | "name" | "location">;
+  user: User | null;
 }
 
-export default function PropertyInquiry({ property }: PropertyProps) {
+export default function PropertyInquiry({ property, user }: Props) {
   return (
     <section className="relative scroll-mt-32.5">
       {/* Decorative triple star */}
@@ -27,7 +29,7 @@ export default function PropertyInquiry({ property }: PropertyProps) {
         </div>
 
         {/* Form */}
-        <InqueryForm property={property} />
+        <InqueryForm property={property} user={user} />
       </div>
     </section>
   );

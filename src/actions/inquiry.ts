@@ -2,6 +2,7 @@
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { clientSchema, type ClientFormData } from "@/schemas/contactSchema";
+import { inquirySchema, type InquiryFormData } from "@/schemas/inquirySchema";
 
 export async function submitContactForm(formData: ClientFormData) {
   const parsedData = clientSchema.safeParse(formData);
@@ -24,6 +25,37 @@ export async function submitContactForm(formData: ClientFormData) {
       type: "contact",
       inquiryType: clientData.inquiryType,
       hearAboutUs: clientData.howDidYouHear,
+    });
+
+    if (error) {
+      return { error: "inquiry_create_failed" };
+    }
+  } catch (err) {
+    console.error("Unexpected error submitting inquiry:", err);
+    return { error: "unknown_error" };
+  }
+}
+
+export async function submitPropertyInquiryForm(formData: InquiryFormData) {
+  const parsedData = inquirySchema.safeParse(formData);
+
+  if (!parsedData.success) {
+    return { error: "validation_error" };
+  }
+
+  const clientData = parsedData.data;
+
+  try {
+    const supabase = await createSupabaseServerClient();
+
+    const { error } = await supabase.from("Inquiry").insert({
+      firstName: clientData.firstName,
+      lastName: clientData.lastName,
+      email: clientData.email,
+      phone: clientData.phone,
+      message: clientData.message,
+      type: "property",
+      propertyId: clientData.propertyId,
     });
 
     if (error) {

@@ -8,80 +8,96 @@ import { inquirySchema, type InquiryFormData } from "@/schemas/inquirySchema";
 import AnimatedButton from "@/components/ui/animated-button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { MapPinIcon } from "@phosphor-icons/react";
+import { useTransition } from "react";
+import { submitPropertyInquiryForm } from "@/actions/inquiry";
+import { getErrorMessage } from "@/lib/utils";
+import { User } from "@supabase/supabase-js";
 
 interface InquiryFormProps {
   property: {
+    id: number;
     name: string;
     location: string;
   };
+  user: User | null;
 }
 
-export default function InquiryForm({ property }: InquiryFormProps) {
+export default function InquiryForm({ property, user }: InquiryFormProps) {
   // Combine property name and location for the selected property field
   const selectedProperty = `${property.name}, ${property.location}`;
+  const [isPending, startTransition] = useTransition();
+
+  console.log(user?.user_metadata);
+
+  const displayName = user?.user_metadata?.name ?? "";
+
+  const [firstName = "", lastName = ""] = displayName.split(" ");
 
   // Initialize React Hook Form with Zod validation
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset,
   } = useForm<InquiryFormData>({
     resolver: zodResolver(inquirySchema),
     mode: "onSubmit", // Validate only when form is submitted
     defaultValues: {
-      selectedProperty: selectedProperty, // Pre-fill with current property
+      propertyId: property.id,
+      firstName: firstName,
+      lastName: lastName,
+      email: user?.email ?? "",
+      phone: user?.user_metadata?.phone ?? "",
+      selectedProperty: selectedProperty,
       terms: false,
     },
   });
 
-  const onSubmit = async (data: InquiryFormData) => {
-    // Log form data
-    console.log("Form data:", data);
-
+  const onSubmit = async (formData: InquiryFormData) => {
     // Store the loading toast ID so we can update it later
     const loadingId = showCustomToast.loading("Sending your message...");
 
-    try {
-      // Simulate API call (replace with actual API request)
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+    startTransition(async () => {
+      try {
+        const result = await submitPropertyInquiryForm(formData);
 
-      // Update the same toast to show success (using the stored ID)
-      showCustomToast.success(
-        "Message sent successfully!",
-        "We'll get back to you soon.",
-        {
+        if (result?.error) {
+          showCustomToast.error(getErrorMessage(result.error), "", {
+            id: loadingId,
+            duration: 5000,
+          });
+          return;
+        }
+
+        showCustomToast.success(
+          "Message sent successfully!",
+          "We'll get back to you soon.",
+          {
+            id: loadingId,
+            duration: 5000,
+          },
+        );
+
+        // Clear form fields after successful submission
+        // Must explicitly pass all values to properly reset Controller components
+        reset({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          selectedProperty: selectedProperty,
+          message: "",
+          terms: false,
+        });
+      } catch (err) {
+        console.error(err);
+        showCustomToast.error("Something went wrong. Please try again.", "", {
           id: loadingId,
           duration: 5000,
-        },
-      );
-
-      // Clear form fields after successful submission
-      // Must explicitly pass all values to properly reset Controller components
-      reset({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        selectedProperty: selectedProperty,
-        message: "",
-        terms: false,
-      });
-    } catch (error) {
-      // Log error
-      console.log(error);
-
-      // Update the same toast to show error (using the stored ID)
-      showCustomToast.error(
-        "Error",
-        "Something went wrong. Please try again.",
-        {
-          duration: 5000,
-          id: loadingId,
-        },
-      );
-    }
+        });
+      }
+    });
   };
 
   return (
@@ -188,10 +204,10 @@ export default function InquiryForm({ property }: InquiryFormProps) {
         {/* Submit button */}
         <AnimatedButton
           type="submit"
-          disabled={isSubmitting}
+          disabled={isPending}
           className="bg-purple-60 text-white-99 rounded px-6 py-3"
         >
-          {isSubmitting ? "Sending..." : "Send Your Message"}
+          {isPending ? "Sending..." : "Send Your Message"}
         </AnimatedButton>
       </div>
     </form>

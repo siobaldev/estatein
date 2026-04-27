@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const inquirySchema = z.object({
+  propertyId: z.number(),
   firstName: z
     .string()
     .min(1, "First name is required")
