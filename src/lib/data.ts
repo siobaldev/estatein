@@ -24,10 +24,6 @@ import {
   PhoneIcon,
   MapPinIcon,
   AtIcon,
-  SquaresFourIcon,
-  UsersIcon,
-  ArrowsLeftRightIcon,
-  GearSixIcon,
   ImageIcon,
   FileTextIcon,
 } from "@phosphor-icons/react/dist/ssr";
@@ -45,15 +41,13 @@ export const NavItems = [
 ];
 
 export const adminNavItems = [
-  { label: "Dashboard", href: "/admin/dashboard", icon: SquaresFourIcon },
-  { label: "Properties", href: "/admin/properties", icon: BuildingsIcon },
-  { label: "Clients", href: "/admin/clients", icon: UsersIcon },
+  { label: "Dashboard", href: "/admin/dashboard" },
+  { label: "Properties", href: "/admin/properties" },
   {
-    label: "Transactions",
-    href: "/admin/transactions",
-    icon: ArrowsLeftRightIcon,
+    label: "Inquiries",
+    href: "/admin/inquiries",
   },
-  { label: "Settings", href: "/admin/settings", icon: GearSixIcon },
+  { label: "Settings", href: "/admin/settings" },
 ];
 
 export const HeroStats = [

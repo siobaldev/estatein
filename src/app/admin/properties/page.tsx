@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/pagination";
 import { pageBuilder } from "@/lib/page-builder";
 import { generatePageNumbers } from "@/lib/utils";
+import AddPropertyButton from "../_components/add-property-button";
 
 type PropertyTypes = Pick<
   Property,
@@ -80,13 +81,7 @@ export default async function PropertiesPage({ searchParams }: Props) {
             {properties?.length ?? 0} total properties
           </p>
         </div>
-        <AnimatedLink
-          href="/admin/properties/new"
-          className="bg-purple-60 text-foreground hover text-body inline-flex items-center gap-2 rounded-lg px-4 py-3"
-        >
-          <PlusIcon aria-hidden weight="bold" className="size-4 sm:size-5" />
-          Add Property
-        </AnimatedLink>
+        <AddPropertyButton />
       </div>
 
       {!properties || properties.length === 0 ? (
@@ -104,7 +99,7 @@ export default async function PropertiesPage({ searchParams }: Props) {
           </p>
           <AnimatedLink
             href="/admin/properties/new"
-            className="bg-purpe-text-purple-60 mt-4 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm text-white transition-opacity hover:opacity-90"
+            className="bg-purple-60 mt-4 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm text-white transition-opacity hover:opacity-90"
           >
             <PlusIcon aria-hidden weight="bold" className="size-4" />
             Add Property
