@@ -175,7 +175,10 @@ export default function Form({ property }: Props) {
             ...formData,
             id: property!.id,
             image: mainImage,
-            images: uploadedImages,
+            images: uploadedImages.map((img) => ({
+              url: img.preview,
+              order: img.order,
+            })),
             deletedImageUrls: deletedImages,
           });
 
@@ -189,7 +192,10 @@ export default function Form({ property }: Props) {
           const parsed = createPropertySchema.safeParse({
             ...formData,
             image: mainImage,
-            images: uploadedImages,
+            images: uploadedImages.map((img) => ({
+              url: img.preview,
+              order: img.order,
+            })),
           });
 
           if (!parsed.success) {
