@@ -27,7 +27,7 @@ type PropertyTypes = Pick<
   "id" | "name" | "image" | "location" | "propertyType" | "price" | "isFeatured"
 >;
 
-const pageSize = 1;
+const pageSize = 2;
 
 type Props = {
   searchParams: Promise<{ page?: string }>;
