@@ -92,11 +92,17 @@ export default function Pricing({ form, onNextAction, onBackAction }: Props) {
                               : (value as string)
                           }
                           onChange={(e) => {
-                            const stripped = e.target.value.replace(
-                              /[^0-9]/g,
-                              "",
-                            );
-                            onChange(stripped === "" ? undefined : stripped);
+                            if (field.type === "number") {
+                              const stripped = e.target.value.replace(
+                                /[^0-9]/g,
+                                "",
+                              );
+                              onChange(
+                                stripped === "" ? undefined : Number(stripped),
+                              );
+                            } else {
+                              onChange(e.target.value);
+                            }
                           }}
                           placeholder={field.placeholder}
                           className={`border-border caret-purple-60 focus:border-purple-60 placeholder:text-sub-foreground/50 bg-background w-full rounded border px-4 py-3 outline-none ${
