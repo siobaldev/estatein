@@ -12,6 +12,29 @@ import {
 } from "@/schemas/propertySchema";
 import { ImageItem } from "@/lib/types";
 
+export async function checkDuplicateProperty(
+  name: string,
+  location: string,
+  excludeId?: number,
+) {
+  const supabase = await createSupabaseServerClient();
+
+  let query = supabase
+    .from("Property")
+    .select("id")
+    .eq("name", name)
+    .eq("location", location);
+
+  // Exclude current property when updating
+  if (excludeId) {
+    query = query.neq("id", excludeId);
+  }
+
+  const { data } = await query.maybeSingle();
+
+  return { data };
+}
+
 export async function uploadImages(
   images: ImageItem[],
   propertyName: string,

@@ -21,6 +21,7 @@ import {
   createProperty,
   updateProperty,
   uploadImages,
+  checkDuplicateProperty,
 } from "@/actions/properties";
 import { ImageItem } from "@/lib/types";
 import { formSteps, errorMessages } from "@/lib/data";
@@ -115,6 +116,20 @@ export default function Form({ property }: Props) {
 
     try {
       startTransition(async () => {
+        // Check for duplicate first
+        const { data: existing } = await checkDuplicateProperty(
+          formData.name,
+          formData.location,
+        );
+
+        if (existing) {
+          showCustomToast.error(errorMessages["duplicate_property"], "", {
+            id: loadingId,
+            duration: 5000,
+          });
+          return;
+        }
+
         let uploadedImages: ImageItem[] = [];
 
         // INFO: upload images
