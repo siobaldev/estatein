@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { loginSchema, type LoginSchema } from "@/schemas/loginShema";
 import { registerSchema, type RegisterSchema } from "@/schemas/registerSchema";
+import { type UpdatePasswordSchema } from "@/schemas/updatePasswordSchema";
 
 export async function signIn(formData: LoginSchema) {
   const supabase = await createSupabaseServerClient();
@@ -62,4 +63,18 @@ export async function signOut() {
   await supabase.auth.signOut();
   revalidatePath("/", "layout");
   redirect("/login");
+}
+
+export async function updatePassword(formData: UpdatePasswordSchema) {
+  const supabase = await createSupabaseServerClient();
+
+  const newPassword = formData.password;
+
+  const { error } = await supabase.auth.updateUser({
+    password: newPassword,
+  });
+
+  if (error) return { error: error.code };
+
+  revalidatePath("/", "layout");
 }

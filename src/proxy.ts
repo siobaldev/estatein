@@ -35,6 +35,12 @@ export default async function proxy(request: NextRequest) {
   const isAdminRoute = pathname.startsWith("/admin");
   const isLoginPage = pathname === "/login";
 
+  const isForgotPasswordPage = pathname === "/forgot-password";
+  const isUpdatePasswordPage = pathname === "/update-password";
+
+  const amr = user?.amr as { method: string }[] | undefined;
+  const isPasswordRecovery = amr?.some((m) => m.method === "recovery");
+
   // Admin visiting /admin → redirect to dashboard
   if (user && role === "admin" && pathname === "/admin") {
     const dashboardUrl = request.nextUrl.clone();
@@ -60,6 +66,27 @@ export default async function proxy(request: NextRequest) {
   if (user && isLoginPage) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = role === "admin" ? "/admin/dashboard" : "/";
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // Guest user accessing update password page
+  if (!user && isUpdatePasswordPage && !isPasswordRecovery) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/forgot-password";
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // Logged in user accessing forgot password or update password page
+  if (user && isForgotPasswordPage) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = role === "admin" ? "/admin/dashboard" : "/";
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // Block access to update password if the session was not initiated via a recovery email
+  if (user && !isPasswordRecovery && isUpdatePasswordPage) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/forgot-password";
     return NextResponse.redirect(redirectUrl);
   }
 

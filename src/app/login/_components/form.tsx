@@ -13,6 +13,7 @@ import { loginSchema, type LoginSchema } from "@/schemas/loginShema";
 import { showCustomToast } from "@/components/customToast";
 import { useState, useTransition } from "react";
 import { signIn } from "@/actions/auth";
+import Link from "next/link";
 
 const ERROR_MESSAGES: Record<string, string> = {
   email_not_confirmed: "Please confirm your email before logging in.",
@@ -117,12 +118,12 @@ export default function Form() {
         </div>
       </div>
 
-      <AnimatedButton
-        type="button"
-        className="hover:text-purple-60 ml-auto flex text-xs"
+      <Link
+        href={"/forgot-password"}
+        className="hover:text-purple-60 flex justify-end text-xs"
       >
         Forgot password?
-      </AnimatedButton>
+      </Link>
 
       {/* Submit button */}
       <AnimatedButton

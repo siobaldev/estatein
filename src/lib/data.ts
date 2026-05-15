@@ -1061,4 +1061,20 @@ export const errorMessages: Record<string, string> = {
   inquiry_update_failed: "Failed to update the inquiry. Please try again.",
   inquiry_delete_failed: "Failed to delete the inquiry. Please try again.",
   duplicate_inquiry: "You have already submitted an inquiry for this property.",
+
+  over_email_send_rate_limit:
+    "Too many reset emails sent. Please wait a moment before trying again.",
+  email_address_invalid: "Please enter a valid email address.",
+  email_address_not_authorized:
+    "This email address is not authorized to receive emails.",
+
+  same_password:
+    "Your new password must be different from your current password.",
+  weak_password: "Password is too weak. Please choose a stronger password.",
+  over_request_rate_limit:
+    "Too many attempts. Please wait a moment and try again.",
+  session_not_found:
+    "Your session has expired. Please request a new reset link.",
+  flow_state_expired: "Your reset link has expired. Please request a new one.",
+  unexpected_failure: "Something went wrong. Please try again.",
 };
