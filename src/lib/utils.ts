@@ -84,3 +84,14 @@ export const generatePageNumbers = (
 export function getErrorMessage(key: string): string {
   return errorMessages[key] ?? errorMessages["unknown_error"];
 }
+
+// Converts a date into a human-readable "time ago" format (minutes, hours, days)
+export function timeAgo(date: string) {
+  const diff = Date.now() - new Date(date).getTime();
+  const mins = Math.floor(diff / 60000);
+  const hours = Math.floor(mins / 60);
+  const days = Math.floor(hours / 24);
+  if (days > 0) return `${days}d ago`;
+  if (hours > 0) return `${hours}h ago`;
+  return `${mins}m ago`;
+}

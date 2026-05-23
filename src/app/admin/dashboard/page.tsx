@@ -9,6 +9,7 @@ import {
 import { formatCurrency } from "@/lib/utils";
 import AnimatedLink from "@/components/ui/animated-link";
 import AddPropertyButton from "../_components/add-property-button";
+import { timeAgo } from "@/lib/utils";
 
 type RecentProperty = {
   id: number;
@@ -30,17 +31,6 @@ type RecentInquiry = {
   createdAt: string;
   Property: { name: string }[] | null;
 };
-
-// Converts a date into a human-readable "time ago" format (minutes, hours, days)
-function timeAgo(date: string) {
-  const diff = Date.now() - new Date(date).getTime();
-  const mins = Math.floor(diff / 60000);
-  const hours = Math.floor(mins / 60);
-  const days = Math.floor(hours / 24);
-  if (days > 0) return `${days}d ago`;
-  if (hours > 0) return `${hours}h ago`;
-  return `${mins}m ago`;
-}
 
 // Defines CSS classes for styling status badges in the Recent Inquiries list
 const statusBadgeStyles: Record<string, string> = {
